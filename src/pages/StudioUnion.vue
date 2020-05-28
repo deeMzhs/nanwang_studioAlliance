@@ -30,6 +30,7 @@
       <van-col span="8" class="second-sub-col2">
         <span>{{studioInfo.num}}人已加入<van-icon name="arrow" style="line-height: 1.3rem;" /></span>
       </van-col>
+      <!-- dada -->
     </van-row>
   </div>
   <!-- 联盟工作室 -->
