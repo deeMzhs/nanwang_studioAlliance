@@ -58,10 +58,12 @@
         </div>
       </van-col>
       <van-col span="24" class="footer">
-        #提升远程办公安全意识
+       <span>#</span>  提升远程办公安全意识
+       <div>提升远程办公安全意识</div>
       </van-col>
     </van-row>
   </div>
+
   <!-- 未加入/关注 -->
   <div v-if="followList.length == 0" class="unfollow-content">
     <div class="tip">你还没关注任何工作室，去关注看看吧</div>
@@ -87,7 +89,7 @@
             <div class="van-ellipsis name-wrap">{{item.name}}</div>
             <div class="action-wrap">
               <span v-if="item.isFollow == 0" class="unfollow">关注</span>
-              <span v-else class="followed">已关注</span>
+              <span v-else class="followed"> <van-icon name="success" />已关注</span>
             </div>
           </div>
         </div>
@@ -115,7 +117,7 @@
             <div class="van-ellipsis name-wrap">{{item.name}}</div>
             <div class="action-wrap">
               <span v-if="item.isFollow == 0" class="unfollow">关注</span>
-              <span v-else class="followed">已关注</span>
+              <span v-else class="followed"> <van-icon name="success" />已关注</span>
             </div>
           </div>
         </div>
@@ -143,7 +145,7 @@
             <div class="van-ellipsis name-wrap">{{item.name}}</div>
             <div class="action-wrap">
               <span v-if="item.isFollow == 0" class="unfollow">关注</span>
-              <span v-else class="followed">已关注</span>
+              <span v-else class="followed"> <van-icon name="success" />已关注</span>
             </div>
           </div>
         </div>
@@ -394,15 +396,18 @@ export default {
 .wrap .follow-content .head .head-title{
   color: #262626;
   font-size: 1rem;
+  font-weight: bold;
 }
 .wrap .follow-content .head .head-more{
   color: #1E87F0;
   font-size: 0.9rem;
+  font-weight:bold;
 }
 .wrap .follow-content .follow-list{
   padding: 0.8rem 0.8rem;
   margin-bottom: 0.5rem;
   background-color: #fff;
+ 
 }
 .wrap .follow-content .follow-list .main{
   
@@ -419,7 +424,7 @@ export default {
   font-weight: bold;
 }
 .wrap .follow-content .follow-list .main .first .join{
-  width: 7rem;
+  width:5rem;
   text-align: center;
   font-size: 0.8rem;
   color: #fff;
@@ -436,15 +441,29 @@ export default {
   border-radius: 1rem;
 }
 .wrap .follow-content .follow-list .footer{
+  position: relative;
   font-size: 0.9rem;
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid #E5E5E5;
 }
-/* 未关注/加入 */
-.wrap .unfollow-content{
-
+.wrap .follow-content .follow-list .footer div{
+  position: absolute;
+  top:60%;
+  left:0;
+  color: #f7d074;
+  padding-right:2rem;
+  height: 1rem;
+  background:rgb(250, 199, 80);
+  opacity:0.3; 
 }
+
+.wrap .follow-content .follow-list .footer span{
+  color: #F5C656;
+}
+
+/* 未关注/加入 */
+
 .wrap .unfollow-content .tip{
   color: #B2B2B2;
   font-size: 0.9rem;
@@ -516,5 +535,10 @@ export default {
   margin: 0.5rem 0;
   padding: 0.2rem 0.6rem;
   border-radius: 0.2rem;
+}
+
+.van-icon{
+  vertical-align:middle;
+  padding-right: .2rem;
 }
 </style>

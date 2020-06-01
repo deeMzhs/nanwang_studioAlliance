@@ -15,7 +15,6 @@ import PersonalLike from '@/pages/personal/PersonalLike'
 import PersonalForward from '@/pages/personal/PersonalForward'
 import PersonalComment from '@/pages/personal/PersonalComment'
 
-
 Vue.use(Router)
 
 export default new Router({
@@ -74,6 +73,7 @@ export default new Router({
       path: '/votePublish',
       name: 'VotePublish',
       component: VotePublish
+<<<<<<< HEAD
     },
     {
       path: '/personalPage',
@@ -95,5 +95,8 @@ export default new Router({
       name: 'personalComment',
       component: PersonalComment,
     },
+=======
+    }
+>>>>>>> bbef11fbcfb77ee0e76505387528033ba09c5517
   ]
 })

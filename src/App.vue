@@ -33,5 +33,14 @@ export default {
 .van-grid-item__content{
   padding: 0;
 }
+.van-nav-bar .van-nav-bar__title{
+  color:#fff;
+}
+.van-nav-bar{
+ background-color:#1E87F0;
+}
+.van-nav-bar .van-icon{
+  color: #fff;
+}
 
 </style>
