@@ -6,7 +6,7 @@
     left-arrow
     @click-left="onClickLeft">
     <template #right>
-      <van-icon name="manager" size="1rem" color="" :dot="isDot"/>
+      <van-icon name="manager" size="1rem" color="" :dot="isDot" @click="toPersonal"/>
     </template>
   </van-nav-bar>
   <div style="height: 46px"></div>
@@ -207,6 +207,9 @@ export default {
     // window["loginData"] = this.loginData;
   },
   methods:{
+    toPersonal(){
+      this.$router.replace('/personalPage')
+    },
     setLoginStorage() {
       storage.set('list', 999);
     },
