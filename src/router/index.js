@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import StudioUnionHome from '@/pages/StudioUnionHome'
-import StudioMoreHome from '@/pages/StudioMoreHome'
+import StudioMoreHome from '@/pages/StudioMoreHome2'
 import StudioUnion from '@/pages/StudioUnion'
 import DynamicPublish from '@/pages/DynamicPublish'
 import DynamicDetail from '@/pages/DynamicDetail'
@@ -10,7 +10,7 @@ import TopicPublish from '@/pages/TopicPublish'
 import TopicSquare from '@/pages/TopicSquare'
 import TopicDetail from '@/pages/TopicDetail'
 import VotePublish from '@/pages/VotePublish'
-
+import ProFile from '@/pages/ProFile'
 
 Vue.use(Router)
 
@@ -71,5 +71,10 @@ export default new Router({
       name: 'VotePublish',
       component: VotePublish
     },
+    {
+      path: '/proFile',
+      name: 'ProFile',
+      component: ProFile
+    }
   ]
 })
