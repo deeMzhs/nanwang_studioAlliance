@@ -12,7 +12,7 @@
             <van-col span="8" @click="toForward"><p>45</p><p>转发</p></van-col>
         </van-row>
         </div>
-        <van-icon name="arrow-left" color="#ffffff" size="24px"/>
+        <van-icon name="arrow-left" color="#ffffff" size="24px" @click="toHome"/>
       </div>
     </div>
     <div class="content">
@@ -86,6 +86,9 @@ export default {
     },
     toComment(){
       this.$router.replace('/personalComment')
+    },
+    toHome(){
+      this.$router.replace('/studioUnionHome')
     }
   }
 }
