@@ -27,13 +27,7 @@
         </div>  
       </div>
       <div class="right">
-         <van-image
-            fit="fill"
-            width="44px"
-            height="44px"
-            src="https://img.yzcdn.cn/vant/cat.jpeg"
-          />
-        <!-- <van-image width"44px" height="44px" fit="fill" src="https://img.yzcdn.cn/vant/cat.jpeg"/> -->
+         <img src="https://img.yzcdn.cn/vant/cat.jpeg"/>
       </div>
     </div>
      <div class="content-first">
@@ -119,8 +113,12 @@ export default {
     height: 25x;
     line-height: 25px
   }
-  .content-first .right .van-image{
-    border-radius:2px;
+  .content-first .right img{
+    display: block;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 4px;
   }
   .center .info{
     color:#B2B2B2;

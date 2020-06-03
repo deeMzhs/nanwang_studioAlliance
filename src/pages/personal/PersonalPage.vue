@@ -12,17 +12,18 @@
             <van-col span="8" @click="toForward"><p>45</p><p>转发</p></van-col>
         </van-row>
         </div>
-        <van-icon name="arrow-left" color="#ffffff" size="24px"/>
+        <van-icon name="arrow-left" color="#ffffff" size="24px" @click="toHome"/>
       </div>
     </div>
     <div class="content">
       <!-- tab组件控制住跳转 -->
-      <van-tabs v-model="active" title-active-color="#1E87F0" color="#1E87F0" line-width="50vw">
+      <van-tabs title-active-color="#1E87F0" color="#1E87F0" line-width="50vw">
         <van-tab title="我的发布 (100)">
           <van-row class="publish-list" v-for="(item, i) in publishList" :key="i">
             <van-col span="24" v-if="i === 0">
               <div class="tag">
-                   <h1>#这里是标签</h1>
+                <span>#</span>
+                <h1>这里是标签</h1>
               </div>
             </van-col>
             <van-col span="16" class="main">
@@ -32,12 +33,12 @@
             <van-col span="8" class ="img">
               <img :src="item.img" alt=""/>
             </van-col>
-            <van-vol span="24" class="ex-msg" v-if="item.active == 1">
+            <van-col span="24" class="ex-msg" v-if="item.active == 1">
               <div class="join-pic">
                 <div v-for="(item,i) in publishList"><img :src="item.img" alt=""></div>
               </div>
-              <div class="right">多少人已经报名了</div>
-            </van-vol>
+              <div class="right">50人已经报名</div>
+            </van-col>
             <van-col span="24" class="footer">
               <span class="icon-left" ><van-icon name="like-o" size="12"/><span>3</span></span>
               <span class="icon-left"><van-icon name="like-o" size="12"/><span>3</span></span>
@@ -45,7 +46,6 @@
               <span class="icon-right"><van-icon name="weapp-nav" size="12" color="#262626"/></span>
             </van-col>
           </van-row>
-          <!-- <div class="class"> -->
             <div class="main">
               <div>
             </div>
@@ -86,6 +86,9 @@ export default {
     },
     toComment(){
       this.$router.replace('/personalComment')
+    },
+    toHome(){
+      this.$router.replace('/studioUnionHome')
     }
   }
 }
@@ -103,7 +106,7 @@ export default {
 }
 .head-info .background{
   background-image: url('../../assets/img/per-bg.png');
-  height: 25%;
+  height: 25vh;
   width: 100%;
   background-repeat: no-repeat;
   display: flex;
@@ -116,7 +119,10 @@ export default {
   font-weight: 550;
   font-size: 1.3em;
   margin: auto;
-  margin-top: 2.7em;
+  /* margin-top: 2.7em; */
+  position: absolute;
+  bottom: -5%;
+  left: 4.5%;
   text-align: center;
 }
 .head-info .background .pre-info .info{
@@ -140,18 +146,14 @@ export default {
 .head-info .background .van-icon{
   position: absolute;
   top: 32.5px;
-  left: 12px
+  left: 12px;
 }
 .content{
   margin-top: 2.7em;
 }
 .publish-list{
   background-color: #ffffff;
-  margin-bottom: 20px;
-}
-.publish-list{
-  background-color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .publish-list .van-col{
   padding: 6px 12.5px 0px 12.5px;
@@ -199,6 +201,9 @@ export default {
   height: 20px;
   margin-left: -6px
 }
+.publish-list .ex-msg .join-pic div:first-child{
+  margin-left:0;
+}
 .publish-list .ex-msg .join-pic div img{
   width: 20px;
   height: 20px;
@@ -216,6 +221,14 @@ export default {
   margin-bottom: 20px;
   margin-top: 15px;
 }
+.tag span{
+  left: 25px;
+  font-size: 1.3em;
+  font-weight:bold;
+  bottom: 6.5px;
+  position: absolute;
+  color: #1E87F0;
+}
 .tag h1{
   font-weight: bold;
   font-size: 1.3em;
@@ -225,6 +238,7 @@ export default {
 }
 .content .footer{
   display: flex;
+  margin-bottom: 15px;
 }
 .content .footer .icon-left{
   flex:1;

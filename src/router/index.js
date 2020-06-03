@@ -73,7 +73,6 @@ export default new Router({
       path: '/votePublish',
       name: 'VotePublish',
       component: VotePublish
-
     },
     {
       path: '/personalPage',
@@ -94,7 +93,6 @@ export default new Router({
       path: '/personalComment',
       name: 'personalComment',
       component: PersonalComment,
-    },
-
+    }
   ]
 })

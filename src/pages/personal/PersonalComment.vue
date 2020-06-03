@@ -12,7 +12,7 @@
     </template>
   </van-nav-bar>
   <div class="content">
-    <div class="content-first" v-for="(item,i) in CommentInfo" :key="index">
+    <div class="content-first" v-for="(item,index) in CommentInfo" :key="index">
       <div class="left">
         <van-image
             round
@@ -26,7 +26,9 @@
         <div class="info">转发你的动态<span>2019-02-23</span></div>
         <p class="comment">{{item.comment}}</p>
         <div v-show="item.userComment != 0" class="user-comment">{{item.userComment}}</div>
-        <van-button type="default">回复按钮</van-button>
+        <div class="Comment-bt">
+          <span>回复评论</span>
+        </div>
       </div>
       <div class="right">
         <img src="https://img.yzcdn.cn/vant/cat.jpeg"/>
@@ -124,6 +126,7 @@ export default {
   .center .info{
     color:#B2B2B2;
     font-size: 12px;
+
   }
    .center .info *{
     color:#B2B2B2;
@@ -142,11 +145,25 @@ export default {
   }
   .center .user-comment{
   width:221px;
-  height:29px;
+  line-height:29px;
   background:rgba(248,248,248,1);
   border-radius:4px;
   font-size: 12px;
-  color: #8C8C8C
-  }    
+  color: #8C8C8C;
+  padding-left: 10.5px
+  }
+  .center .Comment-bt{
+    width: 69px;
+    text-align: center;
+    border: 1px solid #1E87F0;
+    border-radius: 2px;
+    margin-top: 7px;
+    margin-bottom: 12px;
+  }
+  .center .Comment-bt span{
+    color: #1E87F0;
+    font-size: 12px;
+    line-height: 24px
+  }
 
 </style>
