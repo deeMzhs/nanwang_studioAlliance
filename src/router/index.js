@@ -14,6 +14,7 @@ import PersonalPage from '@/pages/personal/PersonalPage'
 import PersonalLike from '@/pages/personal/PersonalLike'
 import PersonalForward from '@/pages/personal/PersonalForward'
 import PersonalComment from '@/pages/personal/PersonalComment'
+import CreatePagetest from '@/pages/personal/CreatePagetest'
 
 Vue.use(Router)
 
@@ -94,5 +95,11 @@ export default new Router({
       name: 'personalComment',
       component: PersonalComment,
     },
+    // 测试
+    {
+      path: '/createPagetest',
+      name: 'createPagetest',
+      component: CreatePagetest,
+    }
   ]
 })
