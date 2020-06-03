@@ -12,7 +12,7 @@
     </template>
   </van-nav-bar>
   <div class="content">
-    <div class="content-first" v-for="(item,i) in CommentInfo" :key="index">
+    <div class="content-first" v-for="(item,index) in CommentInfo" :key="index">
       <div class="left">
         <van-image
             round
