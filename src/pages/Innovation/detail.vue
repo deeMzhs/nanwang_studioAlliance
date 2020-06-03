@@ -63,6 +63,9 @@ export default {
 </script>
 
 <style  scoped>
+.van-hairline--bottom::after{
+    border-bottom-width:0;
+}
 .img{
     width: 100%;
 }
