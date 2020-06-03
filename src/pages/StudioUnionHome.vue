@@ -11,7 +11,7 @@
   </van-nav-bar>
   <div style="height: 46px"></div>
   <van-row class="module-wrap">
-    <van-col span="6" class="module">
+    <van-col span="6" class="module" @click="to">
       <img src="../assets/img/module.png" alt="">
       <p>创新成果</p>
     </van-col>
@@ -338,6 +338,9 @@ export default {
           }
         }
       )
+    },
+    to(){
+    this.$router.push('InnovationIndex')
     },
     // activitScan() {
     //   this.$router.push("/activityScan")
