@@ -82,42 +82,44 @@ export default {
   mounted() {
     console.log(this.$route.query);
   },
-  watch() {
-  }
 };
 </script>
 
+
 <style scoped>
-.img {
-  width: 100%;
+.van-hairline--bottom::after{
+    border-bottom-width:0;
 }
-.img img {
-  width: 100%;
-  vertical-align: middle;
+.img{
+    width: 100%;
 }
-.box {
-  position: relative;
-  background-color: #f2f2f2;
-  height: 5.6rem;
+.img img{
+    width: 100%;
+    vertical-align:middle;
 }
-.title {
-  position: absolute;
-  top: -30%;
-  left: 4%;
-  right: 4%;
-  width: 92%;
-  height: 6.5rem;
-  background-color: #fff;
-  box-shadow: 0px 5px 10px 0px rgba(30, 135, 240, 0.23);
-  border-radius: 4px;
+.box{
+    position: relative;
+    background-color: #f2f2f2;
+    height: 5.6rem;
 }
-.title h3 {
-  font-size: 1.2rem;
-  margin: 0.5rem;
-  margin-left: 1.2rem;
-  font-weight: bold;
+.title{
+    position: absolute;
+    top:-30%;
+    left: 4%;
+    right:4%;
+    width: 92%;
+    height: 6.5rem;
+    background-color: #fff;
+    box-shadow:0px 5px 10px 0px rgba(30,135,240,0.23);
+    border-radius:4px;
 }
-.title p {
+.title h3{
+    font-size: 1.2rem;
+    margin:.5rem;
+    margin-left:1.2rem;
+    font-weight: bold;
+}
+.title p{
   color: #595959;
   padding: 0.3rem 1.2rem;
 }
