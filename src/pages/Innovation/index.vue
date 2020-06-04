@@ -105,27 +105,27 @@ export default {
         {
           id: 1,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/mypage .png"),
+          imgurl: require("@/assets/img/photo.png"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 2,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/mypage .png"),
+          imgurl: require("@/assets/img/photo.png"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 3,
-          imgurl: require("@/assets/img/mypage .png"),
+          imgurl: require("@/assets/img/photo.png"),
           title: "世项劳模创新工作室世项劳模创新工作室",
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 4,
-          imgurl: require("@/assets/img/mypage .png"),
+          imgurl: require("@/assets/img/photo.png"),
           title: "世项劳模创新工作室世项劳模创新工作室",
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
@@ -133,21 +133,21 @@ export default {
         {
           id: 5,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/mypage .png"),
+          imgurl: require("@/assets/img/photo.png"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 6,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/mypage .png"),
+          imgurl: require("@/assets/img/photo.png"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 7,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/mypage .png"),
+          imgurl: require("@/assets/img/photo.png"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         }
@@ -266,7 +266,7 @@ export default {
   margin-left: 4%;
   width: 44%;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 .05rem .1rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 0.2rem;
   overflow: hidden;
 }
