@@ -12,17 +12,17 @@
   <div style="height: 46px"></div>
   <van-tabs v-model="tabActive" title-active-color='#278bef' color="#278bef">
     <van-tab :title="'工作室联盟'">
-          <div class="choose"> 没有搜索结果 <span @click="choose">筛选 <van-icon name="arrow-down" /></span> </div>
-             <van-grid class="grid-wrap" :gutter="10">
-            <van-grid-item class="grid-item" v-for="(item, i) in studioUnionList" :key="i" :text="item.name" @click="studioUnion(item)" >
+      <div class="choose"> 没有搜索结果 <span @click="choose">筛选<van-icon name="arrow-down" /></span></div>
+      <van-grid class="grid-wrap" :gutter="10">
+          <van-grid-item class="grid-item" v-for="(item, i) in studioUnionList" :key="i" :text="item.name" @click="studioUnion(item)" >
             <img :src="item.img" alt="">
             <p>{{item.name}}</p>
             <div class="action-wrap">
               <span v-if="item.isFollow == 0" class="unfollow">关注</span>
               <span v-else class="followed">已关注</span>
             </div>
-            </van-grid-item>
-        </van-grid>
+          </van-grid-item>
+      </van-grid>
     </van-tab>
     <van-tab :title="'星级工作室'">
        <div class="choose"><span @click="choose">筛选 <van-icon name="arrow-down" /></span> </div>
@@ -32,12 +32,12 @@
     </van-tab>
   </van-tabs>
         <!-- 弹窗 -->
-     <van-popup v-model="show"  position="bottom"  :style="{ height: '80%' }">  
+     <van-popup v-model="show"  position="bottom" :style="{ height: '80%' }">  
       <div class="choose1">筛选</div>
-      <van-tabs v-model="tabActive1" animated  title-active-color='#278bef' color="#278bef" >
-       <van-tab :title="'所在单位'">
+      <van-tabs v-model="tabActive1" animated title-active-color='#278bef' color="#278bef" >
+        <van-tab :title="'所在单位'">
           <van-collapse v-model="activeName" v-for="i of list" :key="i.id" accordion>
-           <van-collapse-item :name="i.id">
+            <van-collapse-item :name="i.id">
              <template #title>
                <van-checkbox
                  class="checkbox"
@@ -49,24 +49,25 @@
                {{i.name}}
              </template>
              <van-checkbox-group v-model="result" :ref="i.id" class="group" @change="handChangeclick(i)">
-               <div class="item" v-for="i1 of i.children" :key="i1.id">
-                 <van-checkbox :name="i1.id" shape="square" >{{i1.name}}</van-checkbox>
-               </div>
+                <div class="item" v-for="i1 of i.children" :key="i1.id">
+                  <van-checkbox :name="i1.id" shape="square" >{{i1.name}}</van-checkbox>
+                </div>
              </van-checkbox-group>
            </van-collapse-item>
           </van-collapse>
-          </van-tab>
+        </van-tab>
           <van-tab :title="'工作室联盟'">
             没有搜索结果 
           </van-tab>
           <van-tab :title="'所在星级'">
             没有搜索结果 
           </van-tab>
-        </van-tabs>  
-        <van-row class="btn">
-          <van-col span="12"><van-button type="default" size="large" @click="result=[]">重置</van-button></van-col>
-          <van-col span="12"><van-button type="info" size="large" @click="addStudioMore">确定</van-button></van-col>   
-        </van-row>
+      </van-tabs>
+      <div style="height: 6rem"></div>
+      <van-row class="btn">
+        <van-col span="12"><van-button type="default" size="large" @click="result=[]">重置</van-button></van-col>
+        <van-col span="12"><van-button type="info" size="large" @click="addStudioMore">确定</van-button></van-col>   
+      </van-row>
     </van-popup>
 </div>
 </template>
@@ -152,7 +153,7 @@ export default {
               name: "广州电网公司"
             }
           ]
-        }
+        }, 
       ]
   }
   },
@@ -203,6 +204,7 @@ export default {
      //点击1级checkbox框
     handclick(i) {
       let newIndexs = i.children.map(val => val.id);
+      
       if (i.checked == false) {
         this.result.push(...newIndexs.filter(el => this.result.indexOf(el) === -1));
       } else {
@@ -219,7 +221,8 @@ export default {
     //点击2级checkbox框
     handChangeclick(i){
       let newIndexs = i.children.map(val => val.id);
-     i.checked=newIndexs.find(el=>this.result.indexOf(el) === -1)?false:true   
+      //判断是否全选
+      i.checked = newIndexs.find(el=>this.result.indexOf(el) === -1)?false:true   
     }
   }
 }

@@ -17,6 +17,8 @@ import PersonalComment from '@/pages/personal/PersonalComment'
 import InnovationIndex from '@/pages/Innovation/index'
 import InnovationSearch from '@/pages/Innovation/search'
 import InnovationDetail from '@/pages/Innovation/detail'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -110,8 +112,6 @@ export default new Router({
       path: '/InnovationDetail',
       name: 'InnovationDetail',
       component: InnovationDetail,
-    }
-    
-
+    },
   ]
 })
