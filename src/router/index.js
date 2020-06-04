@@ -10,6 +10,13 @@ import TopicPublish from '@/pages/TopicPublish'
 import TopicSquare from '@/pages/TopicSquare'
 import TopicDetail from '@/pages/TopicDetail'
 import VotePublish from '@/pages/VotePublish'
+import PersonalPage from '@/pages/personal/PersonalPage'
+import PersonalLike from '@/pages/personal/PersonalLike'
+import PersonalForward from '@/pages/personal/PersonalForward'
+import PersonalComment from '@/pages/personal/PersonalComment'
+import InnovationIndex from '@/pages/Innovation/index'
+import InnovationSearch from '@/pages/Innovation/search'
+import InnovationDetail from '@/pages/Innovation/detail'
 
 
 Vue.use(Router)
@@ -70,6 +77,41 @@ export default new Router({
       path: '/votePublish',
       name: 'VotePublish',
       component: VotePublish
+    },
+    {
+      path: '/personalPage',
+      name: 'personalPage',
+      component: PersonalPage
+    },
+    {
+      path: '/personalLike',
+      name: 'personalLike',
+      component: PersonalLike,
+    },
+    {
+      path: '/personalForward',
+      name: 'personalForward',
+      component: PersonalForward,
+    },
+    {
+      path: '/personalComment',
+      name: 'personalComment',
+      component: PersonalComment,
+    },
+    {
+      path: '/InnovationIndex',
+      name: 'InnovationIndex',
+      component: InnovationIndex,
+    },
+    {
+      path: '/InnovationSearch',
+      name: 'InnovationSearch',
+      component: InnovationSearch,
+    },
+    {
+      path: '/InnovationDetail',
+      name: 'InnovationDetail',
+      component: InnovationDetail,
     },
   ]
 })
