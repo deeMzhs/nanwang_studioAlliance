@@ -63,7 +63,9 @@ export default {
       active: 0,
       currentIndex:0,
       tabInfo:["针对问题","原理说明",'创新点'],
-      content:'前输电检查人员在杆塔上进行高空作业时，地面人员与塔上人员交流普通使用对讲机进行，但对讲机体积较大且至少需要使用一只手进行操作通话，往往塔上工作人员在工作进行时中无法随时空出手来使用对讲机。前'                 
+      content:`前输电检查人员在杆塔上进行高空作业时，地面人员与塔上人员交流普通使用对讲机进行，但对讲机体积较大且至少需要使用一只手进行操作通话，往往塔上工作人员在工作进行时中无法随时空出手来使用对讲机。前
+      前输电检查人员在杆塔上进行高空作业时，地面人员与塔上人员交流普通使用对讲机进行，但对讲机体积较大且至少需要使用一只手进行操作通话，往往塔上工作人员在工作进行时中无法随时空出手来使用对讲机。前
+      前输电检查人员在杆塔上进行高空作业时，地面人员与塔上人员交流普通使用对讲机进行，但对讲机体积较大且至少需要使用一只手进行操作通话，往往塔上工作人员在工作进行时中无法随时空出手来使用对讲机。前`              
     };
   },
   methods: {
@@ -73,11 +75,14 @@ export default {
     // tab点击
     itemClick(index){
       this.currentIndex = index;
-      console.log(this.$refs.question.sc)
+      //对应标签跳转对应方法
+      console.log(this.$refs.question.scrollIntoView(true))
     }
   },
   mounted() {
     console.log(this.$route.query);
+  },
+  watch() {
   }
 };
 </script>
@@ -176,11 +181,13 @@ export default {
 }
 .footer{
   background-color: #F8F8F8;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 .footer span{
   line-height: 3rem;
   height: 3rem;
-  padding-left: .5rem;
+  padding-left: 1.5rem;
   color: #1E87F0
 }
 </style>
