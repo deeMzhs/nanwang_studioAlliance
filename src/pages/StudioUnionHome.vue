@@ -19,7 +19,7 @@
       <img src="../assets/img/module.png" alt="">
       <p>创新培训</p>
     </van-col>
-    <van-col span="6" class="module">
+    <van-col span="6" class="module" @click="toTech">
       <img src="../assets/img/module.png" alt="">
       <p>技术门诊</p>
     </van-col>
@@ -339,9 +339,13 @@ export default {
         }
       )
     },
+    //跳转
     to(){
     this.$router.push('InnovationIndex')
     },
+    toTech(){
+      this.$router.push('technologyHome')
+    }
     // activitScan() {
     //   this.$router.push("/activityScan")
     // },
