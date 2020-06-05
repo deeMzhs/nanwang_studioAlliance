@@ -113,9 +113,6 @@ export default {
     height: 25x;
     line-height: 25px
   }
-  /* .content-first .right .van-image img{
-    border-radius:10px;
-  } */
   .content-first .right img{
     display: block;
     width: 44px;

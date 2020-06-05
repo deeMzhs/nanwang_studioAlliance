@@ -10,7 +10,7 @@
             <van-col span="8" @click="tolike"><p>123</p><p>获赞</p></van-col>
             <van-col span="8" @click="toComment"><p>23</p><p>评论</p></van-col>
             <van-col span="8" @click="toForward"><p>45</p><p>转发</p></van-col>
-        </van-row>
+          </van-row>
         </div>
         <van-icon name="arrow-left" color="#ffffff" size="24px" @click="toHome"/>
       </div>
@@ -264,7 +264,6 @@ export default {
    display: inline-block;
    padding-left: 3px;
    margin-bottom: 6px;
-   
 }
 
 
