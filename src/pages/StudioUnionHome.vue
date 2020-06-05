@@ -11,11 +11,11 @@
   </van-nav-bar>
   <div style="height: 46px"></div>
   <van-row class="module-wrap">
-    <van-col span="6" class="module" @click="to">
+    <van-col span="6" class="module" @click="to('InnovationIndex')">
       <img src="../assets/img/module.png" alt="">
       <p>创新成果</p>
     </van-col>
-    <van-col span="6" class="module">
+    <van-col span="6" class="module" @click="to('Innovate')">
       <img src="../assets/img/module.png" alt="">
       <p>创新培训</p>
     </van-col>
@@ -339,8 +339,8 @@ export default {
         }
       )
     },
-    to(){
-    this.$router.push('InnovationIndex')
+    to(path){
+    this.$router.push(path)
     },
     // activitScan() {
     //   this.$router.push("/activityScan")
