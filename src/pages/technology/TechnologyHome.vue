@@ -24,7 +24,12 @@
 
 <script>
 export default {
-   name: 'TechnologyHome'
+   name: 'TechnologyHome',
+   methods:{
+    onClickLeft(){
+       this.$router.push("/");
+    }
+   }
 }
 </script>
 

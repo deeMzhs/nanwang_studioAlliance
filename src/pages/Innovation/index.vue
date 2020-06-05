@@ -12,7 +12,7 @@
     <!-- 筛选 -->
     <div class="screening">
       0条搜索结果
-      <span class="span"@click="screening">筛选<van-icon name="arrow-down"/></span>
+      <span class="span" @click="screening">筛选<van-icon name="arrow-down"/></span>
     <van-popup v-model="popShow"  position="bottom" :style="{ height: '80%' }">
       <div class="main">
         <div class="pop-block">
@@ -241,7 +241,7 @@ export default {
 }
 .screening {
   padding: 0 0.5rem;
-  background-color: #e5e5e5;
+  background-color: #f8f8f8;
   height: 3rem;
   line-height: 3rem;
   color: #8c8c8c;

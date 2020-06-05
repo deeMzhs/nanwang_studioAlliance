@@ -18,7 +18,7 @@ import InnovationIndex from '@/pages/Innovation/index'
 import InnovationSearch from '@/pages/Innovation/search'
 import InnovationDetail from '@/pages/Innovation/detail'
 import TechnologyHome from '@/pages/technology/TechnologyHome'
-
+import Innovate from '@/pages/Innovate'
 
 Vue.use(Router)
 
@@ -119,6 +119,11 @@ export default new Router({
       path: '/technologyHome',
       name: 'technologyHome',
       component: TechnologyHome,
+    },
+    {
+      path: '/Innovate',
+      name: 'Innovate',
+      component: Innovate,
     },
   ]
 })
