@@ -12,19 +12,29 @@
       </template>
     </van-nav-bar>
       <van-tabs class="main-tab" title-active-color="#1E87F0" color="#1E87F0" background="#FFFFFF" sticky line-width="50vw">
-        <van-tab title="全部">全部</van-tab>
+        <van-tab title="全部">
+       <technology-all />
+        </van-tab>
         <van-tab title="我的">
           <div >
-
           </div>
         </van-tab>
       </van-tabs>
   </div>
 </template>
 
-<script>
+<script> 
+import TechnologyAll from './TechnologyAll'
 export default {
    name: 'TechnologyHome',
+   components:{
+     TechnologyAll
+   },
+   data() {
+     return {
+       
+     }
+   },
    methods:{
     onClickLeft(){
        this.$router.push("/");

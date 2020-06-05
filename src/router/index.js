@@ -17,8 +17,10 @@ import PersonalComment from '@/pages/personal/PersonalComment'
 import InnovationIndex from '@/pages/Innovation/index'
 import InnovationSearch from '@/pages/Innovation/search'
 import InnovationDetail from '@/pages/Innovation/detail'
-import TechnologyHome from '@/pages/technology/TechnologyHome'
 import Innovate from '@/pages/Innovate'
+import TechnologyHome from '@/pages/technology/TechnologyHome'
+import TechnologyQuestions from '@/pages/technology/questions'
+import TechnologyDetail from '@/pages/technology/detail'
 
 Vue.use(Router)
 
@@ -125,5 +127,15 @@ export default new Router({
       name: 'Innovate',
       component: Innovate,
     },
+    {
+      path: '/TechnologyQuestions',
+      name: 'TechnologyQuestions',
+      component: TechnologyQuestions,
+    },
+    {
+      path: '/TechnologyDetail',
+      name: 'TechnologyDetail',
+      component: TechnologyDetail,
+    }
   ]
 })
