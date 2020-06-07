@@ -21,6 +21,9 @@ import Innovate from '@/pages/Innovate'
 import TechnologyHome from '@/pages/technology/TechnologyHome'
 import TechnologyQuestions from '@/pages/technology/questions'
 import TechnologyDetail from '@/pages/technology/detail'
+import TechAnswers from '@/pages/technology/TechAnswers'
+import TechForward from '@/pages/technology/TechForward'
+import TechFollow from '@/pages/technology/TechFollow'
 
 Vue.use(Router)
 
@@ -136,6 +139,26 @@ export default new Router({
       path: '/TechnologyDetail',
       name: 'TechnologyDetail',
       component: TechnologyDetail,
-    }
+    },
+    {
+      path: '/technologyHome',
+      name: 'technologyHome',
+      component: TechnologyHome,
+    },
+    {
+      path: '/techAnswers',
+      name: 'techAnswers',
+      component: TechAnswers,
+    },
+    {
+      path: '/techForward',
+      name: 'techForward',
+      component: TechForward,
+    },
+    {
+      path: '/techFollow',
+      name: 'techFollow',
+      component: TechFollow,
+    },
   ]
 })

@@ -74,7 +74,7 @@ export default {
           title: "这是问题",
           desc:
             "这是内容 这是内容这是内容这是内容这是",
-          imgurl: require("@/assets/img/mypage .png")
+          imgurl: require("@/assets/img/mypage.png")
         },
         {
           id: 2,
@@ -89,7 +89,7 @@ export default {
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
           desc:
             "这是内容这是内容这这是内容这是内容这这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容 这是内容这是内容这是内容这是这是 内容这是内容这是内容这是...",
-          imgurl: require("@/assets/img/mypage .png")
+          imgurl: require("@/assets/img/mypage.png")
         },
         {
           id: 2,
