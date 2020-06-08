@@ -5,9 +5,9 @@
     fixed
     left-arrow
     @click-left="onClickLeft">
-    <template #right>
-      <van-icon name="manager" size="1rem" color="" :dot="isDot" @click="toPersonal"/>
-    </template>
+    <!--<template #right>-->
+      <!--<van-icon name="manager" size="1rem" color="" :dot="isDot" @click="toPersonal"/>-->
+    <!--</template>-->
   </van-nav-bar>
   <div style="height: 46px"></div>
   <van-row class="module-wrap">
