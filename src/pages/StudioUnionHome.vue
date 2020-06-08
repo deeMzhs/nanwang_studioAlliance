@@ -87,11 +87,11 @@
                 <img class="img" :src=item.img alt="">
               </div>
               <!-- vant内置样式，超出用...表示：van-ellipsis -->
-              <p class="name-wrap">{{item.name}}</p>
+              <p>{{item.name}}</p>
             </div>
             <div class="action-wrap">
-              <span v-if="item.isFollow == 0" class="unfollow">关注</span>
-              <span v-else class="followed"> <van-icon name="success" />已关注</span>
+              <span class="unfollow">关注</span>
+              <!--<span v-else class="followed"> <van-icon name="success" />已关注</span>-->
             </div>
           </div>
         </div>
@@ -112,14 +112,16 @@
       <div class="container">
         <div class="scroll" scrollY="true">
           <div class="alive" v-for="(item, i) in startStudioList" :key="i">
-            <div class="img-wrap">
-              <img class="img" :src=item.img alt="">
+            <div class="msg">
+              <div class="img-wrap">
+                <img class="img" :src=item.img alt="">
+              </div>
+              <!-- vant内置样式，超出用...表示：van-ellipsis -->
+              <p>{{item.name}}</p>
             </div>
-            <!-- vant内置样式，超出用...表示：van-ellipsis -->
-            <div class="van-ellipsis name-wrap">{{item.name}}</div>
             <div class="action-wrap">
-              <span v-if="item.isFollow == 0" class="unfollow">关注</span>
-              <span v-else class="followed"> <van-icon name="success" />已关注</span>
+              <span  class="unfollow">关注</span>
+              <!--<span v-else class="followed"> <van-icon name="success" />已关注</span>-->
             </div>
           </div>
         </div>
@@ -140,14 +142,16 @@
       <div class="container">
         <div class="scroll" scrollY="true">
           <div class="alive" v-for="(item, i) in departStudioList" :key="i">
-            <div class="img-wrap">
-              <img class="img" :src=item.img alt="">
+            <div class="msg">
+              <div class="img-wrap">
+                <img class="img" :src=item.img alt="">
+              </div>
+              <!-- vant内置样式，超出用...表示：van-ellipsis -->
+              <p>{{item.name}}</p>
             </div>
-            <!-- vant内置样式，超出用...表示：van-ellipsis -->
-            <div class="van-ellipsis name-wrap">{{item.name}}</div>
             <div class="action-wrap">
-              <span v-if="item.isFollow == 0" class="unfollow">关注</span>
-              <span v-else class="followed"> <van-icon name="success" />已关注</span>
+              <span  class="unfollow">关注</span>
+              <!--<span v-else class="followed"> <van-icon name="success" />已关注</span>-->
             </div>
           </div>
         </div>
@@ -503,14 +507,61 @@ export default {
 ::-webkit-scrollbar {
   display: none;
 }
-.wrap .unfollow-content .studio-union .container .scroll{
-  overflow: auto;
-  padding: 0 0 0 1rem;
-  background-color: #fff;
+
+.scroll{
+  padding: 0 1rem;
+  background-color: rgb(255,255,255);
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
-  .alive{
+  overflow: scroll;
+}
+
+.alive{
+  margin-right: .75rem;
+  .msg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background:rgba(255,255,255,1);
+    box-shadow:0rem 0rem .5rem 0rem rgba(89,89,89,0.3);
+    margin-bottom: 1.41rem;
+    .img-wrap{
+      width: 4.5rem;
+      height: 3.66rem;
+      margin-bottom: .53rem;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    p{
+      width: 3.69rem;
+      height: 1.91rem;
+      overflow: hidden;
+      font-size: .75rem;
+      white-space: pre-wrap;
+      text-overflow: ellipsis;
+      margin-bottom: .59rem;
+    }
+  }
+  .action-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span{
+      /*width:3.19rem;*/
+      padding: 0 .88rem;
+      height:1.5rem;
+      background:rgba(30,135,240,1);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.13rem;
+      font-size: .75rem;
+    }
   }
 }
 
