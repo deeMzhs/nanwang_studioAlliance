@@ -29,7 +29,7 @@
     </van-col>
   </van-row>
   <!-- 已加入/关注 -->
-  <div v-if="followList.length != 0" class="follow-content">
+  <div v-if="followList.length == 0" class="follow-content">
     <van-cell class="head">
       <!-- 使用 title 插槽来自定义标题 -->
       <template #title>
@@ -65,7 +65,7 @@
   </div>
 
   <!-- 未加入/关注 -->
-  <div v-if="followList.length == 0" class="unfollow-content">
+  <div v-if="followList.length != 0" class="unfollow-content">
     <div class="tip">你还没关注任何工作室，去关注看看吧</div>
     <!-- 工作室联盟 -->
     <div class="studio-union">
@@ -198,7 +198,7 @@ export default {
   },
   created () {
     // this.joinedActivityList();
-    this.recruitTest();
+    // this.recruitTest();
     this.setLoginStorage();
   },
   mounted() {
@@ -228,7 +228,7 @@ export default {
     },
     // 招聘接口测试
     recruitTest() {
-      // 调用api接口，并且提供了两个参数                
+      // 调用api接口，并且提供了两个参数
       recruitTest({}).then(res => {
         // 获取数据成功后的其他操作
         console.log(res);
@@ -236,17 +236,17 @@ export default {
         Toast(res.data.codeCipher);
       }).catch((err)=>{
         console.log(err);
-      })            
+      })
     },
     // 封装式请求
     // joinedActivityList() {
-    //   // 调用api接口，并且提供了两个参数                
+    //   // 调用api接口，并且提供了两个参数
     //   joinedActivityList({}).then(res => {
     //     // 获取数据成功后的其他操作
     //     console.log(res);
     //   }).catch((err)=>{
     //     console.log(err);
-    //   })            
+    //   })
     // },
 
     // 直接请求
@@ -270,7 +270,7 @@ export default {
 
     // 封装式请求
     // joinedActivityList() {
-    //   // 调用api接口，并且提供了两个参数                
+    //   // 调用api接口，并且提供了两个参数
     //   joinedActivityList({
     //     userId: '9F33FA581E894771AFACB5441522D1CA'
     //   }).then(res => {
@@ -278,7 +278,7 @@ export default {
     //     console.log(res);
     //   }).catch((err)=>{
     //     console.log(err);
-    //   })            
+    //   })
     // },
     articlesToDetail (id,$event) {
         console.log($event.target.className)
@@ -412,10 +412,10 @@ export default {
   padding: 0.8rem 0.8rem;
   margin-bottom: 0.5rem;
   background-color: #fff;
- 
+
 }
 .wrap .follow-content .follow-list .main{
-  
+
 }
 .wrap .follow-content .follow-list .main .first{
   padding: 0.1rem 0 0.1rem 0.3rem;
@@ -460,7 +460,7 @@ export default {
   padding-right:2rem;
   height: 1rem;
   background:rgb(250, 199, 80);
-  opacity:0.3; 
+  opacity:0.3;
 }
 
 .wrap .follow-content .follow-list .footer span{
