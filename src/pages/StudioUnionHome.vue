@@ -29,7 +29,7 @@
     </van-col>
   </van-row>
   <!-- 已加入/关注 -->
-  <div v-if="followList.length != 0" class="follow-content">
+  <div v-if="followList.length == 0" class="follow-content">
     <van-cell class="head">
       <!-- 使用 title 插槽来自定义标题 -->
       <template #title>
@@ -65,7 +65,7 @@
   </div>
 
   <!-- 未加入/关注 -->
-  <div v-if="followList.length == 0" class="unfollow-content">
+  <div v-if="followList.length != 0" class="unfollow-content">
     <div class="tip">你还没关注任何工作室，去关注看看吧</div>
     <!-- 工作室联盟 -->
     <div class="studio-union">
@@ -82,11 +82,13 @@
       <div class="container">
         <div class="scroll" scrollY="true">
           <div class="alive" v-for="(item, i) in studioUnionList" :key="i">
-            <div class="img-wrap">
-              <img class="img" :src=item.img alt="">
+            <div class="msg">
+              <div class="img-wrap">
+                <img class="img" :src=item.img alt="">
+              </div>
+              <!-- vant内置样式，超出用...表示：van-ellipsis -->
+              <p class="name-wrap">{{item.name}}</p>
             </div>
-            <!-- vant内置样式，超出用...表示：van-ellipsis -->
-            <div class="van-ellipsis name-wrap">{{item.name}}</div>
             <div class="action-wrap">
               <span v-if="item.isFollow == 0" class="unfollow">关注</span>
               <span v-else class="followed"> <van-icon name="success" />已关注</span>
@@ -376,7 +378,7 @@ export default {
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
 .wrap{
   background-color: #f9f9f9;
 }
@@ -506,40 +508,10 @@ export default {
   padding: 0 0 0 1rem;
   background-color: #fff;
   border-radius: 0.5rem;
-}
-.wrap .unfollow-content .studio-union .container .scroll .alive{
-  display: inline-block;
-  text-align: center;
-  margin-right: 1rem;
-  border-radius: 0.3rem;
-  border: 1px solid #E5E5E5;
-}
-.wrap .unfollow-content .studio-union .container .scroll .alive .img-wrap .img{
-  width: 6.5rem;
-  height: 5rem;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
-}
-.wrap .unfollow-content .studio-union .container .scroll .alive .name-wrap{
-  width: 6.5rem;
-  color: #262626;
-  word-wrap:break-word;
-}
-.wrap .unfollow-content .studio-union .container .scroll .alive .action-wrap .unfollow{
-  background-color: #1E87F0;
-  color: #fff;
-  display: inline-block;
-  margin: 0.5rem 0;
-  padding: 0.2rem 0.6rem;
-  border-radius: 0.2rem;
-}
-.wrap .unfollow-content .studio-union .container .scroll .alive .action-wrap .followed{
-  background-color: rgb(219, 240, 30);
-  color: #fff;
-  display: inline-block;
-  margin: 0.5rem 0;
-  padding: 0.2rem 0.6rem;
-  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: row;
+  .alive{
+  }
 }
 
 .van-icon{
