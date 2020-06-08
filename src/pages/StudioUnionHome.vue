@@ -29,7 +29,7 @@
     </van-col>
   </van-row>
   <!-- 已加入/关注 -->
-  <div v-if="followList.length == 0" class="follow-content">
+  <div v-if="followList.length !== 0" class="follow-content">
     <van-cell class="head">
       <!-- 使用 title 插槽来自定义标题 -->
       <template #title>
@@ -51,10 +51,12 @@
           <div class="join">加入群聊</div>
         </div>
         <div class="second">
-          <img src="../assets/img/join-portrait.jpg" alt="">
-          <img src="../assets/img/join-portrait.jpg" alt="">
-          <img src="../assets/img/join-portrait.jpg" alt="">
-          <span>222人已加入</span><van-icon name="arrow" />
+          <div class="second_left">
+            <div class="second_img" v-for="(item, index) in 9" :class="{mr: index !== 0}">
+              <img src="../assets/img/join-portrait.jpg" alt="">
+            </div>
+          </div>
+          <p class="second_right">222人已加入 ></p>
         </div>
       </van-col>
       <van-col span="24" class="footer">
@@ -65,7 +67,7 @@
   </div>
 
   <!-- 未加入/关注 -->
-  <div v-if="followList.length != 0" class="unfollow-content">
+  <div v-if="followList.length === 0" class="unfollow-content">
     <div class="tip">你还没关注任何工作室，去关注看看吧</div>
     <!-- 工作室联盟 -->
     <div class="studio-union">
@@ -437,20 +439,43 @@ export default {
 .wrap .follow-content .follow-list .main .first .join{
   width:5rem;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #fff;
-  padding: 0.2rem 0.3rem;
+  padding: 0.25rem 0.65rem;
   background-color: #1E87F0;
   border-radius: 0.2rem;
 }
 .wrap .follow-content .follow-list .main .second{
   padding: 0.4rem 0 0.1rem 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .second_left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    overflow: hidden;
+    .second_img{
+      width:1.57rem;
+      height:1.57rem;
+      border-radius:50%;
+      overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .mr{
+      margin-left: -.35rem;
+    }
+  }
+  p{
+    font-size: .75rem;
+    color: #262626;
+  }
 }
-.wrap .follow-content .follow-list .main .second img{
-  width: 1rem;
-  height: 1rem;
-  border-radius: 1rem;
-}
+
 .wrap .follow-content .follow-list .footer{
   position: relative;
   font-size: 0.9rem;
@@ -471,6 +496,7 @@ export default {
 
 .wrap .follow-content .follow-list .footer span{
   color: #F5C656;
+  font-weight:600;
 }
 
 /* 未关注/加入 */
@@ -482,7 +508,7 @@ export default {
 }
 .wrap .unfollow-content .studio-union{
   background-color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   padding-bottom: 1rem;
 }
 /* 去掉<van-cell>标签默认的下边框 */
