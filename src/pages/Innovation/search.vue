@@ -1,7 +1,7 @@
 <template>
     <div>
-        <van-nav-bar title="创新成果" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
-        <div style="height: 46px"></div>
+        <!--<van-nav-bar title="创新成果" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>-->
+        <!--<div style="height: 46px"></div>-->
         <van-search
             v-model="value"
             show-action
@@ -73,7 +73,7 @@ export default {
     },
     //点击取消
     onCancel() {
-      Toast("取消");
+      this.$router.go(-1);
     },
     //清除历史记录
     clearall() {

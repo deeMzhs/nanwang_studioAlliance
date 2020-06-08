@@ -29,7 +29,7 @@
     </van-col>
   </van-row>
   <!-- 已加入/关注 -->
-  <div v-if="followList.length == 0" class="follow-content">
+  <div v-if="followList.length != 0" class="follow-content">
     <van-cell class="head">
       <!-- 使用 title 插槽来自定义标题 -->
       <template #title>
@@ -65,7 +65,7 @@
   </div>
 
   <!-- 未加入/关注 -->
-  <div v-if="followList.length != 0" class="unfollow-content">
+  <div v-if="followList.length == 0" class="unfollow-content">
     <div class="tip">你还没关注任何工作室，去关注看看吧</div>
     <!-- 工作室联盟 -->
     <div class="studio-union">
