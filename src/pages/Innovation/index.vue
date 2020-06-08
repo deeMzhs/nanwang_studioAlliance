@@ -11,42 +11,11 @@
     />
     <!-- 筛选 -->
     <div class="screening">
-      0条搜索结果
+      <span>0条搜索结果</span>
       <span class="span" @click="screening">筛选<van-icon name="arrow-down"/></span>
-    <van-popup v-model="popShow"  position="bottom" :style="{ height: '80%' }">
-      <div class="main">
-        <div class="pop-block">
-          <div class="pop-title">获奖</div>
-          <div class="pop-context">
-            <div v-for="(item,index) in Award" 
-            :key="index" :class="{active:index === currentIndex}" 
-            @click="tabClick(index)">{{item.context}}
-            </div>
-          </div>
-        </div>
-        <div class="pop-block">
-          <div class="pop-title">分类</div>
-          <div class="pop-context">
-            <div v-for="(item,index) in FruitList" :key="index" :class="{active:item.selected}" @click="tabClick1(index)">{{item.context}}</div>
-          </div>
-        </div>
-        <div class="pop-block">
-          <div class="pop-title">所在单位</div>
-          <div class="pop-context">
-            <div v-for="(item,index) in CommpoyList" :key="index" :class="{active:index === currentIndex2}" @click="tabClick2(index)">{{item.context}}</div>
-          </div>
-        </div>
-      </div>
-      <div style="height: 3.5rem"></div>
-      <van-row class="pop-btn">
-        <van-col span="12"><van-button type="default" size="large" @click="currentIndex=[],remove(),currentIndex2=[]">重置</van-button></van-col>
-        <van-col span="12"><van-button type="info" size="large" @click="addStudioMore">确定</van-button></van-col>   
-      </van-row>
-    </van-popup>
     </div>
-
-    <div>
-      <h3 class="title">工作室成果</h3>
+    <div class="content">
+      <p class="title">工作室成果</p>
       <div class="body">
         <div
           class="bd-item"
@@ -84,6 +53,36 @@
       <button class="share_btn" @click="show = false">
         取消
       </button>
+    </van-popup>
+    <van-popup v-model="popShow"  position="bottom" :style="{ height: '80%' }">
+      <div class="main">
+        <div class="pop-block">
+          <div class="pop-title">获奖</div>
+          <div class="pop-context">
+            <div v-for="(item,index) in Award"
+                 :key="index" :class="{active:index === currentIndex}"
+                 @click="tabClick(index)">{{item.context}}
+            </div>
+          </div>
+        </div>
+        <div class="pop-block">
+          <div class="pop-title">分类</div>
+          <div class="pop-context">
+            <div v-for="(item,index) in FruitList" :key="index" :class="{active:item.selected}" @click="tabClick1(index)">{{item.context}}</div>
+          </div>
+        </div>
+        <div class="pop-block">
+          <div class="pop-title">所在单位</div>
+          <div class="pop-context">
+            <div v-for="(item,index) in CommpoyList" :key="index" :class="{active:index === currentIndex2}" @click="tabClick2(index)">{{item.context}}</div>
+          </div>
+        </div>
+      </div>
+      <div style="height: 3.5rem"></div>
+      <van-row class="pop-btn">
+        <van-col span="12"><van-button type="default" size="large" @click="currentIndex=[],remove(),currentIndex2=[]">重置</van-button></van-col>
+        <van-col span="12"><van-button type="info" size="large" @click="addStudioMore">确定</van-button></van-col>
+      </van-row>
     </van-popup>
   </div>
 </template>
@@ -240,22 +239,18 @@ export default {
   color: #fff;
 }
 .screening {
-  padding: 0 0.5rem;
-  background-color: #f8f8f8;
-  height: 3rem;
-  line-height: 3rem;
-  color: #8c8c8c;
-  font-size: 1rem;
+  padding: .84rem 1rem;
+  border:0px solid rgba(229,229,229,1);
 }
 .screening .span {
   float: right;
   color: #262626;
 }
 .title {
-  font-size: 1rem;
+  font-size: .95rem;
   color: #262626;
   margin: 0.6rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 .body {
   display: flex;
