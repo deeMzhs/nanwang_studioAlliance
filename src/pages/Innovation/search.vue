@@ -1,46 +1,49 @@
 <template>
-    <div>
-        <!--<van-nav-bar title="创新成果" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>-->
-        <!--<div style="height: 46px"></div>-->
-        <van-search
-            v-model="value"
-            show-action
-            background="#1E87F0"
-            placeholder="请输入创新成果名称"
-            @search="onSearch"
-            @cancel="onCancel"
-        ></van-search>
-        <div class="search">
-            <div v-if="history != 0">
-                <div class="history">
-                    历史搜索
-                    <i class="icon">
-                        <span v-if="clear">
-                            <span @click="clearall">全部删除</span>
-                            <span @click="clear = !clear">完成</span>
-                        </span>
-                        <van-icon v-if="!clear" name="delete" @click="clear = !clear"/>
-                    </i>
-                </div>
-                <div class="search_groud">
-                    <div v-for="(item, index) in history" :key="index" class="search_item">
-                        {{ item }}
-                        <span v-if="clear">
-                            <van-icon color="#ffffff" name="cross" @click="clearitem(index)"/>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="history">搜索推荐</div>
-            <div class="search_groud">
-                <div
-                    v-for="(item, index) in recommendedlist"
-                    :key="index"
-                    class="search_item"
-                >{{ item }}</div>
-            </div>
+  <div>
+    <!--<van-nav-bar title="创新成果" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>-->
+    <!--<div style="height: 46px"></div>-->
+    <van-search
+      v-model="value"
+      show-action
+      background="#1E87F0"
+      placeholder="请输入创新成果名称"
+      @search="onSearch"
+      @cancel="onCancel"
+    ></van-search>
+    <div class="search">
+      <!-- 历史记录是否为空 -->
+      <div v-if="history != 0">
+        <div class="history">
+          历史搜索
+          <i class="icon">
+            <span v-if="clear">
+              <span @click="clearall">全部删除</span>
+              <span @click="clear = !clear">完成</span>
+            </span>
+            <van-icon v-if="!clear" name="delete" @click="clear = !clear" />
+          </i>
         </div>
+        <div class="search_groud">
+          <div v-for="(item, index) in history" :key="index" class="search_item">
+            {{ item }}
+            <span v-if="clear">
+              <van-icon color="#fff" name="cross" @click="clearitem(index)" />
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- 搜索推荐 -->
+      <div class="history">搜索推荐</div>
+      <div class="search_groud">
+        <div
+          v-for="(item, index) in recommendedlist"
+          :key="index"
+          class="search_item"
+          @click="recommended(item)"
+        >{{ item }}</div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -49,14 +52,16 @@ import { Toast } from "vant";
 import storage from "@/storage/storage"; // 导入storage
 export default {
   components: {
-    [Dialog.Component.confirm]: Dialog.confirm,
+    [Dialog.Component.confirm]: Dialog.confirm
   },
   data() {
     return {
       value: "",
+      // 是否显示删除按钮
       clear: false,
       recommendedlist: ["QC成果", "输变电类成果", "调度保护及综合类成果"],
-      history: [],
+      // 历史记录数据
+      history: []
     };
   },
   methods: {
@@ -66,7 +71,7 @@ export default {
     },
     //点击搜索
     onSearch(val) {
-      if (val.length == 0 || this.history.indexOf(val) > -1) return;
+      if (val == "" || this.history.indexOf(val) > -1) return;
       this.history.unshift(val);
       storage.set("history", this.history.join(","));
       this.clear = false;
@@ -75,10 +80,10 @@ export default {
     onCancel() {
       this.$router.go(-1);
     },
-    //清除历史记录
+    //清除全部历史记录
     clearall() {
       Dialog.confirm({
-        message: "确认删除所有历史记录",
+        message: "确认删除所有历史记录"
       })
         .then(() => {
           storage.remove("history");
@@ -90,10 +95,15 @@ export default {
           Toast("已取消删除");
         });
     },
+    //清除单个历史记录
     clearitem(index) {
       this.history.splice(index, 1);
       storage.set("history", this.history.join(","));
     },
+    recommended(name) {
+      this.value = name;
+      this.onSearch(name);
+    }
   },
   created() {
     // let status=storage.get('history')==null
@@ -104,7 +114,7 @@ export default {
   },
   mounted() {
     document.querySelector("input").focus();
-  },
+  }
 
   // 自定义指令获取焦点
   // directives:{
