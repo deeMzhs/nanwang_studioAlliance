@@ -24,6 +24,7 @@ import TechnologyDetail from '@/pages/technology/detail'
 import TechAnswers from '@/pages/technology/TechAnswers'
 import TechForward from '@/pages/technology/TechForward'
 import TechFollow from '@/pages/technology/TechFollow'
+import TechAnswer from '@/pages/technology/Answer'
 import StudioUnionDetail from '@/pages/StudioUnionDetail'
 import VoteGraphic from '@/pages/vote/graphic'
 import VoteProgress from '@/pages/vote/progress'
@@ -152,6 +153,11 @@ export default new Router({
       path: '/techAnswers',
       name: 'techAnswers',
       component: TechAnswers,
+    },
+    {
+      path: '/techAnswer',
+      name: 'techAnswer',
+      component: TechAnswer,
     },
     {
       path: '/techForward',

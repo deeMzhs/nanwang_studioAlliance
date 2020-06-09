@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div class="technology_item" v-for="(item, index) in list" :key="index" @click="to('TechnologyDetail')">
+    <div
+      class="technology_item"
+      v-for="(item, index) in list"
+      :key="index"
+      @click="to('TechnologyDetail')"
+    >
       <div class="header">
         <div>
           <img src="@/assets/img/joined-studio-union.jpeg" alt />
@@ -26,12 +31,15 @@
             <van-icon name="share" />3
           </span>
         </div>
-        <div class="follow">关注问题</div>
+        <div class="follow" @click.stop="$router.push({path:'TechAnswer',query:{id:item.id}})">关注问题</div>
       </div>
     </div>
 
     <div class="popup">
-      <div class="popup_title">试试帮Ta解答吧 <span>{{current+1}}/4</span></div>
+      <div class="popup_title">
+        试试帮Ta解答吧
+        <span>{{current+1}}/4</span>
+      </div>
       <van-swipe @change="onChange">
         <van-swipe-item v-for="(item, index) in 4" :key="index">
           <div class="popup_bd">
@@ -55,9 +63,9 @@
         </template>
       </van-swipe>
     </div>
-    <div class=" questions" @click="to('TechnologyQuestions')">
-       <van-icon name="records" />
-        <span>提问</span> 
+    <div class="questions" @click="to('TechnologyQuestions')">
+      <van-icon name="records" />
+      <span>提问</span>
     </div>
   </div>
 </template>
@@ -66,14 +74,13 @@
 export default {
   data() {
     return {
-      current:0,
+      current: 0,
       list: [
         {
           id: 1,
           time: "2019-01-01",
           title: "这是问题",
-          desc:
-            "这是内容 这是内容这是内容这是内容这是",
+          desc: "这是内容 这是内容这是内容这是内容这是",
           imgurl: require("@/assets/img/mypage.png")
         },
         {
@@ -95,8 +102,7 @@ export default {
           id: 2,
           time: "2019-01-01",
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
-          desc:
-            " 这内容这是内容这是"
+          desc: " 这内容这是内容这是"
         }
       ]
     };
@@ -105,8 +111,8 @@ export default {
     onChange(index) {
       this.current = index;
     },
-    to(path){
-        this.$router.push(path)
+    to(path) {
+      this.$router.push(path);
     }
   }
 };
@@ -195,7 +201,7 @@ export default {
   color: #ffffff;
 }
 .popup {
-    position: relative;
+  position: relative;
   height: 12rem;
   width: 100%;
   background-color: #4a9ef2;
@@ -207,9 +213,9 @@ export default {
   font-size: 1.2rem;
   font-weight: bold;
 }
-.popup_title span{
+.popup_title span {
   float: right;
-  margin-right:1.2rem ;
+  margin-right: 1.2rem;
 }
 .popup_bd {
   position: relative;
@@ -252,32 +258,31 @@ export default {
   color: #fff;
   border-radius: 0 0.3rem 0.3rem 0;
 }
-.custom-indicator{
-    opacity: 0;
-    /* color: #fff;
+.custom-indicator {
+  opacity: 0;
+  /* color: #fff;
     position:absolute;
     font-size: 1.2rem;
     top: 2rem;
     right:2rem;
     background-color: pink; */
 }
-.questions{
+.questions {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
   position: fixed;
   text-align: center;
   font-size: 1rem;
-  bottom:2rem;
-  right:2rem;
+  bottom: 2rem;
+  right: 2rem;
   color: #fff;
-  background-color: #1E87F0;
+  background-color: #1e87f0;
 }
-.questions .van-icon{
-    margin-top: .5rem;
-    margin-left:.5rem ;
-    font-size: 2rem;
+.questions .van-icon {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 2rem;
   display: block;
 }
-
 </style>
