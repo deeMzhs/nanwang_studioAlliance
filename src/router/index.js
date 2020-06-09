@@ -25,6 +25,9 @@ import TechAnswers from '@/pages/technology/TechAnswers'
 import TechForward from '@/pages/technology/TechForward'
 import TechFollow from '@/pages/technology/TechFollow'
 import StudioUnionDetail from '@/pages/StudioUnionDetail'
+import VoteGraphic from '@/pages/vote/graphic'
+import VoteProgress from '@/pages/vote/progress'
+
 Vue.use(Router)
 
 export default new Router({
@@ -164,6 +167,15 @@ export default new Router({
       path: '/studioUnionDetail',
       name: 'StudioUnionDetail',
       component: StudioUnionDetail,
+    }, {
+      path: '/VoteGraphic',
+      name: 'VoteGraphic',
+      component: VoteGraphic,
+    },
+    {
+      path: '/VoteProgress',
+      name: 'VoteProgress',
+      component: VoteProgress,
     },
   ]
 })
