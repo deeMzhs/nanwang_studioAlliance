@@ -39,14 +39,17 @@
         </div>
       </van-tab>
       <van-tab title="正文内容">
+      <!-- 测试 -->
+        <!-- <div style="height : 500px"></div> -->
         <div class="detail">
           <div class="tab-control">
             <div v-for="(item,index) in tabInfo" :key="index" :class="{tabAcitve:index === currentIndex}" @click="itemClick(index)">{{item}}</div>
           </div>
-          <div class="detail">
-            <div class="detail-title" ref="question">针对问题</div>
+          <div class="detail" ref="question">
+            <div class="detail-title" >针对问题</div>
             <p>{{content}}</p>
           </div>
+          <!-- <div style="height: 500px"></div> -->
           <div class="footer">
             <span>下一篇文章</span>
           </div>
@@ -60,6 +63,7 @@
 export default {
   data() {
     return {
+      top:0,
       active: 0,
       currentIndex:0,
       tabInfo:["针对问题","原理说明",'创新点'],
@@ -76,7 +80,10 @@ export default {
     itemClick(index){
       this.currentIndex = index;
       //对应标签跳转对应方法
-      console.log(this.$refs.question.scrollIntoView(true))
+      this.top = this.$refs.question.offsetTop + this.$refs.question.offsetHeight;
+      // console.log(this.$refs.question.offsetHeight);
+      window.scrollTo(0,this.top)
+      // console.log(this.$refs.question.scrollIntoView(true))
     }
   },
   mounted() {

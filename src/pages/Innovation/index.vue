@@ -273,6 +273,7 @@ export default {
   padding: 0.5rem;
   height: 2.5rem;
   display: -webkit-box;
+  
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
@@ -344,7 +345,7 @@ export default {
 }
 .pop-context div{
   padding: .55rem .7rem;
-  border: 0.01rem solid #E5E5E5;
+  border: 0.1rem solid #E5E5E5;
   line-height: .875rem;
   font-size: .875rem;
   border-radius: 0.125rem;

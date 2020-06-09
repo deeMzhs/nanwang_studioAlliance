@@ -12,7 +12,7 @@
       <van-col span="5" class="first-sub-col">
         <img :src=studioInfo.img alt="">
       </van-col>
-      <van-col span="15" class="first-sub-col">
+      <van-col span="15" class="first-sub-col" @click="goDetail">
         <p>{{studioName}}</p>
       </van-col>
       <van-col span="4" class="first-sub-col">
@@ -374,6 +374,9 @@ export default {
     goVote() {
       this.$router.push('/votePublish');
     },
+    goDetail() {
+      this.$router.push('/studioUnionDetail');
+    }
   }
 }
 </script>
