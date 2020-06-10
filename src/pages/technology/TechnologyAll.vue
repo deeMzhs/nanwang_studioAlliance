@@ -4,7 +4,7 @@
       class="technology_item"
       v-for="(item, index) in list"
       :key="index"
-      @click="to('TechnologyDetail')"
+      @click="to('TechnologyDetail',item.id)"
     >
       <div class="header">
         <div>
@@ -24,14 +24,14 @@
       <div class="desc1" v-else>{{item.desc}}</div>
       <div class="footer">
         <div class="footer_child">
-          <span>
+          <span @click.stop="msg(item.id)">
             <van-icon name="chat-o" />5
           </span>
-          <span>
+          <span @click.stop="share(item.id)">
             <van-icon name="share" />3
           </span>
         </div>
-        <div class="follow" @click.stop="$router.push({path:'TechAnswer',query:{id:item.id}})">关注问题</div>
+        <div class="follow" @click.stop="headclick(item.id)">关注问题</div>
       </div>
     </div>
 
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { Toast } from "vant";
 export default {
   data() {
     return {
@@ -91,7 +92,7 @@ export default {
             "这是内容这是内容这这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是 这是内容这是内容这是内容这是这是 内容这是内容这是内容这是..."
         },
         {
-          id: 1,
+          id: 3,
           time: "2019-01-01",
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
           desc:
@@ -99,7 +100,7 @@ export default {
           imgurl: require("@/assets/img/mypage.png")
         },
         {
-          id: 2,
+          id: 4,
           time: "2019-01-01",
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
           desc: " 这内容这是内容这是"
@@ -111,8 +112,23 @@ export default {
     onChange(index) {
       this.current = index;
     },
-    to(path) {
-      this.$router.push(path);
+    to(path, id) {
+      this.$router.push({
+        name: path,
+        query: {
+          id
+        }
+      });
+      Toast(id);
+    },
+    headclick(id) {
+      Toast("已关注id为" + id);
+    },
+    msg(id) {
+      Toast(id);
+    },
+    share(id) {
+      Toast(id);
     }
   }
 };

@@ -21,10 +21,11 @@ import Innovate from '@/pages/Innovate'
 import TechnologyHome from '@/pages/technology/TechnologyHome'
 import TechnologyQuestions from '@/pages/technology/questions'
 import TechnologyDetail from '@/pages/technology/detail'
-import TechAnswers from '@/pages/technology/TechAnswers'
+import TechAnswers from '@/pages/technology/like'
 import TechForward from '@/pages/technology/TechForward'
 import TechFollow from '@/pages/technology/TechFollow'
 import TechAnswer from '@/pages/technology/Answer'
+import TechInvitation from '@/pages/technology/Invitation'
 import StudioUnionDetail from '@/pages/StudioUnionDetail'
 import VoteGraphic from '@/pages/vote/graphic'
 import VoteProgress from '@/pages/vote/progress'
@@ -153,6 +154,11 @@ export default new Router({
       path: '/techAnswers',
       name: 'techAnswers',
       component: TechAnswers,
+    },
+    {
+      path: '/TechInvitation',
+      name: 'TechInvitation',
+      component: TechInvitation,
     },
     {
       path: '/techAnswer',

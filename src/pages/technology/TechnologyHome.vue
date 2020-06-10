@@ -21,9 +21,13 @@
       <!-- 我的页面 -->
       <van-tab title="我的">
         <div class="user-info bg_withe">
+          <div class="user-item" @click="toRelpy1">
+            <p>{{ userInfo[0].num }}</p>
+            <p>邀请</p>
+          </div>
           <div class="user-item" @click="toRelpy">
             <p>{{ userInfo[0].num }}</p>
-            <p>获得的回答</p>
+            <p>喜欢</p>
           </div>
           <div class="user-item" @click="toForward">
             <p>{{ userInfo[1].num }}</p>
@@ -43,11 +47,7 @@
           <!-- 第1个标签 -->
           <van-tab :title="'我的提问' + ' (' + userInfo[1].num + ')'">
             <div class="content">
-              <div
-                class="content_item bg_withe"
-                v-for="(item, index) in Info"
-                :key="index"
-              >
+              <div class="content_item bg_withe" v-for="(item, index) in Info" :key="index">
                 <div class="content_head">
                   <van-image
                     round
@@ -80,8 +80,12 @@
                     </span>
                   </div>
                   <div class="icon_right">
-                    <van-icon name="ellipsis" size="1rem" @click="item.deleteButteon = !item.deleteButteon"/>
-                    <button class="bg_withe " v-if="item.deleteButteon">删除</button>
+                    <van-icon
+                      name="ellipsis"
+                      size="1rem"
+                      @click="item.deleteButteon = !item.deleteButteon"
+                    />
+                    <button class="bg_withe" v-if="item.deleteButteon">删除</button>
                   </div>
                 </div>
               </div>
@@ -97,16 +101,16 @@
   </div>
 </template>
 
-<script> 
-import TechnologyAll from './TechnologyAll'
+<script>
+import TechnologyAll from "./TechnologyAll";
 export default {
   name: "TechnologyHome",
-  components:{
-     TechnologyAll
-   },
+  components: {
+    TechnologyAll
+  },
   data() {
     return {
-      deleteButteon : false,
+      deleteButteon: false,
       userInfo: [
         { name: "获得的回答", num: "156" },
         { name: "获得的转发", num: "99" },
@@ -119,15 +123,15 @@ export default {
           title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
           content: `这是内容这是内容这是内容这是内容这是内容这是内容这内容`,
           imgurl: require("@/assets/img/mypage.png"),
-          deleteButteon : false,
+          deleteButteon: false
         },
-         {
+        {
           name: "老王",
           time: "2019-02-03",
           title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
           content: `这是内容这是内容这是内容这是是内容这是内容这是内容这是内容这是内容这是内容`,
           imgurl: require("@/assets/img/mypage.png"),
-          deleteButteon : false,
+          deleteButteon: false
         },
         {
           name: "Deca Joins",
@@ -135,16 +139,16 @@ export default {
           title: "这是标题这是标题",
           content: `这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容`,
           imgurl: require("@/assets/img/photo.png"),
-          deleteButteon : false,
+          deleteButteon: false
         },
-         {
+        {
           name: "老王",
           time: "2019-02-03",
           title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
           content: `这是内容这是内容这是内这是内容这是内容这是内容这是内容这是内容这是内容这是内容`,
           imgurl: require("@/assets/img/mypage.png"),
-          deleteButteon : false,
-        },
+          deleteButteon: false
+        }
       ]
     };
   },
@@ -152,6 +156,9 @@ export default {
     //跳转方法
     toRelpy() {
       this.$router.replace("techAnswers");
+    },
+    toRelpy1() {
+      this.$router.replace("TechInvitation");
     },
     toForward() {
       this.$router.replace("techForward");
@@ -163,7 +170,7 @@ export default {
       this.$router.push("/");
     },
     to(path) {
-      this.$router.push(path)
+      this.$router.push(path);
     }
   }
 };
@@ -204,104 +211,105 @@ export default {
 }
 
 /* 通用css */
-content{
+content {
   position: relative;
   top: 3.5rem;
 }
-.content_item{
+.content_item {
   padding: 0 1rem;
 }
-.content_head{
-  padding-top: .65rem;
+.content_head {
+  padding-top: 0.65rem;
   display: flex;
   align-items: center;
-  padding-bottom: .5rem;
-  border-bottom: 0.01rem solid #E5E5E5;
+  padding-bottom: 0.5rem;
+  /* border-bottom: 0.01rem solid #e5e5e5; */
   flex-wrap: nowrap;
-  color:#8C8C8C;
-  font-size: .75rem;
+  color: #8c8c8c;
+  font-size: 0.75rem;
   line-height: 1.56rem;
 }
-.content_head .van-image{
-  flex: 0 0 1.25rem
+.content_head .van-image {
+  flex: 0 0 1.25rem;
 }
-.content_head .center{
+.content_head .center {
   flex: 1;
-  padding-left:.6rem;
+  padding-left: 0.6rem;
 }
-.content_head .right{
-  flex :0 0 4.5rem;
+.content_head .right {
+  flex: 0 0 4.5rem;
 }
-.content_title{
-  margin-top:.8rem;
+.content_title {
+  margin-top: 0.8rem;
   font-size: 1rem;
   color: #262626;
 }
-.content_title p{
+.content_title p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-.content_main{
-  margin-top:1rem;
+.content_main {
+  margin-top: 1rem;
   color: #595959;
   display: flex;
 }
-.content_main .left{
+.content_main .left {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  font-size: .875rem;
+  font-size: 0.875rem;
   flex: 1;
 }
-.content_main .right{
+.content_main .right {
   justify-content: center;
   align-items: center;
   flex: 0 0 6.4rem;
-  margin-left: .75rem;
+  margin-left: 0.75rem;
 }
-.content_main .right img{
+.content_main .right img {
   height: 3.9rem;
   width: 6.3rem;
   border-radius: 4px;
 }
- .content_footer{
+.content_footer {
   display: flex;
-  margin-bottom: .7rem;
-  padding-bottom: .7rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.7rem;
   padding-top: 0.5rem;
 }
-.content_footer .icon_left,.icon_right{
+.content_footer .icon_left,
+.icon_right {
   flex: 1;
 }
-.content_footer .icon_left .icon_item{
+.content_footer .icon_left .icon_item {
   width: 33%;
   line-height: 1rem;
   display: flex;
-  align-items: center
+  align-items: center;
 }
-.icon_left{
+.icon_left {
   display: flex;
-  justify-content: flex-start
+  justify-content: flex-start;
 }
-.content_footer .icon_left .icon_item span{
-   padding-left: .3rem;
+.content_footer .icon_left .icon_item span {
+  padding-left: 0.3rem;
 }
-.content_footer .icon_right{
+.content_footer .icon_right {
   position: relative;
 }
-.content_footer .icon_right button{
-  position:absolute;
-  top:1.2rem;
+.content_footer .icon_right button {
+  position: absolute;
+  top: 1.2rem;
   left: 50%;
   border: none;
   line-height: 2rem;
   width: 5.2rem;
-  box-shadow: .2rem .2rem .4rem rgba(38, 38, 38, 0.16);
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(38, 38, 38, 0.16);
 }
-.content_footer .icon_right .van-icon{
-float: right;
+.content_footer .icon_right .van-icon {
+  float: right;
 }
 </style>
