@@ -25,6 +25,7 @@ import TechAnswers from '@/pages/technology/TechAnswers'
 import TechForward from '@/pages/technology/TechForward'
 import TechFollow from '@/pages/technology/TechFollow'
 import StudioUnionDetail from '@/pages/StudioUnionDetail'
+import StudioInfo from '@/pages/StudioInfo'
 Vue.use(Router)
 
 export default new Router({
@@ -164,6 +165,10 @@ export default new Router({
       path: '/studioUnionDetail',
       name: 'StudioUnionDetail',
       component: StudioUnionDetail,
+    },  {
+      path: '/studioInfo',
+      name: 'StudioInfo',
+      component: StudioInfo,
     },
   ]
 })

@@ -177,6 +177,7 @@ export default {
 .icon_left {
   display: flex;
   justify-content: flex-start;
+  color: #B2B2B2
 }
 .content_footer .icon_left .icon_item span {
   padding-left: 0.3rem;
