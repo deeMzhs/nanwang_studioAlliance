@@ -52,7 +52,14 @@
         </div>
       </div>
     </div>
-    <div class="btn"><van-button type="info" size="large">大号按钮</van-button></div>
+    <van-row class="btn1">
+      <van-col span="12">
+        <van-button type="default" size="large" @click="result=[]">邀请回答</van-button>
+      </van-col>
+      <van-col span="12">
+        <van-button type="info" size="large" @click="addStudioMore">我来回答</van-button>
+      </van-col>
+    </van-row>
   </div>
 </template>
 
@@ -158,23 +165,23 @@ export default {
 .user_info {
   flex: 1;
   padding-bottom: 1.5rem;
-  border-bottom:.1rem solid #fcfafa;
+  border-bottom: 0.1rem solid #fcfafa;
 }
 .user_name {
   font-size: 1rem;
   font-weight: bold;
 }
 .user_desc {
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   color: #262626;
 }
-.user_time{
-    color: #8C8C8C;
+.user_time {
+  color: #8c8c8c;
 }
-.user_time span{
-    float: right;
+.user_time span {
+  float: right;
 }
-.btn{
+.btn {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -182,9 +189,22 @@ export default {
   height: 5rem;
   background-color: #fff;
 }
-.van-button{
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 1rem;
+.van-button {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 1rem;
+}
+
+.btn1 {
+  position: fixed;
+  background-color: #fff;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.btn1 .van-col {
+  padding: 0.7rem;
+  box-sizing: border-box;
 }
 </style>

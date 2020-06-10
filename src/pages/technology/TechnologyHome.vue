@@ -42,10 +42,10 @@
           title-active-color="#1E87F0"
           color="#1E87F0"
           background="#FFFFFF"
-          line-width="33vw"
+          line-width="25vw"
         >
           <!-- 第1个标签 -->
-          <van-tab :title="'我的提问' + ' (' + userInfo[1].num + ')'">
+          <van-tab :title="'我的提问' ">
             <div class="content">
               <div class="content_item bg_withe" v-for="(item, index) in Info" :key="index">
                 <div class="content_head">
@@ -91,10 +91,11 @@
               </div>
             </div>
           </van-tab>
-          <van-tab :title="'我的回答' + ' (' + userInfo[1].num + ')'">
+          <van-tab :title="'我的回答' ">
             <!-- 第2个标签 -->
           </van-tab>
-          <van-tab :title="'我的关注' + ' (' + userInfo[2].num + ')'">内容 3</van-tab>
+          <van-tab :title="'我的关注' ">内容 3</van-tab>
+          <van-tab :title="'我的咨询' ">内容 4</van-tab>
         </van-tabs>
       </van-tab>
     </van-tabs>
@@ -114,6 +115,7 @@ export default {
       userInfo: [
         { name: "获得的回答", num: "156" },
         { name: "获得的转发", num: "99" },
+        { name: "获得的点赞", num: "11" },
         { name: "获得的点赞", num: "11" }
       ],
       Info: [
@@ -293,6 +295,7 @@ content {
 .icon_left {
   display: flex;
   justify-content: flex-start;
+  color: #b2b2b2;
 }
 .content_footer .icon_left .icon_item span {
   padding-left: 0.3rem;
