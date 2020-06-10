@@ -28,7 +28,7 @@ import TechAnswer from '@/pages/technology/Answer'
 import StudioUnionDetail from '@/pages/StudioUnionDetail'
 import VoteGraphic from '@/pages/vote/graphic'
 import VoteProgress from '@/pages/vote/progress'
-
+import StudioInfo from '@/pages/StudioInfo'
 Vue.use(Router)
 
 export default new Router({
@@ -173,7 +173,8 @@ export default new Router({
       path: '/studioUnionDetail',
       name: 'StudioUnionDetail',
       component: StudioUnionDetail,
-    }, {
+    }, 
+    {
       path: '/VoteGraphic',
       name: 'VoteGraphic',
       component: VoteGraphic,
@@ -182,6 +183,11 @@ export default new Router({
       path: '/VoteProgress',
       name: 'VoteProgress',
       component: VoteProgress,
+    }, 
+    {
+      path: '/studioInfo',
+      name: 'StudioInfo',
+      component: StudioInfo,
     },
   ]
 })

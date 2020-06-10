@@ -14,12 +14,12 @@
     <van-tabs
       title-active-color="#1E87F0"
       color="#1E87F0"
-      line-width="25vw" scrollspy sticky offset-top="250"
+      line-width="25vw" scrollspy sticky offset-top="250" ellipsis
     >
       <van-tab title="联盟介绍">
         <div class="detail">
             <div class="detail-title">联盟介绍</div>
-            <p>{{content[4]}}</p>
+            <p>{{content[0]}}</p>
         </div>
       </van-tab>
       <van-tab title="工作制度">
@@ -31,13 +31,13 @@
       <van-tab title="组织架构">
         <div class="detail">
             <div class="detail-title">组织架构</div>
-            <p>{{content[4]}}</p>
+            <p>{{content[2]}}</p>
         </div>
       </van-tab>
       <van-tab title="工作计划">
         <div class="detail">
             <div class="detail-title">工作计划</div>
-            <p>{{content[4]}}</p>
+            <p>{{content[3]}}</p>
         </div>
       </van-tab>
       <van-tab title="经费管理细则">
@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     onClickLeft() {
-      this.$router.push("InnovationIndex");
+      this.$router.back();
     },
   },
   mounted() {
@@ -89,19 +89,6 @@ export default {
 	width:100%;
 	height:100%;
 	display:block;
-}
-.msg {
-  margin: 1rem;
-  display: flex;
-  font-size: 1rem;
-}
-.msg :nth-child(1) {
-  width: 6rem;
-  color: #8c8c8c;
-}
-.msg :nth-child(2) {
-  flex: 1;
-  color: #595959;
 }
 .contact {
   margin-left: 1rem;
