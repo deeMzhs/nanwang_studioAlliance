@@ -21,7 +21,7 @@
       <div class="xm_img">
         <img src="@/assets/img/snipaste20200611_085434.jpg" alt />
       </div>
-      <div class="xm_img">
+      <div class="xm_img" @click="$router.push('/studioMoreHome')">
         <img src="@/assets/img/snipaste20200611_085434.jpg" alt />
       </div>
     </div>

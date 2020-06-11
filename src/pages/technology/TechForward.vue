@@ -5,7 +5,7 @@
         <van-icon name="arrow-left" size="18" color="#FFFFFF" />
       </template>
       <template #title>
-        <P class="h-title">获得的转发</P>
+        <P class="h-title">评论与转发</P>
       </template>
     </van-nav-bar>
     <div class="content">
@@ -21,7 +21,10 @@
             height="1.25rem"
             src="https://img.yzcdn.cn/vant/cat.jpeg"
           />
-          <div class="center">{{ item.name + "转发了你的问题" }}</div>
+          <div class="center">
+            <p><span>{{item.name}}</span><span>创新工作室</span></p>
+            <p>转发了你的问题</p>
+          </div>
           <div class="right">{{ item.time }}</div>
         </div>
         <div class="content_title">
@@ -34,19 +37,19 @@
           </div>
         </div>
         <!-- 底部标签 -->
-        <div class="content_footer">
-          <div class="icon_left">
-            <span class="icon_item"
-              ><van-icon name="chat-o" size="12" /><span>3</span></span
-            >
-            <span class="icon_item"
-              ><van-icon name="label-o" size="12" /><span>3</span></span
-            >
-          </div>
-          <div class="icon_right">
-            <!-- <van-icon name="label-o" size="12"/></span>> -->
-          </div>
-        </div>
+        <!--<div class="content_footer">-->
+          <!--<div class="icon_left">-->
+            <!--<span class="icon_item"-->
+              <!--&gt;<van-icon name="chat-o" size="12" /><span>3</span></span-->
+            <!--&gt;-->
+            <!--<span class="icon_item"-->
+              <!--&gt;<van-icon name="label-o" size="12" /><span>3</span></span-->
+            <!--&gt;-->
+          <!--</div>-->
+          <!--<div class="icon_right">-->
+            <!--&lt;!&ndash; <van-icon name="label-o" size="12"/></span>> &ndash;&gt;-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
     </div>
   </div>
@@ -102,6 +105,7 @@ export default {
 }
 .content_item {
   padding: 0 1rem;
+  margin-bottom: .62rem;
 }
 .content_head {
   padding-top: 0.65rem;
@@ -119,6 +123,14 @@ export default {
 .content_head .center {
   flex: 1;
   padding-left: 0.6rem;
+}
+.content_head .center p span:first-of-type{
+  color: #262626;
+  font-size: .75rem;
+  margin-right: .65rem;
+}
+.content_head .center p span:last-of-type{
+  font-size: .62rem;
 }
 .content_head .right {
   flex: 0 0 4.5rem;
@@ -138,6 +150,7 @@ export default {
   margin-top: 1rem;
   color: #595959;
   display: flex;
+  padding-bottom: 1.59rem;
 }
 .content_main .left {
   display: -webkit-box;
@@ -146,6 +159,7 @@ export default {
   overflow: hidden;
   font-size: 0.875rem;
   flex: 1;
+  color: #8B8B8B;
 }
 .content_main .right {
   justify-content: center;
