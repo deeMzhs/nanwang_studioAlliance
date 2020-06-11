@@ -21,15 +21,13 @@
                 text-color="#36B21D"
                 v-if="item.skill != ''"
                 round
-                >{{ item.skill }}</van-tag
-              >
+              >{{ item.skill }}</van-tag>
               <van-tag
                 color="#FCDDDA"
                 text-color="#F15747"
                 v-if="item.level != ''"
                 round
-                >{{ item.level }}</van-tag
-              >
+              >{{ item.level }}</van-tag>
             </div>
             <div class="pro_name1">{{ item.studio }}</div>
             <div class="pro_name1">{{ item.numSeek }}人已咨询</div>
@@ -41,11 +39,7 @@
       </van-swipe>
     </div>
     <div class="content">
-      <div
-        class="content_item bg_withe"
-        v-for="(item, index) in list"
-        :key="index"
-      >
+      <div class="content_item bg_withe" v-for="(item, index) in list" :key="index">
         <div class="content_head">
           <van-image
             round
@@ -65,11 +59,7 @@
         <div class="content_title">
           <p>{{ item.title }}</p>
         </div>
-        <div
-          class="content_main"
-          @click="to('TechnologyDetail', item.id)"
-          v-if="item.imgurl"
-        >
+        <div class="content_main" @click="to('TechnologyDetail', item.id)" v-if="item.imgurl">
           <p class="left">{{ item.content }}</p>
           <div class="right">
             <img :src="item.imgurl" />
@@ -119,14 +109,14 @@ export default {
           title: "这是问题",
           content: "这是内容 这是内容这是内容这是内容这是",
           imgurl: require("@/assets/img/mypage.png"),
-          studio :"加勒比港湾工作室"
+          studio: "加勒比港湾工作室"
         },
         {
           id: 2,
           name: "张张红",
           time: "2019-01-01",
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
-            studio :"南方电网工作室",
+          studio: "南方电网工作室",
           content:
             "这是内容这是内容这这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是 这是内容这是内容这是内容这是这是 内容这是内容这是内容这是..."
         },
@@ -136,7 +126,7 @@ export default {
           follow: false,
           time: "2019-01-01",
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
-          studio :"灭霸工作室",
+          studio: "灭霸工作室",
           content:
             " 内容这是内容这内容这是内容这是内容这是内容这是内容这是内容这是是内容这是",
           imgurl: require("@/assets/img/mypage.png")

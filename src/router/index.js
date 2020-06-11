@@ -33,6 +33,7 @@ import StudioInfo from '@/pages/StudioInfo'
 import studioMembers from '@/pages/StudioMembers'
 import ActiveValue from '../pages/ActiveValue'
 import FindPeople from '@/pages/Findpeople'
+import Consulting from '@/pages/Consulting'
 Vue.use(Router)
 
 export default new Router({
@@ -212,6 +213,11 @@ export default new Router({
       path: '/FindPeople',
       name: 'FindPeople',
       component: FindPeople,
+    },
+    {
+      path: '/Consulting',
+      name: 'Consulting',
+      component: Consulting,
     },
   ]
 })
