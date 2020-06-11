@@ -31,6 +31,7 @@ import VoteGraphic from '@/pages/vote/graphic'
 import VoteProgress from '@/pages/vote/progress'
 import StudioInfo from '@/pages/StudioInfo'
 import studioMembers from '@/pages/StudioMembers'
+import ActiveValue from '../pages/ActiveValue'
 Vue.use(Router)
 
 export default new Router({
@@ -44,6 +45,11 @@ export default new Router({
       path: '/studioUnionHome',
       name: 'StudioUnionHome',
       component: StudioUnionHome
+    },
+    {
+      path: '/activeValue',
+      name: 'activeValue',
+      component: ActiveValue
     },
     {
       path: '/studioMoreHome',

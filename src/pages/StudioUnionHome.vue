@@ -5,7 +5,6 @@
         <span @click="toPersonal">
           <van-icon name="fire-o" />67
         </span>
-        <!-- <van-icon name="manager" size="1rem" color :dot="isDot" @click="toPersonal" /> -->
       </template>
     </van-nav-bar>
     <div style="height: 46px"></div>
@@ -239,6 +238,10 @@ export default {
   data () {
   return {
     isDot: true,
+    userInfo: {
+      id: 0,
+      name: '总监'
+    },
     followList: [
       {id: 1, name: '输电专业工作室联盟1', footer: '张三发不了动态', img: require('../assets/img/joined-studio-union.jpeg')},
       {id: 2,name: '输电专业工作室联盟2', footer: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
@@ -307,7 +310,13 @@ export default {
   },
   methods: {
     toPersonal() {
-      this.$router.replace("/personalPage");
+      this.$router.push(
+          {
+            name: 'activeValue',
+            params: {
+              userInfo: this.userInfo
+            }
+          });
     },
     setLoginStorage() {
       storage.set("list", 999);
