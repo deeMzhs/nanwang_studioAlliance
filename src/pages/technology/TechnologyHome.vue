@@ -7,6 +7,11 @@
       <template #title>
         <P class="h-title">技术问诊</P>
       </template>
+      <template #right>
+        <div>
+          <img src="../../assets/img/serach.png">
+        </div>
+      </template>
     </van-nav-bar>
     <van-tabs
       class="main-tab"
@@ -20,103 +25,283 @@
       </van-tab>
       <!-- 我的页面 -->
       <van-tab title="我的">
-        <div class="user-info bg_withe">
-          <div class="user-item" @click="toRelpy1">
-            <p>{{ userInfo[0].num }}</p>
+        <div class="user">我收到的</div>
+        <div class="navbar bg_withe">
+          <div @click="toInvitation">
+            <img src="../../assets/img/invite.png" alt="" />
             <p>邀请</p>
           </div>
-          <div class="user-item" @click="toRelpy">
-            <p>{{ userInfo[0].num }}</p>
+          <div @click="toRelpy">
+            <img src="../../assets/img/like.png" alt="" />
             <p>喜欢</p>
           </div>
-          <div class="user-item" @click="toForward">
-            <p>{{ userInfo[1].num }}</p>
-            <p>获得的转发</p>
+          <div @click="toFollow">
+            <img src="../../assets/img/follow.png" alt="" />
+            <p>关注</p>
           </div>
-          <div class="user-item" @click="toFollow">
-            <p>{{ userInfo[2].num }}</p>
-            <p>获得的关注</p>
+          <div @click="toForward">
+            <img src="../../assets/img/forward.png" alt="" />
+            <p>评论与转发</p>
           </div>
         </div>
-        <van-tabs
-          title-active-color="#1E87F0"
-          color="#1E87F0"
-          background="#FFFFFF"
-          line-width="25vw"
+        <!-- 导航栏 -->
+        <tab-control :title="userInfo" @tabClick="tabClick" />
+        <!-- 我的提问 -->
+        <div
+          v-show="currentType == 'que'"
+          class="content_item bg_withe"
+          v-for="(item, index) in Info"
+          :key="index"
         >
-          <!-- 第1个标签 -->
-          <van-tab :title="'我的提问' ">
-            <div class="content">
-              <div class="content_item bg_withe" v-for="(item, index) in Info" :key="index">
-                <div class="content_head">
-                  <van-image
-                    round
-                    width="1.25rem"
-                    height="1.25rem"
-                    src="https://img.yzcdn.cn/vant/cat.jpeg"
-                  />
-                  <div class="center">{{ item.name + "关注了你的问题" }}</div>
-                  <div class="right">{{ item.time }}</div>
-                </div>
-                <div class="content_title">
-                  <p>{{ item.title }}</p>
-                </div>
-                <div class="content_main" @click="to('TechnologyDetail')">
-                  <p class="left">{{ item.content }}</p>
-                  <div class="right">
-                    <img :src="item.imgurl" />
-                  </div>
-                </div>
-                <!-- 底部标签 -->
-                <div class="content_footer">
-                  <div class="icon_left">
-                    <span class="icon_item">
-                      <van-icon name="chat-o" size="12" />
-                      <span>3</span>
-                    </span>
-                    <span class="icon_item">
-                      <van-icon name="label-o" size="12" />
-                      <span>3</span>
-                    </span>
-                  </div>
-                  <div class="icon_right">
-                    <van-icon
-                      name="ellipsis"
-                      size="1rem"
-                      @click="item.deleteButteon = !item.deleteButteon"
-                    />
-                    <button class="bg_withe" v-if="item.deleteButteon">删除</button>
-                  </div>
-                </div>
+          <div class="content_head">
+            <van-image
+              round
+              width="1.25rem"
+              height="1.25rem"
+              src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+            <div class="center">
+              <div class="user_name">
+                <span>我</span>
+                <span>{{ item.studio }}</span>
               </div>
+              <span class="center_info">提出了问题</span>
             </div>
-          </van-tab>
-          <van-tab :title="'我的回答' ">
-            <!-- 第2个标签 -->
-          </van-tab>
-          <van-tab :title="'我的关注' ">内容 3</van-tab>
-          <van-tab :title="'我的咨询' ">内容 4</van-tab>
-        </van-tabs>
+            <div class="right">{{ item.time }}</div>
+          </div>
+          <div class="content_title">
+            <p>{{ item.title }}</p>
+          </div>
+          <div
+            class="content_main"
+            @click="to('TechnologyDetail')"
+            v-if="item.imgurl"
+          >
+            <p class="left">{{ item.content }}</p>
+            <div class="right">
+              <img :src="item.imgurl" />
+            </div>
+          </div>
+          <div class="content_main" @click="to('TechnologyDetail')" v-else>
+            <p class="left">{{ item.content }}</p>
+          </div>
+          <!-- 标签底部 -->
+          <div class="content_footer">
+            <div class="icon_left">
+              <span class="icon_item">
+                <van-icon name="chat-o" size="12" />
+                <span>3</span>
+              </span>
+              <span class="icon_item">
+                <van-icon name="label-o" size="12" />
+                <span>3</span>
+              </span>
+            </div>
+            <div class="icon_right">
+              <van-icon
+                name="ellipsis"
+                size="1rem"
+                @click="item.deleteButteon = !item.deleteButteon"
+              />
+              <button class="bg_withe" v-if="item.deleteButteon">
+                删除
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 我的回答 -->
+        <div
+          v-show="currentType == 'anw'"
+          class="content_item bg_withe"
+          v-for="(item, index) in Info"
+          :key="index"
+        >
+          <div class="content_head">
+            <van-image
+              round
+              width="1.25rem"
+              height="1.25rem"
+              src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+            <div class="center">
+              <div class="user_name">
+                <span>{{ item.name }}</span>
+                <span>{{ item.studio }}</span>
+              </div>
+              <span class="center_info">回答了你的问题</span>
+            </div>
+            <div class="right">{{ item.time }}</div>
+          </div>
+          <div class="content_title">
+            <p>{{ item.title }}</p>
+          </div>
+          <div
+            class="content_main"
+            @click="to('TechnologyDetail')"
+            v-if="item.imgurl"
+          >
+            <p class="left_anw left">{{ item.content }}</p>
+            <div class="right">
+              <img :src="item.imgurl" />
+            </div>
+          </div>
+          <div class="content_main" @click="to('TechnologyDetail')" v-else>
+            <p class="left_anw left">{{ item.content }}</p>
+          </div>
+          <div class="content_footer">
+            <div class="icon_left"></div>
+            <div class="icon_right">
+              <van-icon
+                name="ellipsis"
+                size="1rem"
+                @click="item.deleteButteon = !item.deleteButteon"
+              />
+              <button class="bg_withe" v-if="item.deleteButteon">
+                删除
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 我的关注 -->
+        <div
+          v-show="currentType == 'forward'"
+          class="content_item bg_withe"
+          v-for="(item, index) in forward"
+          :key="index"
+        >
+          <div class="content_head">
+            <van-image
+              round
+              width="1.25rem"
+              height="1.25rem"
+              src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+            <div class="center">
+              <div class="user_name">
+                <span>我</span>
+                <span>{{ item.studio }}</span>
+              </div>
+              <span class="center_info">关注了{{ item.name }}的问题</span>
+            </div>
+            <div class="right">{{ item.time }}</div>
+          </div>
+          <div class="content_title">
+            <p>{{ item.title }}</p>
+          </div>
+          <div
+            class="content_main"
+            @click="to('TechnologyDetail')"
+            v-if="item.imgurl"
+          >
+            <p class="left">{{ item.content }}</p>
+            <div class="right">
+              <img :src="item.imgurl" />
+            </div>
+          </div>
+          <div class="content_main" @click="to('TechnologyDetail')" v-else>
+            <p class="left">{{ item.content }}</p>
+          </div>
+          <!-- 标签底部 -->
+          <div class="content_footer">
+            <div class="icon_left">
+              <span class="icon_item">
+                <van-icon name="chat-o" size="12" />
+                <span>3</span>
+              </span>
+              <span class="icon_item">
+                <van-icon name="label-o" size="12" />
+                <span>3</span>
+              </span>
+            </div>
+            <div class="icon_right">
+              <van-icon
+                name="ellipsis"
+                size="1rem"
+                @click="item.deleteButteon = !item.deleteButteon"
+              />
+              <button class="bg_withe" v-if="item.deleteButteon">
+                取消关注
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 我的质询 -->
+        <div
+          v-show="currentType == 'ask'"
+          class="content_item bg_withe"
+          v-for="(item, index) in ask"
+          :key="index"
+        >
+          <div class="content_head">
+            <van-image
+              round
+              width="1.25rem"
+              height="1.25rem"
+              src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+            <div class="center">
+              <div class="user_name">
+                <span>我</span>
+                <span>{{ item.studio }}</span>
+              </div>
+              <span class="center_info">咨询了{{ item.name }}的问题</span>
+            </div>
+            <div class="right">{{ item.time }}</div>
+          </div>
+          <div class="content_title">
+            <p>{{ item.title }}</p>
+          </div>
+          <div
+            class="content_main"
+            @click="to('TechnologyDetail')"
+            v-if="item.imgurl"
+          >
+            <p class="left">{{ item.content }}</p>
+            <div class="right">
+              <img :src="item.imgurl" />
+            </div>
+          </div>
+          <div class="content_main" @click="to('TechnologyDetail')" v-else>
+            <p class="left">{{ item.content }}</p>
+          </div>
+          <div class="content_footer">
+            <div class="icon_left">
+              <span class="icon_item">
+                <van-icon name="chat-o" size="12" />
+                <span>3</span>
+              </span>
+              <span class="icon_item">
+                <van-icon name="label-o" size="12" />
+                <span>3</span>
+              </span>
+            </div>
+            <div class="icon_right" @click="headclick(item.id)">
+              <div class="button">继续咨询</div>
+            </div>
+          </div>
+        </div>
       </van-tab>
     </van-tabs>
   </div>
 </template>
 
 <script>
+import TabControl from "@/components/tabcontrol/TabControl";
 import TechnologyAll from "./TechnologyAll";
 export default {
   name: "TechnologyHome",
   components: {
-    TechnologyAll
+    TechnologyAll,
+    TabControl
   },
   data() {
     return {
-      deleteButteon: false,
+      currentType: "que",
       userInfo: [
-        { name: "获得的回答", num: "156" },
-        { name: "获得的转发", num: "99" },
-        { name: "获得的点赞", num: "11" },
-        { name: "获得的点赞", num: "11" }
+        { name: "我的提问", num: "156" },
+        { name: "我的回答", num: "99" },
+        { name: "我的关注", num: "11" },
+        { name: "我的咨询", num: "11" }
       ],
       Info: [
         {
@@ -125,15 +310,16 @@ export default {
           title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
           content: `这是内容这是内容这是内容这是内容这是内容这是内容这内容`,
           imgurl: require("@/assets/img/mypage.png"),
-          deleteButteon: false
+          deleteButteon: false,
+          studio: "创新联盟"
         },
         {
           name: "老王",
           time: "2019-02-03",
           title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
           content: `这是内容这是内容这是内容这是是内容这是内容这是内容这是内容这是内容这是内容`,
-          imgurl: require("@/assets/img/mypage.png"),
-          deleteButteon: false
+          deleteButteon: false,
+          studio: "发展联盟"
         },
         {
           name: "Deca Joins",
@@ -141,7 +327,8 @@ export default {
           title: "这是标题这是标题",
           content: `这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容`,
           imgurl: require("@/assets/img/photo.png"),
-          deleteButteon: false
+          deleteButteon: false,
+          studio: "发展联盟"
         },
         {
           name: "老王",
@@ -149,7 +336,69 @@ export default {
           title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
           content: `这是内容这是内容这是内这是内容这是内容这是内容这是内容这是内容这是内容这是内容`,
           imgurl: require("@/assets/img/mypage.png"),
-          deleteButteon: false
+          deleteButteon: false,
+          studio: "发展联盟"
+        }
+      ],
+      anw: [
+        {
+          type: "",
+          name: "老王",
+          time: "2019-02-03",
+          title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
+          content: `这是内容这是内容这是内容这是内容这是内容这是内容这内容`,
+          imgurl: require("@/assets/img/mypage.png"),
+          deleteButteon: false,
+          studio: "创新联盟"
+        },
+        {
+          name: "老王",
+          time: "2019-02-03",
+          title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
+          content: `这是内容这是内容这是内容这是是内容这是内容这是内容这是内容这是内容这是内容`,
+          imgurl: require("@/assets/img/mypage.png"),
+          deleteButteon: false,
+          studio: "发展联盟"
+        }
+      ],
+      forward: [
+        {
+          name: "小吴",
+          time: "2019-02-03",
+          title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
+          content: `这是内容这是内容这是内容这是内容这是内容这是内容这内容`,
+          imgurl: require("@/assets/img/mypage.png"),
+          deleteButteon: false,
+          studio: "创新联盟"
+        },
+        {
+          name: "小罗",
+          time: "2019-02-03",
+          title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
+          content: `这是内容这是内容这是内容这是是内容这是内容这是内容这是内容这是内容这是内容`,
+          imgurl: require("@/assets/img/mypage.png"),
+          deleteButteon: false,
+          studio: "发展联盟"
+        }
+      ],
+      ask: [
+        {
+          name: "小吴",
+          time: "2019-02-03",
+          title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
+          content: `这是内容这是内容这是内容这是内容这是内容这是内容这内容`,
+          imgurl: require("@/assets/img/mypage.png"),
+          deleteButteon: false,
+          studio: "创新联盟"
+        },
+        {
+          name: "小罗",
+          time: "2019-02-03",
+          title: "这是标题这是标题这是标题这是标是标题这是标题标题这是标",
+          content: `这是内容这是内容这是内容这是是内容这是内容这是内容这是内容这是内容这是内容`,
+          imgurl: require("@/assets/img/mypage.png"),
+          deleteButteon: false,
+          studio: "发展联盟"
         }
       ]
     };
@@ -159,7 +408,7 @@ export default {
     toRelpy() {
       this.$router.replace("techAnswers");
     },
-    toRelpy1() {
+    toInvitation() {
       this.$router.replace("TechInvitation");
     },
     toForward() {
@@ -173,6 +422,23 @@ export default {
     },
     to(path) {
       this.$router.push(path);
+    },
+    // tabclick点击
+    tabClick(index) {
+      switch (index) {
+        case 0:
+          this.currentType = "que";
+          break;
+        case 1:
+          this.currentType = "anw";
+          break;
+        case 2:
+          this.currentType = "forward";
+          break;
+        case 3:
+          this.currentType = "ask";
+          break;
+      }
     }
   }
 };
@@ -186,11 +452,20 @@ export default {
 .bg_withe {
   background-color: #ffffff;
 }
+.van-nav-bar__right div{
+display: flex;
+text-align: center;
+align-items: center
+}
+.van-nav-bar__right img{
+  width: 21px;
+  right: 21px;
+}
 .main-tab {
   display: block;
   margin-top: 2.875rem;
 }
-.user-info {
+/* .user-info {
   margin: 0.9rem 1rem;
   display: flex;
   justify-content: space-between;
@@ -210,13 +485,39 @@ export default {
 .user-info .user-item p:nth-child(2) {
   font-size: 0.75rem;
   margin-bottom: 0.75rem;
+} */
+.user {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: rgba(140, 140, 140, 1);
+  line-height: 2.31rem;
+  height: 2.3rem;
+  padding-left: 1.06rem;
 }
-
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  height: 6.25rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+.navbar img {
+  width: 3.23rem;
+  height: 3.23rem;
+  margin-top: 0.8rem;
+}
+.navbar p {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 1);
+}
 /* 通用css */
-content {
+/* content {
   position: relative;
   top: 3.5rem;
-}
+} */
 .content_item {
   padding: 0 1rem;
 }
@@ -224,12 +525,10 @@ content {
   padding-top: 0.65rem;
   display: flex;
   align-items: center;
-  padding-bottom: 0.5rem;
   /* border-bottom: 0.01rem solid #e5e5e5; */
   flex-wrap: nowrap;
   color: #8c8c8c;
   font-size: 0.75rem;
-  line-height: 1.56rem;
 }
 .content_head .van-image {
   flex: 0 0 1.25rem;
@@ -237,6 +536,20 @@ content {
 .content_head .center {
   flex: 1;
   padding-left: 0.6rem;
+}
+.content_head .user_name span:nth-child(1) {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(38, 38, 38, 1);
+}
+.content_head .user_name span:nth-child(2) {
+  font-size: 0.63rem;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 1);
+}
+.content_head .center_info {
+  font-size: 0.63rem;
+  font-weight: 400;
 }
 .content_head .right {
   flex: 0 0 4.5rem;
@@ -260,10 +573,17 @@ content {
 .content_main .left {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   font-size: 0.875rem;
   flex: 1;
+}
+.left_anw {
+  background-color: #f8f8f8;
+  color: #8c8c8c;
+  padding: 0.87rem;
+  -webkit-line-clamp: 2;
+  margin-right: -0.75rem;
 }
 .content_main .right {
   justify-content: center;
@@ -282,6 +602,7 @@ content {
   padding-bottom: 0.7rem;
   padding-top: 0.5rem;
 }
+
 .content_footer .icon_left,
 .icon_right {
   flex: 1;
@@ -314,5 +635,14 @@ content {
 }
 .content_footer .icon_right .van-icon {
   float: right;
+}
+.content_footer .icon_right .button {
+  float: right;
+  background-color: #1e87f0;
+  border-radius: 0.2rem;
+  color: #ffffff;
+  width: 3.75rem;
+  height: 1.25rem;
+  text-align: center;
 }
 </style>
