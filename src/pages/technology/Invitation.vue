@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     <van-nav-bar title="邀请" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
     <div style="height: 46px"></div>
     <div
@@ -106,6 +106,9 @@ export default {
 </script>
 
 <style  scoped>
+.wrap{
+  background-color: #f8f8f8
+}
 .van-icon {
   vertical-align: middle;
   margin-right: 0.2rem;
@@ -147,12 +150,12 @@ export default {
   width: 100%;
 }
 .username {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: rgba(38, 38, 38, 1);
 }
 .roomname {
-  font-size: 0.4rem;
+  font-size: 0.63rem;
   font-weight: 400;
   color: rgba(38, 38, 38, 1);
 }
@@ -174,7 +177,6 @@ export default {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  margin-top: 0.5rem;
   height: 3.2rem;
   flex: 1;
   overflow: hidden;
@@ -196,15 +198,16 @@ export default {
 }
 .footer {
   display: flex;
-  margin: 0.5rem 0;
+  margin: 0 0 0.5rem 0;
   justify-content: space-between;
 }
 .footer .footer_child {
   width: 6rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  font-size: 1rem;
   color: #b2b2b2;
+  font-size: .75rem
 }
 .footer .follow {
   padding: 0.3rem 0.5rem;

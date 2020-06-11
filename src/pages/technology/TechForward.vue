@@ -108,7 +108,6 @@ export default {
   display: flex;
   align-items: center;
   padding-bottom: 0.5rem;
-  border-bottom: 0.01rem solid #e5e5e5;
   flex-wrap: nowrap;
   color: #8c8c8c;
   font-size: 0.75rem;
