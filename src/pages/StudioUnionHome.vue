@@ -265,6 +265,32 @@ export default {
       {name: '所在单位工作室4', isFollow: 1, img: require('../assets/img/photo.png')},
       {name: '所在单位工作室5', isFollow: 0, img: require('../assets/img/photo.png')}
     ],
+    activityList: [
+      {
+        name:
+          "输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+        time: "2020/04/09",
+        isJoin: 1,
+        man: "876",
+        img: require("../assets/img/photo.jpg")
+      },
+      {
+        name:
+          "输电专业工作室联盟2输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+        time: "2020/04/09",
+        isJoin: 0,
+        man: "333",
+        img: require("../assets/img/joined-studio-union.jpeg")
+      },
+      {
+        name:
+          "输电专业工作室联盟3输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+        time: "2020/04/09",
+        isJoin: 2,
+        man: "876",
+        img: require("../assets/img/joined-studio-union.jpeg")
+      }
+    ]
   }
   },
   created() {
