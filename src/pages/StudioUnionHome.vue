@@ -33,7 +33,7 @@
       <div @click="to('technologyHome')">
         <van-icon size="2rem" name="friends-o" />技术门诊
       </div>
-      <div>
+      <div @click="to('Findpeople')">
         <van-icon size="2rem" name="friends-o" />快速找人
       </div>
     </div>

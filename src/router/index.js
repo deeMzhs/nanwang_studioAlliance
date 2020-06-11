@@ -32,6 +32,7 @@ import VoteProgress from '@/pages/vote/progress'
 import StudioInfo from '@/pages/StudioInfo'
 import studioMembers from '@/pages/StudioMembers'
 import ActiveValue from '../pages/ActiveValue'
+import FindPeople from '@/pages/Findpeople'
 Vue.use(Router)
 
 export default new Router({
@@ -206,6 +207,11 @@ export default new Router({
       path: '/studioInfo',
       name: 'StudioInfo',
       component: StudioInfo,
+    },
+    {
+      path: '/FindPeople',
+      name: 'FindPeople',
+      component: FindPeople,
     },
   ]
 })
