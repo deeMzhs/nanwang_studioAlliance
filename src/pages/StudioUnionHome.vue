@@ -88,12 +88,32 @@
       </van-row>
     </div>
 
+    <!--我加入的-->
+    <div class="my_join" style="margin-top: 0.5rem;">
+      <van-cell class="head">
+        <!-- 使用 title 插槽来自定义标题 -->
+        <template #title>
+          <p class="head-title">我加入的</p>
+        </template>
+      </van-cell>
+      <div class="mt_join_content">
+        <div class="join_list" v-for="list in 8">
+          <div class="myJoin_top">
+            <div class="myJoin_img">
+              <img src="../assets/img/a.jpg" alt="">
+            </div>
+            <p>输电变电工作室联盟</p>
+          </div>
+          <p>进入群聊</p>
+        </div>
+      </div>
+    </div>
     <!-- 已加入/关注 -->
     <div v-if="followList.length !== 0" class="follow-content">
       <van-cell class="head">
         <!-- 使用 title 插槽来自定义标题 -->
         <template #title>
-          <p class="head-title">我加入/关注的</p>
+          <p class="head-title">我关注的</p>
         </template>
         <!-- 使用 right-icon 插槽来自定义右侧图标 -->
         <template #right-icon>
@@ -510,6 +530,11 @@ export default {
   font-size: 1rem;
   font-weight: bold;
 }
+.head-title {
+  color: #262626;
+  font-size: 1rem;
+  font-weight: bold;
+}
 .wrap .follow-content .head .head-more {
   font-size:0.87rem;
   font-weight:400;
@@ -849,5 +874,61 @@ export default {
 
 .activity-list {
   border-bottom: 0.05rem solid rgba(229, 229, 229, 1);
+}
+
+.mt_join_content{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow: scroll;
+  padding: 0 1rem;
+  background: white;
+}
+.mt_join_content .join_list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 1.09rem;
+}
+.mt_join_content .join_list .myJoin_top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background:rgba(255,255,255,1);
+  box-shadow:0rem 0rem 0rem 0rem rgba(89,89,89,0.3);
+  margin-bottom: .96rem;
+}
+.mt_join_content .join_list .myJoin_top p{
+  font-size:0.75rem;
+  font-weight:400;
+  color:rgba(38,38,38,1);
+  width:3.68rem;
+  height:1.9rem;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  margin: .53rem .31rem .59rem .5rem;
+}
+.myJoin_img {
+  width:4.5rem;
+  height:3.65rem;
+}
+.myJoin_img img {
+  width: 100%;
+  height: 100%;
+}
+.mt_join_content .join_list >p{
+  font-size:0.75rem;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  margin-bottom: 1.34rem;
+  width:4.5rem;
+  height:1.5rem;
+  background:rgba(30,135,239,1);
+  border-radius:0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
