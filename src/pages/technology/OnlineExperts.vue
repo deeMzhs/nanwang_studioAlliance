@@ -14,7 +14,7 @@
             <p>{{list.qMember}}人已咨询</p>
           </div>
         </div>
-        <p>咨询</p>
+        <p @click="goService(list)">咨询</p>
       </div>
     </div>
   </div>
@@ -56,6 +56,19 @@
             qMember: 189
           }
         ]
+      }
+    },
+    methods: {
+      onClickLeft() {
+        this.$router.go(-1);
+      },
+      goService(list){
+        this.$router.push(
+          {
+            name: 'Consulting',
+            params: list
+          }
+        );
       }
     }
   }
