@@ -21,7 +21,10 @@
             height="1.25rem"
             src="https://img.yzcdn.cn/vant/cat.jpeg"
           />
-          <div class="center">{{ item.name + "关注了你的问题" }}</div>
+          <div class="center">
+            <p><span>{{item.name}}</span><span>创新工作室</span></p>
+            <p>转发了你的问题</p>
+          </div>
           <div class="right">{{ item.time }}</div>
         </div>
         <div class="content_title">
@@ -121,6 +124,14 @@ export default {
   flex: 1;
   padding-left: 0.6rem;
 }
+.content_head .center p span:first-of-type{
+  color: #262626;
+  font-size: .75rem;
+  margin-right: .65rem;
+}
+.content_head .center p span:last-of-type{
+  font-size: .62rem;
+}
 .content_head .right {
   flex: 0 0 4.5rem;
 }
@@ -139,6 +150,7 @@ export default {
   margin-top: 1rem;
   color: #595959;
   display: flex;
+  margin-bottom: 1rem;
 }
 .content_main .left {
   display: -webkit-box;

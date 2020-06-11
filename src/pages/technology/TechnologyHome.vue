@@ -45,7 +45,7 @@
           </div>
         </div>
         <!-- 导航栏 -->
-        <tab-control :title="userInfo" @tabClick="tabClick" />
+        <tab-control class="tab-control" :title="userInfo" @tabClick="tabClick" />
         <!-- 我的提问 -->
         <div
           v-show="currentType == 'que'"

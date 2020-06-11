@@ -160,7 +160,6 @@ export default {
   font-size: 0.875rem;
   flex: 1;
   color: #8B8B8B;
-  background: #f8f8f8;
 }
 .content_main .right {
   justify-content: center;
