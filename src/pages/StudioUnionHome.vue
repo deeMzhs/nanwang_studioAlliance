@@ -72,7 +72,6 @@
         class="activity-list"
         v-for="(item, i) in activityList"
         :key="i"
-        @click="$router.push('DynamicDetail')"
       >
         <van-col span="16" class="left">
           <!-- vant内置样式，超出用...表示：van-ellipsis -->
