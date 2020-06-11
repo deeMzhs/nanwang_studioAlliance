@@ -335,7 +335,7 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
 .van-nav-bar .van-nav-bar {
   background-color: #1e87f0;
 }
@@ -347,7 +347,6 @@ export default {
 }
 .wrap .grid-wrap {
   background-color: #fff;
-  margin-top: 1rem;
 }
 .wrap .grid-wrap .grid-item {
   /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
@@ -374,22 +373,15 @@ export default {
   padding: 0.2rem 0.6rem;
   border-radius: 0.2rem;
 }
-
-.choose {
-  padding-left: 1.2rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-  text-align: left;
-  font-size: 0.86rem;
-  border-bottom: 0.05rem solid #f2f2f2;
-  color: rgb(160, 157, 157);
-}
-.choose span {
-  float: right;
-  margin-right: 1rem;
-  text-align: right;
-  font-size: 1.2rem;
-  color: rgb(24, 22, 22);
+.choose{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .84rem 1.03rem;
+  color: #8B8B8B;
+  span{
+    color: #262626;
+  }
 }
 .choose1 {
   height: 2.5rem;
