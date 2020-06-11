@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap">
-    <van-nav-bar title fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
+  <div class="wrap" v-if="studioInfo">
+    <van-nav-bar :title="studioInfo.name" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
     <div style="height: 46px"></div>
     <div class="studio-sub">
       <van-row class="first-sub-row">
@@ -249,6 +249,8 @@ export default {
       container: null,
       showPop: false,
       studioInfo: {
+        id: this.$route.query.id,
+        name: this.$route.query.studioName,
         img: require("../assets/img/join-portrait.jpg"),
         num: 100,
         portrait: require("../assets/img/join-portrait.jpg")
@@ -446,7 +448,12 @@ export default {
     },
     // 跳转查看工作室成员
     goMembers(){
-      this.$router.push('/StudioMembers');
+      this.$router.push({
+        path: '/StudioMembers',
+        query: {
+          id: this.studioInfo.id
+        }
+      });
     },
     // 关注更多
     moreActivity() {

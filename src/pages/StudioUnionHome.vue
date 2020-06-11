@@ -177,9 +177,9 @@ export default {
   return {
     isDot: true,
     followList: [
-      {name: '输电专业工作室联盟1', footer: '张三发不了动态', img: require('../assets/img/joined-studio-union.jpeg')},
-      {name: '输电专业工作室联盟2', footer: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
-      {name: '输电专业工作室联盟3', topfooteric: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
+      {id: 1, name: '输电专业工作室联盟1', footer: '张三发不了动态', img: require('../assets/img/joined-studio-union.jpeg')},
+      {id: 2,name: '输电专业工作室联盟2', footer: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
+      {id: 3,name: '输电专业工作室联盟3', topfooteric: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
     ],
     studioUnionList: [
       {name: 'A协会、C协会反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
@@ -308,6 +308,7 @@ export default {
         {
           path: '/studioUnion',
           query: {
+            id: item.id,
             isFollow: 1,
             studioName: item.name
           }

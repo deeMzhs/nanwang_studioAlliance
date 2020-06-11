@@ -107,6 +107,9 @@
           flex-direction: row;
           align-items: center;
           margin-left: 1.06rem;
+          p:first-of-type{
+            font-weight: bold;
+          }
           p:last-of-type{
             margin-left: .75rem;
             span{
@@ -117,13 +120,16 @@
                 font-size: .63rem;
               }
               .one{
-                background: #36B21D;
+                background: rgba(54, 178, 29, .2);
+                color: #36B21D;
               }
               .two{
-                background: #F15747;
+                background: rgba(241,87,71,.2);
+                color: #F15747;
               }
               .three{
-                background: #f1ea29;
+                background: rgba(239, 246, 80, .2);
+                color: rgb(246, 183, 22);
               }
               .ml{
                 margin-left: .34rem;
