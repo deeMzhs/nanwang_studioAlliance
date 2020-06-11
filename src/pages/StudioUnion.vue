@@ -1,35 +1,44 @@
 <template>
-  <div class="wrap" v-if="studioInfo">
-    <van-nav-bar :title="studioInfo.name" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
-    <div style="height: 46px"></div>
-    <div class="studio-sub">
-      <van-row class="first-sub-row">
-        <van-col span="5" class="first-sub-col">
-          <img :src="studioInfo.img" alt />
-        </van-col>
-        <van-col span="15" class="first-sub-col" @click="goDetail">
-          <p>{{studioName}}</p>
-        </van-col>
-        <van-col span="4" class="first-sub-col">
-          <div class="action">退出</div>
-        </van-col>
-      </van-row>
-      <van-row class="second-sub-row" @click="goMembers()">
-        <van-col span="16" class="second-sub-col">
-          <img :src="studioInfo.portrait" alt />
-          <img :src="studioInfo.portrait" alt />
-          <img :src="studioInfo.portrait" alt />
-          <img :src="studioInfo.portrait" alt />
-          <img :src="studioInfo.portrait" alt />
-        </van-col>
-        <van-col span="8" class="second-sub-col2">
-          <span>
-            {{studioInfo.num}}人已加入
-            <van-icon name="arrow" style="line-height: 1.3rem;" />
-          </span>
-        </van-col>
-        <!-- dada -->
-      </van-row>
+  <div class="wrap">
+    <!-- <van-nav-bar :title="studioInfo.name" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>-->
+    <div class="head-info">
+      <div class="background">
+        <div class="studio-sub">
+          <van-row class="first-sub-row">
+            <van-col span="5" class="first-sub-col">
+              <img :src="studioInfo.img" alt />
+            </van-col>
+            <van-col span="15" class="first-sub-col" @click="goDetail">
+              <p>{{ studioName }}</p>
+            </van-col>
+            <van-col span="4" class="first-sub-col">
+              <div v-if="isFollow == 1" class="action">退出</div>
+              <div v-else="isFollow == 0" class="action">关注</div>
+            </van-col>
+          </van-row>
+          <van-row class="second-sub-row" @click="goMembers()">
+            <van-col span="16" class="second-sub-col">
+              <div class="join-pic">
+                <div v-for="(item, i) in achieveList">
+                  <img :src="item.img" alt="" />
+                </div>
+              </div>
+            </van-col>
+            <van-col span="8" class="second-sub-col2">
+              {{ studioInfo.num }}人已加入
+              <van-icon name="arrow" style="line-height: 1.3rem;" />
+              <span></span>
+            </van-col>
+          </van-row>
+        </div>
+        <van-icon
+          class="backBt"
+          name="arrow-left"
+          color="#ffffff"
+          size="24px"
+          @click="toHome"
+        />
+      </div>
     </div>
     <!-- 联盟工作室 -->
     <!-- <div v-if="isFollow == 1" class="studio-union">
@@ -53,13 +62,13 @@
     </div>
     </div>-->
     <!-- 联盟成果 -->
-    <div class="union-achieve">
+    <!-- <div class="union-achieve">
       <van-cell>
-        <!-- 使用 title 插槽来自定义标题 -->
+  /
         <template #title>
           <span class="head-title">联盟成果</span>
         </template>
-        <!-- 使用 right-icon 插槽来自定义右侧图标 -->
+     /
         <template #right-icon>
           <span class="head-more" @click="achieveMore()">更多</span>
         </template>
@@ -70,23 +79,27 @@
             <div class="img-wrap">
               <img class="img" :src="item.img" alt />
             </div>
-            <div class="text-wrap van-ellipsis">{{item.name}}</div>
+            <div class="text-wrap van-ellipsis">{{ item.name }}</div>
             <div class="share-wrap">
               <van-icon name="share" color="#8C8C8C" />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- 发布、编辑按钮 -->
-    <div class="publish-pop" ref="container">
+    <!-- <div class="publish-pop" ref="container">
       <van-sticky :container="container">
-        <van-button class="plus" icon="plus" type="info" @click="showPop = true"></van-button>
+        <van-button
+          class="plus"
+          icon="plus"
+          type="info"
+          @click="showPop = true"
+        ></van-button>
       </van-sticky>
-    </div>
+    </div> -->
     <!-- 遮罩层 -->
-    <van-overlay class="cover-layer" :show="showPop" @click="showPop = false">
-      <!-- <div class="wrapper" @click.stop="jj"> -->
+    <!-- <van-overlay class="cover-layer" :show="showPop" @click="showPop = false">
       <div class="wrapper">
         <div class="block">
           <div class="blck-item" @click="goDynamic">
@@ -107,7 +120,14 @@
           </div>
         </div>
       </div>
-    </van-overlay>
+    </van-overlay> -->
+    <div class="notice" v-if="isFollow == 1">
+      <div class="notice_img">
+        <img src="../assets/img/notice.png" alt="" />
+      </div>
+      <div class="center">这是一条通这是一条通这是一条通知这是一条公职</div>
+      <div class="right"><van-icon name="arrow" /></div>
+    </div>
     <!-- 最新活动 -->
     <div class="new-activity">
       <van-cell class="head">
@@ -123,8 +143,8 @@
       <van-row class="activity-list" v-for="(item, i) in activityList" :key="i">
         <van-col span="16" class="left">
           <!-- vant内置样式，超出用...表示：van-ellipsis -->
-          <div class="van-multi-ellipsis--l2 content">{{item.name}}</div>
-          <div class="time">{{item.time}}</div>
+          <div class="van-multi-ellipsis--l2 content">{{ item.name }}</div>
+          <div class="time">{{ item.time }}</div>
         </van-col>
         <van-col span="8" class="right">
           <img :src="item.img" alt />
@@ -135,7 +155,7 @@
           <img src="../assets/img/join-portrait.jpg" alt />
           <img src="../assets/img/join-portrait.jpg" alt />
           <img src="../assets/img/join-portrait.jpg" alt />
-          <span>{{item.man}}人已加入</span>
+          <span>{{ item.man }}人已加入</span>
         </van-col>
       </van-row>
     </div>
@@ -152,7 +172,7 @@
           <div class="alive" v-for="(item, i) in topicList" :key="i">
             <div class="text-wrap van-ellipsis">
               <span class="index">#</span>
-              {{item.name}}
+              {{ item.name }}
             </div>
           </div>
         </div>
@@ -172,65 +192,31 @@
       <van-row class="tag-list" v-for="(item, i) in tagList" :key="i">
         <van-col span="16" class="left">
           <!-- vant内置样式，超出用...表示：van-ellipsis -->
-          <div class="van-multi-ellipsis--l2 content">{{item.name}}</div>
-          <div class="time">{{item.time}}</div>
+          <div class="van-multi-ellipsis--l2 content">{{ item.name }}</div>
+          <div class="time">{{ item.time }}</div>
         </van-col>
         <van-col span="8" class="right">
           <img :src="item.img" alt />
         </van-col>
         <van-col span="24" class="footer">
           <div class="left" @click="tagThumb(i, item.isThumb)">
-            <van-icon v-bind:class="{thumbed: item.isThumb == 1}" name="like-o" />
-            <span class="thumb-value" v-bind:class="{thumbed: item.isThumb == 1}">{{item.thumb}}</span>
+            <van-icon
+              v-bind:class="{ thumbed: item.isThumb == 1 }"
+              name="like-o"
+            />
+            <span
+              class="thumb-value"
+              v-bind:class="{ thumbed: item.isThumb == 1 }"
+              >{{ item.thumb }}</span
+            >
             <van-icon name="share" />
-            <span>{{item.share}}</span>
+            <span>{{ item.share }}</span>
           </div>
           <div class="right">
-            <span>发布人：{{item.issuer}}</span>
+            <span>发布人：{{ item.issuer }}</span>
           </div>
         </van-col>
       </van-row>
-
-      <!-- 投票详情 -->
-      <div class="new-activity">
-        <van-cell class="head">
-          <!-- 使用 title 插槽来自定义标题 -->
-          <template #title>
-            <p class="head-title">投票详情</p>
-          </template>
-          <!-- 使用 right-icon 插槽来自定义右侧图标 -->
-          <template #right-icon>
-            <span class="head-more" @click="moreActivity()">更多</span>
-          </template>
-        </van-cell>
-        <van-row
-          class="activity-list"
-          v-for="(item, i) in activityList"
-          :key="i"
-          @click="vote(item.isJoin)"
-        >
-          <van-col span="16" class="left">
-            <!-- vant内置样式，超出用...表示：van-ellipsis -->
-            <div class="van-multi-ellipsis--l2 content">{{item.name}}</div>
-            <div class="time">{{item.time}}</div>
-          </van-col>
-          <van-col span="8" class="right">
-            <img :src="item.img" alt />
-            <div v-if="item.isJoin == 1" class="status joined-status">图文已投票</div>
-            <div
-              v-else
-              class="status unjoin-status"
-              @click="$router.push({name:'VoteGraphic'})"
-            >图文未投票</div>
-          </van-col>
-          <van-col span="24" class="footer">
-            <img src="../assets/img/join-portrait.jpg" alt />
-            <img src="../assets/img/join-portrait.jpg" alt />
-            <img src="../assets/img/join-portrait.jpg" alt />
-            <span>{{item.man}}人已加入</span>
-          </van-col>
-        </van-row>
-      </div>
     </div>
   </div>
 </template>
@@ -239,16 +225,13 @@
 import { Toast } from "vant";
 import { joinedActivityList, recruitTest } from "@/request/api"; // 导入api接口
 import storage from "../storage/storage"; // 导入storage
-// import oneLoad from "../components/loading.vue"
 export default {
   name: "StudioUnion",
-  // components:{
-  //   oneLoad
-  // },
   data() {
     return {
       container: null,
       showPop: false,
+      isFollow: this.$route.query.isFollow,
       studioInfo: {
         id: this.$route.query.id,
         name: this.$route.query.studioName,
@@ -498,9 +481,11 @@ export default {
       this.$router.push("/studioUnionDetail");
       // this.$router.push("/votePublish");
     },
+    toHome(){
+    this.$router.go(-1);
+    },
     vote(condition) {
       console.log(11);
-
       if (condition) {
         this.$router.push({ name: "VoteProgress" });
       } else {
@@ -511,14 +496,71 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
 .wrap {
   background-color: #f9f9f9;
 }
+.border {
+  width: 100%;
+  height: 0.03rem;
+  border: 0px solid rgba(229, 229, 229, 1);
+  border-radius: 0rem;
+}
+.head-info {
+  height: 10.63rem;
+  display: flex;
+  flex: 1;
+  margin-bottom: 3.5rem;
+}
+.head-info .background {
+  background-image: url("../assets/img/per-bg.png");
+  height: 10.63rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  position: relative;
+}
+
+.head-info .background .backBt {
+  position: absolute;
+  top: 32.5px;
+  left: 12px;
+}
+.join-pic {
+  flex: 0 0 50%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.join-pic div {
+  width: 1.57rem;
+  height: 1.57rem;
+  margin-left: -6px;
+}
+.join-pic div:first-child {
+  margin-left: 0;
+}
+.join-pic div img {
+  width: 1.57rem;
+  height: 1.57rem;
+  border-radius: 50%;
+}
+/* 分割线 */
 .wrap .studio-sub {
+  margin: auto;
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  margin-left: -46vw;
   background-color: #fff;
   padding: 0.7rem;
-  margin: 0.8rem 0.8rem 1rem 0.8rem;
+  width: 92vw;
+  height: 8.25rem;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rem 0rem 1rem 0rem rgba(30, 135, 240, 0.3);
+  border-radius: 4px;
   /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
   box-shadow: 0px 3px 10px 0px rgb(142, 186, 230);
 }
@@ -529,21 +571,25 @@ export default {
   align-items: center;
 }
 .wrap .studio-sub .first-sub-row .first-sub-col img {
-  width: 3rem;
+  width: 3.88rem;
+  border-radius: 4px;
 }
 .wrap .studio-sub .first-sub-row .first-sub-col p {
   font-size: 1rem;
-  font-weight: bold;
+  color: #262626;
+  font-weight: 600;
+  padding-left: 0.78rem;
 }
 .wrap .studio-sub .first-sub-row .first-sub-col .action {
   background-color: #dfdfdf;
   text-align: center;
+  color: #8c8c8c;
+  font-size: 0.75rem;
   padding: 0.2rem 0.4rem;
 }
 .wrap .studio-sub .second-sub-row {
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
   align-items: center;
   border-top: 1px solid #e5e5e5;
   margin-top: 0.5rem;
@@ -555,6 +601,37 @@ export default {
 }
 .wrap .studio-sub .second-sub-row .second-sub-col2 {
   text-align: right;
+  font-size: 0.75rem;
+  color: #262626;
+  align-items: center;
+  text-align: center;
+}
+.notice {
+  display: flex;
+  padding: 0.9rem;
+  background-color: #ffffff;
+  .notice_img {
+    flex: 0 0 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .center {
+    flex: 1;
+    padding-left: 1.28rem;
+    font-size: .88rem;
+    overflow: hidden;
+    line-height: 1.28rem
+  }
+  .right{
+    flex: 0 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 /* 联盟工作室 */
 .wrap .studio-union {
@@ -696,7 +773,7 @@ export default {
 }
 /* 最新活动 */
 .wrap .new-activity {
-  margin-top: 0.5rem;
+  margin-top: 3.5rem;
 }
 .wrap .new-activity .head .head-title {
   font-weight: bold;
