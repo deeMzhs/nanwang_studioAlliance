@@ -38,6 +38,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/StudioUnionHome'
+    },
+    {
+      path: '/StudioUnionHome',
       name: 'StudioUnionHome',
       component: StudioUnionHome
     },
