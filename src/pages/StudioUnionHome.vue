@@ -113,7 +113,7 @@
           <div class="first">
             <!-- vant内置样式，超出用...表示：van-ellipsis -->
             <div class="van-ellipsis title">{{item.name}}</div>
-            <div class="join">加入群聊</div>
+            <!--<div class="join">加入群聊</div>-->
           </div>
           <div class="second">
             <div class="second_left">
@@ -243,9 +243,9 @@ export default {
       name: '总监'
     },
     followList: [
-      {id: 1, name: '输电专业工作室联盟1', footer: '张三发不了动态', img: require('../assets/img/joined-studio-union.jpeg')},
-      {id: 2,name: '输电专业工作室联盟2', footer: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
-      {id: 3,name: '输电专业工作室联盟3', topfooteric: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
+      {id: 1, name: '输电专业工作室联盟1', footer: '张三发不了动态', img: require('../assets/img/a.jpg')},
+      {id: 2,name: '输电专业工作室联盟2', footer: '李四分享了照片“中山湖公园”', img: require('../assets/img/a.jpg')},
+      {id: 3,name: '输电专业工作室联盟3', topfooteric: '李四分享了照片“中山湖公园”', img: require('../assets/img/a.jpg')},
     ],
     studioUnionList: [
       {name: 'A协会、C协会反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
@@ -511,9 +511,9 @@ export default {
   font-weight: bold;
 }
 .wrap .follow-content .head .head-more {
-  color: #1e87f0;
-  font-size: 0.9rem;
-  font-weight: bold;
+  font-size:0.87rem;
+  font-weight:400;
+  color:rgba(139,139,139,1);
 }
 .wrap .follow-content .follow-list {
   padding: 0.8rem 0.8rem;
