@@ -2,6 +2,9 @@
   <div class="wrap">
     <van-nav-bar title="职创e联" fixed left-arrow @click-left="onClickLeft">
       <template #right>
+        <span style="margin-right: .7rem;" @click="$router.push('/AdminPage')">
+          <van-icon name="manager" />
+        </span>
         <span @click="toPersonal">
           <van-icon name="fire-o" />67
         </span>
