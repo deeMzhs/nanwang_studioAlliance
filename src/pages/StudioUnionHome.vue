@@ -68,12 +68,8 @@
           <span class="head-more" @click="moreActivity()">更多</span>
         </template>
       </van-cell>
-      <van-row
-        class="activity-list"
-        v-for="(item, i) in activityList"
-        :key="i"
-        @click="$router.push('DynamicDetail')"
-      >
+      <van-row class="activity-list" v-for="(item, i) in activityList" :key="i">
+        <!-- @click="$router.push('AtiveDetail')" -->
         <van-col span="16" class="left">
           <!-- vant内置样式，超出用...表示：van-ellipsis -->
           <div class="van-multi-ellipsis--l2 content">{{item.name}}</div>
