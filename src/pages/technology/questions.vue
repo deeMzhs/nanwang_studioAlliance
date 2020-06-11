@@ -1,7 +1,9 @@
 <template>
   <div class="wrap">
     <van-nav-bar title="提问" fixed left-arrow @click-left="onClickLeft">
-      <template #right>取消</template>
+      <template #right @click-right="onClickLeft">
+        <span @click="onClickLeft">取消</span>
+      </template>
     </van-nav-bar>
     <div style="height: 46px"></div>
     <van-cell-group>

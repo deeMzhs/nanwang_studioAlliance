@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 import Vant from 'vant';
 import 'vant/lib/index.css';
-import {Icon} from 'vant';
+import 'vant/lib/icon/local.css';
+import { Icon } from 'vant';
 // import Axios from 'axios'
 // import qs from 'qs'
 import './assets/iconfont/iconfont.css'

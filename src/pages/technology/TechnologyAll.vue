@@ -6,7 +6,12 @@
         <span>我是专家，点击在线</span>
       </div>
       <van-swipe @change="onChange">
-        <van-swipe-item class="pro_body" v-for="(item, index) in professor" :key="index">
+        <van-swipe-item
+          class="pro_body"
+          v-for="(item, index) in professor"
+          :key="index"
+          @click="btn_professor(item.id)"
+        >
           <van-image round width="3.9rem" height="3.9rem" :src="item.imgurl" />
           <div class="pro_info">
             <div class="pro_name">
@@ -66,8 +71,9 @@
               <span>3</span>
             </span>
           </div>
-          <div class="icon_right" @click="headclick(item.id)">
-            <div>回答问题</div>
+          <div class="icon_right" @click="headclick(item,index)">
+            <div v-if="!item.follow">关注问题</div>
+            <div v-else style="background-color: rgba(30,135,240,.5)">已关注</div>
           </div>
         </div>
       </div>
@@ -131,7 +137,7 @@
         </template>
       </van-swipe>
       </div>-->
-      <div class="questions" @click="to('TechnologyQuestions')">
+      <div class="questions" @click="to('TechnologyQuestions','前往提问页面')">
         <van-icon name="records" />
         <span>我要提问</span>
       </div>
@@ -150,6 +156,7 @@ export default {
           id: 1,
           name: "张张红",
           time: "2019-01-01",
+          follow: true,
           title: "这是问题",
           content: "这是内容 这是内容这是内容这是内容这是",
           imgurl: require("@/assets/img/mypage.png")
@@ -165,6 +172,7 @@ export default {
         {
           id: 3,
           name: "张张红",
+          follow: false,
           time: "2019-01-01",
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
           content:
@@ -181,6 +189,7 @@ export default {
       ],
       professor: [
         {
+          id: 1,
           name: "李宏利",
           studio: "特朗普劳模工作室",
           numSeek: "188",
@@ -189,6 +198,7 @@ export default {
           imgurl: require("@/assets/img/mypage.png")
         },
         {
+          id: 2,
           name: "树生",
           studio: "牛逼哄哄工作室",
           numSeek: "188",
@@ -200,9 +210,11 @@ export default {
     };
   },
   methods: {
+    // 专家轮播
     onChange(index) {
       this.current = index;
     },
+    // 跳转详情
     to(path, id) {
       this.$router.push({
         name: path,
@@ -212,14 +224,25 @@ export default {
       });
       Toast(id);
     },
-    headclick(id) {
-      Toast("已关注id:" + id);
+    // 关注
+    headclick(item, index) {
+      if (item.follow) return;
+      this.list[index].follow = true;
+      console.log(this.list);
+
+      Toast("已关注id:" + item.id);
     },
+    // 回复
     msg(id) {
       Toast(id);
     },
+    // 分享
     share(id) {
       Toast(id);
+    },
+    // 点击专家
+    btn_professor(id) {
+      Toast("点击专家" + id);
     }
   }
 };

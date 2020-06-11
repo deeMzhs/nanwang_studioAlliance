@@ -111,6 +111,7 @@ export default {
 
     this.history =
       storage.get("history") != null ? storage.get("history").split(",") : [];
+    console.log(this.history);
   },
   mounted() {
     document.querySelector("input").focus();

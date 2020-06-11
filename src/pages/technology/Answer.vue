@@ -1,11 +1,9 @@
 <template>
   <div class="wrap">
-    <van-nav-bar title="回答问题" fixed left-arrow @click-left="onClickLeft">
-      <template #right>取消</template>
-    </van-nav-bar>
+    <van-nav-bar title="回答问题" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
     <div style="height: 46px"></div>
     <van-cell-group>
-      <div class="title">这是问题这是问题这是问题这是问题这是问题</div>
+      <div class="title">{{title}}</div>
     </van-cell-group>
     <van-field v-model="message" rows="10" autosize type="textarea" placeholder="输入回答" />
     <van-uploader v-model="fileList" multiple :max-count="1" :after-read="afterRead" />
@@ -21,9 +19,21 @@ export default {
     return {
       value: "",
       message: "",
-      fileList: []
+      fileList: [],
+      title: ""
     };
   },
+  created() {
+    this.title = this.$route.query.title;
+    console.log(this.$route.query.title);
+  },
+  // watch: {
+  //   "$route.title": {
+  //     tilte(title) {
+  //       console.log(tilte);
+  //     }
+  //   }
+  // },
   methods: {
     onClickLeft() {
       this.$router.back();

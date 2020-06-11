@@ -54,10 +54,10 @@
     </div>
     <van-row class="btn1">
       <van-col span="12">
-        <van-button type="default" size="large" @click="result=[]">邀请回答</van-button>
+        <van-button type="default" size="large">邀请回答</van-button>
       </van-col>
       <van-col span="12">
-        <van-button type="info" size="large" @click="addStudioMore">我来回答</van-button>
+        <van-button type="info" size="large" @click="to">我来回答</van-button>
       </van-col>
     </van-row>
   </div>
@@ -66,12 +66,15 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      msg: "问题1"
+    };
   },
   methods: {
     onClickLeft() {
       this.$router.back();
-    }
+    },
+    to() {}
   }
 };
 </script>

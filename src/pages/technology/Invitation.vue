@@ -42,7 +42,10 @@
             <van-icon name="share" />3
           </span>
         </div>
-        <div class="follow" @click.stop="$router.push({path:'TechAnswer',query:{id:item.id}})">写回答</div>
+        <div
+          class="follow"
+          @click.stop="$router.push({path:'TechAnswer',query:{title:item.title}})"
+        >写回答</div>
       </div>
     </div>
   </div>
@@ -66,7 +69,7 @@ export default {
         {
           id: 3,
           time: "2019-01-01",
-          title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
+          title: "这是问题这是问题这是问题这是问题",
           desc:
             "这是内容这是内容这这是内容这是内容这这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容 这是内容这是内容这是内容这是这是 内容这是内容这是内容这是...",
           imgurl: require("@/assets/img/mypage.png")
@@ -74,7 +77,7 @@ export default {
         {
           id: 2,
           time: "2019-01-01",
-          title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
+          title: "这是问题这是问题这是",
           desc:
             "这是内容这是内容这这是内容这是内容这这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容 这是内容这是内容这是内容这是这是 内容这是内容这是内容这是...",
           imgurl: require("@/assets/img/mypage.png")

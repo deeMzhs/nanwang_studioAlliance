@@ -65,6 +65,13 @@ export default {
       前输电检查人员在杆塔上进行高空作业时，地面人员与塔上人员交流普通使用对讲机进行，但对讲机体积较大且至少需要使用一只手进行操作通话，往往塔上工作人员在工作进行时中无法随时空出手来使用对讲机。前`
     };
   },
+  watch: {
+    "$route.id": {
+      id(id) {
+        console.log(id);
+      }
+    }
+  },
   methods: {
     onClickLeft() {
       this.$router.push("InnovationIndex");
