@@ -235,66 +235,141 @@ export default {
   // components:{
   //   oneLoad
   // },
-  data () {
-  return {
-    isDot: true,
-    userInfo: {
-      id: 0,
-      name: '总监'
-    },
-    followList: [
-      {id: 1, name: '输电专业工作室联盟1', footer: '张三发不了动态', img: require('../assets/img/joined-studio-union.jpeg')},
-      {id: 2,name: '输电专业工作室联盟2', footer: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
-      {id: 3,name: '输电专业工作室联盟3', topfooteric: '李四分享了照片“中山湖公园”', img: require('../assets/img/joined-studio-union.jpeg')},
-    ],
-    studioUnionList: [
-      {name: 'A协会、C协会反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: 'B协会、C协会', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: 'A协会、B协会', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: 'A协会、C协会', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: 'B协会、C协会', isFollow: 0, img: require('../assets/img/photo.png')}
-    ],
-    startStudioList: [
-      {name: '星级工作室反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '星级工作室2', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '星级工作室3', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '星级工作室4', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '星级工作室5', isFollow: 0, img: require('../assets/img/photo.png')}
-    ],
-    departStudioList: [
-      {name: '所在单位工作室1反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室2', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室3', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室4', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室5', isFollow: 0, img: require('../assets/img/photo.png')}
-    ],
-    activityList: [
-      {
-        name:
-          "输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
-        time: "2020/04/09",
-        isJoin: 1,
-        man: "876",
-        img: require("../assets/img/photo.jpg")
+  data() {
+    return {
+      isDot: true,
+      userInfo: {
+        id: 0,
+        name: "总监"
       },
-      {
-        name:
-          "输电专业工作室联盟2输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
-        time: "2020/04/09",
-        isJoin: 0,
-        man: "333",
-        img: require("../assets/img/joined-studio-union.jpeg")
-      },
-      {
-        name:
-          "输电专业工作室联盟3输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
-        time: "2020/04/09",
-        isJoin: 2,
-        man: "876",
-        img: require("../assets/img/joined-studio-union.jpeg")
-      }
-    ]
-  }
+      followList: [
+        {
+          id: 1,
+          name: "输电专业工作室联盟1",
+          footer: "张三发不了动态",
+          img: require("../assets/img/joined-studio-union.jpeg")
+        },
+        {
+          id: 2,
+          name: "输电专业工作室联盟2",
+          footer: "李四分享了照片“中山湖公园”",
+          img: require("../assets/img/joined-studio-union.jpeg")
+        },
+        {
+          id: 3,
+          name: "输电专业工作室联盟3",
+          topfooteric: "李四分享了照片“中山湖公园”",
+          img: require("../assets/img/joined-studio-union.jpeg")
+        }
+      ],
+      studioUnionList: [
+        {
+          name: "A协会、C协会反光杯风骨霸刀服不服",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "B协会、C协会",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "A协会、B协会",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "A协会、C协会",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "B协会、C协会",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        }
+      ],
+      startStudioList: [
+        {
+          name: "星级工作室反光杯风骨霸刀服不服",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室2",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室3",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室4",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室5",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        }
+      ],
+      departStudioList: [
+        {
+          name: "所在单位工作室1反光杯风骨霸刀服不服",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室2",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室3",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室4",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室5",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        }
+      ],
+      activityList: [
+        {
+          name:
+            "输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+          time: "2020/04/09",
+          isJoin: 1,
+          man: "876",
+          img: require("../assets/img/photo.jpg")
+        },
+        {
+          name:
+            "输电专业工作室联盟2输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+          time: "2020/04/09",
+          isJoin: 0,
+          man: "333",
+          img: require("../assets/img/joined-studio-union.jpeg")
+        },
+        {
+          name:
+            "输电专业工作室联盟3输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+          time: "2020/04/09",
+          isJoin: 2,
+          man: "876",
+          img: require("../assets/img/joined-studio-union.jpeg")
+        }
+      ]
+    };
   },
   created() {
     // this.joinedActivityList();
@@ -310,13 +385,12 @@ export default {
   },
   methods: {
     toPersonal() {
-      this.$router.push(
-          {
-            name: 'activeValue',
-            params: {
-              userInfo: this.userInfo
-            }
-          });
+      this.$router.push({
+        name: "activeValue",
+        params: {
+          userInfo: this.userInfo
+        }
+      });
     },
     setLoginStorage() {
       storage.set("list", 999);
@@ -405,14 +479,13 @@ export default {
     },
     // 进入已关注工作室
     studioUnion(item) {
-      this.$router.push(
-        {
-          path: '/studioUnion',
-          query: {
-            id: item.id,
-            isFollow: 1,
-            studioName: item.name
-          }
+      this.$router.push({
+        path: "/studioUnion",
+        query: {
+          id: item.id,
+          isFollow: 1,
+          studioName: item.name
+        }
       });
     },
     // 全部未关注工作室联盟
@@ -734,6 +807,7 @@ export default {
   background-color: #fff;
 }
 .xm_img img {
+  width: 100%;
   border-radius: 0.5rem;
   box-shadow: 0.1rem 0.1rem 0.5rem 0rem rgba(177, 175, 175, 0.2);
 }

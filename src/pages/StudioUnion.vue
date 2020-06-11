@@ -203,7 +203,12 @@
             <span class="head-more" @click="moreActivity()">更多</span>
           </template>
         </van-cell>
-        <van-row class="activity-list" v-for="(item, i) in activityList" :key="i">
+        <van-row
+          class="activity-list"
+          v-for="(item, i) in activityList"
+          :key="i"
+          @click="vote(item.isJoin)"
+        >
           <van-col span="16" class="left">
             <!-- vant内置样式，超出用...表示：van-ellipsis -->
             <div class="van-multi-ellipsis--l2 content">{{item.name}}</div>
@@ -211,11 +216,7 @@
           </van-col>
           <van-col span="8" class="right">
             <img :src="item.img" alt />
-            <div
-              v-if="item.isJoin == 1"
-              class="status joined-status"
-              @click="$router.push({name:'VoteProgress'})"
-            >图文已投票</div>
+            <div v-if="item.isJoin == 1" class="status joined-status">图文已投票</div>
             <div
               v-else
               class="status unjoin-status"
@@ -360,6 +361,7 @@ export default {
     this.isFollow = this.$route.query.isFollow;
     // this.joinedActivityList();
     // this.recruitTest();
+    window.scrollTo(0, 0);
     this.setLoginStorage();
   },
   methods: {
@@ -447,9 +449,9 @@ export default {
       // this.$router.push("/photoAlbum");
     },
     // 跳转查看工作室成员
-    goMembers(){
+    goMembers() {
       this.$router.push({
-        path: '/StudioMembers',
+        path: "/StudioMembers",
         query: {
           id: this.studioInfo.id
         }
@@ -495,6 +497,15 @@ export default {
     goDetail() {
       this.$router.push("/studioUnionDetail");
       // this.$router.push("/votePublish");
+    },
+    vote(condition) {
+      console.log(11);
+
+      if (condition) {
+        this.$router.push({ name: "VoteProgress" });
+      } else {
+        this.$router.push({ name: "VoteGraphic" });
+      }
     }
   }
 };
