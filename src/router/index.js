@@ -32,6 +32,7 @@ import VoteProgress from '@/pages/vote/progress'
 import StudioInfo from '@/pages/StudioInfo'
 import studioMembers from '@/pages/StudioMembers'
 import ActiveValue from '../pages/ActiveValue'
+import OnlineExperts from '../pages/technology/OnlineExperts'
 Vue.use(Router)
 
 export default new Router({
@@ -150,6 +151,11 @@ export default new Router({
       path: '/Innovate',
       name: 'Innovate',
       component: Innovate,
+    },
+    {
+      path: '/OnlineExperts',
+      name: 'OnlineExperts',
+      component: OnlineExperts,
     },
     {
       path: '/TechnologyQuestions',
