@@ -465,27 +465,7 @@ align-items: center
   display: block;
   margin-top: 2.875rem;
 }
-/* .user-info {
-  margin: 0.9rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 2.5px 5px 10px 0px #d7e7f6;
-}
-.user-info .user-item {
-  flex: 1;
-  height: 100%;
-  text-align: center;
-  color: #262626;
-}
-.user-info .user-item p:nth-child(1) {
-  font-size: 1.2rem;
-  font-weight: 900;
-  padding-top: 0.875rem;
-}
-.user-info .user-item p:nth-child(2) {
-  font-size: 0.75rem;
-  margin-bottom: 0.75rem;
-} */
+
 .user {
   font-size: 0.88rem;
   font-weight: 400;
