@@ -252,7 +252,7 @@ export default {
       studioInfo: {
         id: this.$route.query.id,
         name: this.$route.query.studioName,
-        img: require("../assets/img/join-portrait.jpg"),
+        img: require("../assets/img/a.jpg"),
         num: 100,
         portrait: require("../assets/img/join-portrait.jpg")
       },
