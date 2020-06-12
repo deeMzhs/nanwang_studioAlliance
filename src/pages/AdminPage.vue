@@ -47,6 +47,14 @@
         </div>
       </van-tab>
     </van-tabs>
+    <div class="bottom_menu" v-show="isEdit">
+      <div class="bottom_menu_left">
+        <van-checkbox @click="checkAll" v-model="checkAlls">全选<span>(尽可删除未开始活动)</span></van-checkbox>
+      </div>
+      <div class="bottom_menu_right">
+        <p @click="del">删除</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,7 +64,8 @@
     data(){
       return{
         title: '管理员',
-        active: 1,
+        active: 0,
+        checkAlls: false,
         searchValue: '',
         result: [],
         notice: [
@@ -102,15 +111,28 @@
       }
     },
     mounted(){
-      setTimeout(() => {
-        if(this.$refs.checkboxGroup){
-          this.setCheck(this.activityList, '', 'none');
-        }
-      },20)
     },
     watch: {
+      active(n, o){
+        if(n === 1) {
+          setTimeout(() => {
+            if(this.$refs.checkboxGroup){
+              this.setCheck(this.activityList, '', 'none');
+            }
+          },20)
+        } else {
+          this.isEdit = false;
+        }
+      },
       isEdit(n, o){
         n ? this.showCheck() : this.hideCheck();
+      },
+      result(n,o){
+        if (n.length === this.activityList.length) {
+          this.checkAlls = true;
+        } else {
+          this.checkAlls = false;
+        }
       }
     },
     methods: {
@@ -136,7 +158,21 @@
         this.$router.go(-1);
       },
       edit(){
-        this.isEdit = !this.isEdit;
+        if(this.active === 1) this.isEdit = !this.isEdit;
+      },
+      checkAll() {
+        if(!this.checkAlls){
+          this.$refs.checkboxGroup.toggleAll(true);
+        } else {
+          this.$refs.checkboxGroup.toggleAll();
+        }
+      },
+      del(){
+        // if(this.result.length !== 0){
+        //   this.
+        // }
+        // this.activityList = [];
+        // this.isEdit = false;
       }
     }
   }
@@ -232,6 +268,26 @@
           }
         }
       }
+    }
+  }
+  .bottom_menu{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.03rem;
+    height:2.94rem;
+    border: 1px solid #f8f8f8;
+    p{
+      background:rgba(30,135,240,1);
+      font-size:0.75rem;
+      font-weight:400;
+      color:rgba(255,255,255,1);
+      padding: .43rem 1.41rem;
+      border-radius: 2px;
     }
   }
 }
