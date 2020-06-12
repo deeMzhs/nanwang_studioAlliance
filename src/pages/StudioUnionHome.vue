@@ -639,7 +639,7 @@ export default {
     },
     studioUnion1() {
       this.$router.push({
-        path: "/studioUnion",
+        path: "/studioDetails",
         query: {
           id: "1",
           isFollow: 1,

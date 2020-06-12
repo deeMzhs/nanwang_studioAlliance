@@ -37,6 +37,7 @@ import Consulting from '@/pages/Consulting'
 import AtiveDetail from '@/pages/AtiveDetail'
 import OnlineExperts from '../pages/technology/OnlineExperts'
 import AdminPage from '@/pages/AdminPage'
+import studioDetails from '@/pages/StudioDetails'
 Vue.use(Router)
 
 export default new Router({
@@ -44,11 +45,6 @@ export default new Router({
     {
       path: '/',
       redirect: '/StudioUnionHome'
-    },
-    {
-      path: '/StudioUnionHome',
-      name: 'StudioUnionHome',
-      component: StudioUnionHome
     },
     {
       path: '/studioUnionHome',
@@ -74,6 +70,11 @@ export default new Router({
       path: '/studioUnion',
       name: 'StudioUnion',
       component: StudioUnion
+    },
+    {
+      path: '/studioDetails',
+      name: 'studioDetails',
+      component: studioDetails
     },
     {
       path: '/studioMembers',

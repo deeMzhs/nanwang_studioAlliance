@@ -48,24 +48,6 @@ export default {
           title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
           imgUrl: require("@/assets/img/photo.jpg"),
           name: "xxx工作室"
-        },
-        {
-          id: 4,
-          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
-          imgUrl: require("@/assets/img/photo.jpg"),
-          name: "xxx工作室"
-        },
-        {
-          id: 5,
-          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
-          imgUrl: require("@/assets/img/photo.jpg"),
-          name: "xxx工作室"
-        },
-        {
-          id: 6,
-          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
-          imgUrl: require("@/assets/img/photo.jpg"),
-          name: "xxx工作室"
         }
       ]
     };

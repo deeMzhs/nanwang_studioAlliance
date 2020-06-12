@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     onClickLeft() {
-      this.$router.push("InnovationIndex");
+      this.$router.go(-1);
     },
     // tab点击
     itemClick(index) {
