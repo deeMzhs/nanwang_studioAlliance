@@ -15,25 +15,9 @@
             <van-icon name="arrow-down" />
           </span>
         </div>
-        <!-- <van-grid class="grid-wrap" :gutter="10">
-          <van-grid-item
-            class="grid-item"
-            v-for="(item, i) in studioUnionList"
-            :key="i"
-            :text="item.name"
-            @click="studioUnion(item)"
-          >
-            <img :src="item.img" alt />
-            <p>{{item.name}}</p>
-            <div class="action-wrap">
-              <span v-if="item.isFollow == 0" class="unfollow">关注</span>
-              <span v-else class="followed">已关注</span>
-            </div>
-          </van-grid-item>
-        </van-grid>-->
         <div class="bd">
           <div class="bd_item" v-for="(item, index) in studioUnionList" :key="index">
-            <div class="bd_detail">
+            <div class="bd_detail" @click="to(item)">
               <div>
                 <img src="../assets/img/photo.jpg" alt />
               </div>
@@ -55,18 +39,62 @@
       </van-tab>
       <van-tab :title="'星级工作室'">
         <div class="choose">
+          没有搜索结果
           <span @click="choose">
             筛选
             <van-icon name="arrow-down" />
           </span>
         </div>
+        <div class="bd">
+          <div class="bd_item" v-for="(item, index) in studioUnionList1" :key="index">
+            <div class="bd_detail" @click="to(item)">
+              <div>
+                <img src="../assets/img/photo.jpg" alt />
+              </div>
+              <p>{{item.name}}</p>
+            </div>
+            <div
+              v-if="item.isFollow == 0"
+              @click="studioUnionList[index].isFollow=1"
+              class="bd_btn"
+            >
+              <span>关注</span>
+            </div>
+            <div v-else class="bd_btn bd_btn1" @click="follow(item,index)">
+              <van-icon name="success" />
+              <span>已关注</span>
+            </div>
+          </div>
+        </div>
       </van-tab>
       <van-tab :title="'所在单位工作室'">
         <div class="choose">
+          没有搜索结果
           <span @click="choose">
             筛选
             <van-icon name="arrow-down" />
           </span>
+        </div>
+        <div class="bd">
+          <div class="bd_item" v-for="(item, index) in studioUnionList" :key="index">
+            <div class="bd_detail" @click="to(item)">
+              <div>
+                <img src="../assets/img/photo.jpg" alt />
+              </div>
+              <p>{{item.name}}</p>
+            </div>
+            <div
+              v-if="item.isFollow == 0"
+              @click="studioUnionList[index].isFollow=1"
+              class="bd_btn"
+            >
+              <span>关注</span>
+            </div>
+            <div v-else class="bd_btn bd_btn1" @click="follow(item,index)">
+              <van-icon name="success" />
+              <span>已关注</span>
+            </div>
+          </div>
         </div>
       </van-tab>
     </van-tabs>
@@ -100,8 +128,58 @@
             </van-collapse-item>
           </van-collapse>
         </van-tab>
-        <van-tab :title="'工作室联盟'">没有搜索结果</van-tab>
-        <van-tab :title="'所在星级'">没有搜索结果</van-tab>
+        <van-tab :title="'工作室联盟'">
+          <van-collapse v-model="activeName" v-for="i of list" :key="i.id" accordion>
+            <van-collapse-item :name="i.id">
+              <template #title>
+                <van-checkbox
+                  class="checkbox"
+                  v-model="i.checked"
+                  @click.stop="handclick(i)"
+                  shape="square"
+                  label-disabled
+                ></van-checkbox>
+                {{i.name}}
+              </template>
+              <van-checkbox-group
+                v-model="result"
+                :ref="i.id"
+                class="group"
+                @change="handChangeclick(i)"
+              >
+                <div class="item" v-for="i1 of i.children" :key="i1.id">
+                  <van-checkbox :name="i1.id" shape="square">{{i1.name}}</van-checkbox>
+                </div>
+              </van-checkbox-group>
+            </van-collapse-item>
+          </van-collapse>
+        </van-tab>
+        <van-tab :title="'所在星级'">
+          <van-collapse v-model="activeName" v-for="i of list" :key="i.id" accordion>
+            <van-collapse-item :name="i.id">
+              <template #title>
+                <van-checkbox
+                  class="checkbox"
+                  v-model="i.checked"
+                  @click.stop="handclick(i)"
+                  shape="square"
+                  label-disabled
+                ></van-checkbox>
+                {{i.name}}
+              </template>
+              <van-checkbox-group
+                v-model="result"
+                :ref="i.id"
+                class="group"
+                @change="handChangeclick(i)"
+              >
+                <div class="item" v-for="i1 of i.children" :key="i1.id">
+                  <van-checkbox :name="i1.id" shape="square">{{i1.name}}</van-checkbox>
+                </div>
+              </van-checkbox-group>
+            </van-collapse-item>
+          </van-collapse>
+        </van-tab>
       </van-tabs>
       <div style="height: 6rem"></div>
       <van-row class="btn">
@@ -155,6 +233,38 @@ export default {
           isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
+        {
+          name: "B协会联盟",
+          isFollow: 0,
+          img: require("../assets/img/photo.jpg")
+        },
+        {
+          name: "A协会协会反光杯风骨霸刀服不服",
+          isFollow: 0,
+          img: require("../assets/img/photo.jpg")
+        },
+        {
+          name: "B协会联盟",
+          isFollow: 0,
+          img: require("../assets/img/photo.jpg")
+        },
+        {
+          name: "A协会联盟",
+          isFollow: 0,
+          img: require("../assets/img/photo.jpg")
+        },
+        {
+          name: "A协会联盟",
+          isFollow: 0,
+          img: require("../assets/img/photo.jpg")
+        },
+        {
+          name: "B协会联盟",
+          isFollow: 0,
+          img: require("../assets/img/photo.jpg")
+        }
+      ],
+      studioUnionList1: [
         {
           name: "B协会联盟",
           isFollow: 0,
@@ -365,6 +475,16 @@ export default {
         .catch(() => {
           // Toast("已取消操作");
         });
+    },
+    to(item) {
+      this.$router.push({
+        path: "/studioUnion",
+        query: {
+          id: item.id,
+          isFollow: item.isFollow,
+          studioName: item.name
+        }
+      });
     }
   }
 };
