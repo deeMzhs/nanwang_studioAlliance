@@ -36,6 +36,7 @@ import FindPeople from '@/pages/Findpeople'
 import Consulting from '@/pages/Consulting'
 import AtiveDetail from '@/pages/AtiveDetail'
 import OnlineExperts from '../pages/technology/OnlineExperts'
+import AdminPage from '@/pages/AdminPage'
 Vue.use(Router)
 
 export default new Router({
@@ -53,6 +54,11 @@ export default new Router({
       path: '/studioUnionHome',
       name: 'StudioUnionHome',
       component: StudioUnionHome
+    },
+    {
+      path: '/AdminPage',
+      name: '/AdminPage',
+      component: AdminPage
     },
     {
       path: '/activeValue',

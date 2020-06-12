@@ -17,7 +17,7 @@
       <div class="body">
         <div class="bd-item" v-for="(item, index) in list" :key="index" @click="to(item.id)">
           <img :src="item.imgurl" alt srcset />
-          <div>{{ item.desc }}</div>
+          <p>{{ item.desc }}</p>
           <h5>
             <span>{{ item.title }}</span>
             <i>
@@ -120,27 +120,27 @@ export default {
         {
           id: 1,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 2,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 3,
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           title: "世项劳模创新工作室世项劳模创新工作室",
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 4,
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           title: "世项劳模创新工作室世项劳模创新工作室",
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
@@ -148,21 +148,21 @@ export default {
         {
           id: 5,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 6,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 7,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         }
@@ -303,19 +303,18 @@ export default {
   border-radius: 0.2rem;
   overflow: hidden;
 }
-
+.bd-item >p{
+  width:8.97rem;
+  height:2.5rem;
+  font-size:0.75rem;
+  font-weight:400;
+  color:rgba(140,140,140,1);
+  line-height:1.19rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .bd-item img {
   width: 100%;
-}
-.bd-item div {
-  padding: 0.5rem;
-  height: 2.5rem;
-  display: -webkit-box;
-
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  color: #8c8c8c;
 }
 .bd-item h5 {
   margin-top: 0.2rem;
