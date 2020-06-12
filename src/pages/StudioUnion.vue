@@ -114,7 +114,8 @@
           </div>
         </div>
       </div>
-    </van-overlay>-->
+    </van-overlay> -->
+    <!-- 通知栏 -->
     <div class="notice" v-if="isFollow == 1">
       <div class="notice_img">
         <img src="../assets/img/notice.png" alt />
@@ -124,6 +125,54 @@
         <van-icon name="arrow" />
       </div>
     </div>
+    <!-- 联盟工作室 -->
+    <div class="studio_union">
+      <div class="studio_title">
+        <div>联盟工作室</div>
+        <span>更多</span>
+      </div>
+      <div class="studio_swiper">
+        <div
+          class="studio_item"
+          v-for="(item, index) in studioList"
+          :key="index"
+          @click="btn_professor(item.id)"
+        >
+          <div class="studio_img">
+            <img :src="item.img" alt="ss" />
+          </div>
+          <p>{{ item.name }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- 联盟成果 -->
+    <div class="union_achieve">
+      <div class="achieve_title">
+        <div>联盟成果</div>
+        <span>专利成果</span>
+        <span>课题</span>
+      </div>
+      <div class="achieve_swiper">
+        <div
+          class="achieve_item"
+          v-for="(item, index) in achieveList"
+          :key="index"
+          @click="btn_professor(item.id)"
+        >
+          <div class="achieve_img">
+            <img :src="item.img" alt="ss" />
+          </div>
+          <p>{{ item.name }}</p>
+          <div class="transmit" @click="transmit(index)">
+            <img src="../assets/img/transmit.png" alt="转发" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 培训 -->
+    <innovate class="transmit" />
+
     <!-- 最新活动 -->
     <div class="new-activity">
       <van-cell class="head">
@@ -147,18 +196,122 @@
           <div v-if="item.isJoin == 1" class="status joined-status">已报名</div>
           <div v-else class="status unjoin-status">未参与</div>
         </van-col>
-        <van-col span="24" class="footer">
+        <!-- <van-col span="24" class="footer">
           <img src="../assets/img/join-portrait.jpg" alt />
           <img src="../assets/img/join-portrait.jpg" alt />
           <img src="../assets/img/join-portrait.jpg" alt />
           <span>{{ item.man }}人已加入</span>
-        </van-col>
+        </van-col> -->
       </van-row>
     </div>
+
+    <!-- 技术专家 -->
+    <div class="professor">
+      <div class="pro_title">
+        <div>在线专家</div>
+        <span>我是专家，点击在线</span>
+      </div>
+      <van-swipe @change="onChange">
+        <van-swipe-item
+          class="pro_body"
+          v-for="(item, index) in professor"
+          :key="index"
+          @click="btn_professor(item.id)"
+        >
+          <van-image round width="3.9rem" height="3.9rem" :src="item.imgurl" />
+          <div class="pro_info">
+            <div class="pro_name">
+              {{ item.name }}
+              <van-tag
+                color="#D7F0D2"
+                text-color="#36B21D"
+                v-if="item.skill != ''"
+                round
+                >{{ item.skill }}</van-tag
+              >
+              <van-tag
+                color="#FCDDDA"
+                text-color="#F15747"
+                v-if="item.level != ''"
+                round
+                >{{ item.level }}</van-tag
+              >
+            </div>
+            <div class="pro_name1">{{ item.studio }}</div>
+            <div class="pro_name1">{{ item.numSeek }}人已咨询</div>
+          </div>
+        </van-swipe-item>
+        <template #indicator>
+          <div class="custom-indicator">{{ currentStudio + 1 }}/4</div>
+        </template>
+      </van-swipe>
+    </div>
+
+    <!-- <问题环节> -->
+    <div class="content">
+      <div
+        class="content_item bg_withe"
+        v-for="(item, index) in list"
+        :key="index"
+      >
+        <div class="content_head">
+          <van-image
+            round
+            width="1.25rem"
+            height="1.25rem"
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+          />
+          <div class="center">
+            <div class="user_name">
+              <span>{{ item.name }}</span>
+              <span>{{ item.studio }}</span>
+            </div>
+            <span class="center_info">提出了问题</span>
+          </div>
+          <div class="right">{{ item.time }}</div>
+        </div>
+        <div class="content_title">
+          <p>{{ item.title }}</p>
+        </div>
+        <div
+          class="content_main"
+          @click="to('TechnologyDetail', item.id)"
+          v-if="item.imgurl"
+        >
+          <p class="left">{{ item.content }}</p>
+          <div class="right">
+            <img :src="item.imgurl" />
+          </div>
+        </div>
+        <div class="content_main" @click="to('TechnologyDetail')" v-else>
+          <p class="left_anw left">{{ item.content }}</p>
+        </div>
+        <!-- 底部标签 -->
+        <div class="content_footer">
+          <div class="icon_left">
+            <span class="icon_item" @click="msg(item.id)">
+              <van-icon name="chat-o" size="12" />
+              <span>3</span>
+            </span>
+            <span class="icon_item" @click="share(item.id)">
+              <van-icon name="label-o" size="12" />
+              <span>3</span>
+            </span>
+          </div>
+          <div class="icon_right" @click="headclick(item.id)">
+            <div class="button">回答问题</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="questions" @click="to('TechnologyQuestions')">
+        <van-icon name="records" />
+        <span>我要提问</span>
+      </div>
+    </div>
     <!-- 热门话题 -->
-    <div class="heat-topic">
+    <!-- <div class="heat-topic">
       <van-cell>
-        <!-- 使用 title 插槽来自定义标题 -->
         <template #title>
           <span class="head-title">热门话题</span>
         </template>
@@ -176,18 +329,18 @@
       <div class="topic-more">
         <div class="action" @click="topicSquare">进入话题广场</div>
       </div>
-    </div>
+    </div> -->
     <!-- 这是话题标签 -->
-    <div class="topic-tag">
+    <!-- <div class="topic-tag">
       <van-cell class="head">
-        <!-- 使用 title 插槽来自定义标题 -->
+         使用 title 插槽来自定义标题
         <template #title>
           <p class="head-title">#这是话题标签</p>
         </template>
       </van-cell>
       <van-row class="tag-list" v-for="(item, i) in tagList" :key="i">
         <van-col span="16" class="left">
-          <!-- vant内置样式，超出用...表示：van-ellipsis -->
+           vant内置样式，超出用...表示：van-ellipsis 
           <div class="van-multi-ellipsis--l2 content">{{ item.name }}</div>
           <div class="time">{{ item.time }}</div>
         </van-col>
@@ -206,18 +359,23 @@
           </div>
         </van-col>
       </van-row>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import { Toast } from "vant";
+import Innovate from "@/pages/Innovate";
 import { joinedActivityList, recruitTest } from "@/request/api"; // 导入api接口
 import storage from "../storage/storage"; // 导入storage
 export default {
   name: "StudioUnion",
+  components: {
+    Innovate
+  },
   data() {
     return {
+      currentStudio: 0,
       container: null,
       showPop: false,
       isFollow: this.$route.query.isFollow,
@@ -231,13 +389,13 @@ export default {
       // 联盟工作室
       studioList: [
         {
-          name: "A协会、C协会符合认同和让他",
+          name: "给他爱协会",
           img: require("../assets/img/iron-man.jpg")
         },
-        { name: "B协会、C协会", img: require("../assets/img/iron-man.jpg") },
-        { name: "A协会、B协会", img: require("../assets/img/iron-man.jpg") },
-        { name: "A协会、C协会", img: require("../assets/img/iron-man.jpg") },
-        { name: "B协会、C协会", img: require("../assets/img/iron-man.jpg") }
+        { name: "冲锋连协会", img: require("../assets/img/forward.png") },
+        { name: "大脑袋协会协会", img: require("../assets/img/follow.png") },
+        { name: "给他爱协会", img: require("../assets/img/iron-man.jpg") },
+        { name: "大脑袋夕会", img: require("../assets/img/iron-man.jpg") }
       ],
       // 联盟成果
       achieveList: [
@@ -246,7 +404,7 @@ export default {
           img: require("../assets/img/join-portrait.jpg")
         },
         {
-          name: "B协会、C协会",
+          name: "B协会、C协会发明了深海巨鳗进行捕捞然后去阿拉斯加好溪镇淘金",
           img: require("../assets/img/join-portrait.jpg")
         },
         {
@@ -267,21 +425,21 @@ export default {
         {
           name:
             "输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
-          time: "2020/04/09",
+          time: "2020/04/09-2020/12/23",
           isJoin: 1,
           man: "876",
           img: require("../assets/img/photo.jpg")
         },
         {
           name: "输电专业工作室联盟2",
-          time: "2020/04/09",
+          time: "2020/04/09-2020/06/04",
           isJoin: 0,
           man: "333",
           img: require("../assets/img/joined-studio-union.jpeg")
         },
         {
           name: "输电专业工作室联盟3",
-          time: "2020/04/09",
+          time: "2020/04/09-2020/12/23",
           isJoin: 1,
           man: "876",
           img: require("../assets/img/joined-studio-union.jpeg")
@@ -324,6 +482,58 @@ export default {
           share: 999,
           issuer: "王海平",
           img: require("../assets/img/joined-studio-union.jpeg")
+        }
+      ],
+      professor: [
+        {
+          id: 1,
+          name: "李宏利",
+          studio: "特朗普劳模工作室",
+          numSeek: "188",
+          level: "技术技能专家",
+          skill: "一级技术",
+          imgurl: require("@/assets/img/mypage.png")
+        },
+        {
+          id: 2,
+          name: "树生",
+          studio: "牛逼哄哄工作室",
+          numSeek: "188",
+          level: "技术技能专家",
+          skill: "三级技术",
+          imgurl: require("@/assets/img/mypage.png")
+        }
+      ],
+      list: [
+        {
+          id: 1,
+          name: "张张红",
+          time: "2019-01-01",
+          follow: true,
+          title: "这是问题",
+          content: "这是内容 这是内容这是内容这是内容这是",
+          imgurl: require("@/assets/img/mypage.png"),
+          studio: "加勒比港湾工作室"
+        },
+        {
+          id: 2,
+          name: "张张红",
+          time: "2019-01-01",
+          title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
+          studio: "南方电网工作室",
+          content:
+            "这是内容这是内容这这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是是内容这是内容这是内容这是内容这是内容这是这是这是内容这是内容这是内容这是这是 这是内容这是内容这是内容这是这是 内容这是内容这是内容这是..."
+        },
+        {
+          id: 3,
+          name: "张张红",
+          follow: false,
+          time: "2019-01-01",
+          title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
+          studio: "灭霸工作室",
+          content:
+            " 内容这是内容这内容这是内容这是内容这是内容这是内容这是内容这是是内容这是",
+          imgurl: require("@/assets/img/mypage.png")
         }
       ]
     };
@@ -480,6 +690,44 @@ export default {
       } else {
         this.$router.push({ name: "VoteGraphic" });
       }
+    },
+    exit() {
+      this.isFollow = !this.isFollow;
+    },
+    // 工作室轮播
+    onChange(index) {
+      this.currentStudio = index;
+    },
+    //联盟成果转发按钮
+    transmit(index) {}, // 跳转详情
+    to(path, id) {
+      this.$router.push({
+        name: path,
+        query: {
+          id
+        }
+      });
+      Toast(id);
+    },
+    // 关注
+    headclick(item, index) {
+      if (item.follow) return;
+      this.list[index].follow = true;
+      console.log(this.list);
+
+      Toast("已关注id:" + item.id);
+    },
+    // 回复
+    msg(id) {
+      Toast(id);
+    },
+    // 分享
+    share(id) {
+      Toast(id);
+    },
+    // 点击专家
+    btn_professor(id) {
+      Toast("点击专家" + id);
     }
   }
 };
@@ -561,6 +809,7 @@ export default {
 }
 .wrap .studio-sub .first-sub-row .first-sub-col img {
   width: 3.88rem;
+  height: 3.88rem;
   border-radius: 4px;
 }
 .wrap .studio-sub .first-sub-row .first-sub-col p {
@@ -586,7 +835,7 @@ export default {
   justify-content: center;
   align-items: center;
   border-top: 1px solid #e5e5e5;
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
   padding-top: 0.4rem;
 }
 .wrap .studio-sub .second-sub-row .second-sub-col img {
@@ -600,6 +849,7 @@ export default {
   align-items: center;
   text-align: center;
 }
+// 通知公告栏
 .notice {
   display: flex;
   padding: 0.9rem;
@@ -628,103 +878,394 @@ export default {
   }
 }
 /* 联盟工作室 */
-.wrap .studio-union {
-  background-color: #fff;
-  margin-top: 0.5rem;
-}
-.wrap .studio-union .head-title {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.wrap .studio-union .head-more {
-  font-size: 0.8rem;
-  color: #595959;
-}
-.wrap .studio-union .container {
+.studio_union {
+  margin-top: 0.7rem;
+  padding: 1.06rem;
+  height: 14.6rem;
   width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
+  background-color: #ffffff;
+  .studio_title {
+    font-family: PingFang SC;
+    color: #262626;
+    font-weight: 600;
+    font-size: 1.06rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.09rem;
+    span {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: rgba(89, 89, 89, 1);
+    }
+  }
+  .studio_swiper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    .studio_item {
+      width: 9rem;
+      height: 9.68rem;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0rem 5px 10px 0rem rgba(216, 216, 216, 0.4);
+      margin-right: 0.7rem;
+      margin-bottom: 0.2rem;
+      border-radius: 4px;
+      .studio_img {
+        width: 9rem;
+        height: 6.75rem;
+        img {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 4px;
+        }
+      }
+      p {
+        padding: 0.8rem 0 0 0.5rem;
+        width: 6.78rem;
+        height: 0.72rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: rgba(38, 38, 38, 1);
+        line-height: 1.31rem;
+      }
+    }
+  }
 }
-/* 隐藏滚动条 */
-::-webkit-scrollbar {
-  display: none;
+// 联盟成果
+.union_achieve {
+  margin-top: 0.7rem;
+  padding: 1.06rem;
+  height: 17.5rem;
+  width: 100%;
+  background-color: #ffffff;
+  .achieve_title {
+    color: #262626;
+    font-weight: 600;
+    font-size: 1.06rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.09rem;
+    span {
+      font-size: 0.88rem;
+      font-weight: 400;
+      padding-left: 1.44rem;
+      color: rgba(89, 89, 89, 1);
+    }
+  }
+  .achieve_swiper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    .achieve_item {
+      width: 10.31rem;
+      height: 12.75rem;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0rem 5px 10px 0rem rgba(216, 216, 216, 0.4);
+      margin-right: 0.7rem;
+      margin-bottom: 0.2rem;
+      border-radius: 4px;
+      .achieve_img {
+        width: 10.31rem;
+        height: 7.84rem;
+        img {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: 4px;
+        }
+      }
+      p {
+        margin: 0.7rem 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #8c8c8c;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        line-height: 1.19rem;
+      }
+      .transmit {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 0.2rem;
+        img {
+          width: 0.81rem;
+          height: 0.81rem;
+        }
+      }
+    }
+  }
 }
-.wrap .studio-union .container .scroll {
-  overflow: auto;
-  padding: 0 0 1rem 0.8rem;
-  background-color: #fff;
-  border-radius: 0.5rem;
+//创新培训
+.transmit{
+  margin-top: .6rem
 }
-.wrap .studio-union .container .scroll .alive {
-  display: inline-block;
+//在线专家
+.professor {
+  margin-top: 0.7rem;
+  padding: 1.2rem;
+  height: 10rem;
+  width: 100%;
+  background-color: #ffffff;
+  margin-bottom: 1rem;
+  .pro_title {
+    color: #262626;
+    font-weight: 600;
+    font-size: 1.06rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    span {
+      font-size: 0.88rem;
+      color: #1e87f0;
+      font-weight: 400;
+    }
+  }
+  .pro_body {
+    display: flex;
+    .pro_info {
+      flex: 1;
+      padding-left: 1rem;
+      .pro_name span {
+        font-size: 0.63rem;
+      }
+      .pro_name1 {
+        height: 1.31rem;
+        font-size: 0.88rem;
+        font-weight: 400;
+        color: rgba(89, 89, 89, 1);
+        line-height: 1.31rem;
+      }
+      :nth-child(1) {
+        color: #262626;
+        font-size: 1.06rem;
+      }
+    }
+  }
+  .custom-indicator {
+    opacity: 0;
+  }
+}
+//问题item
+.content {
+  position: relative;
+  .content_item {
+    padding: 0 1rem;
+    .content_head {
+      padding-top: 0.65rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      color: #8c8c8c;
+      font-size: 0.75rem;
+      .van-image {
+        flex: 0 0 1.25rem;
+      }
+      .center {
+        flex: 1;
+        padding-left: 0.6rem;
+        .center_info {
+          font-size: 0.63rem;
+          font-weight: 400;
+        }
+        .user_name span:nth-child(1) {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: rgba(38, 38, 38, 1);
+        }
+        .user_name span:nth-child(2) {
+          font-size: 0.63rem;
+          font-weight: 400;
+          color: rgba(38, 38, 38, 1);
+        }
+      }
+      .right {
+        flex: 0 0 4.5rem;
+      }
+    }
+    .content_title {
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      color: #262626;
+      p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+      }
+    }
+    .content_main {
+      margin-top: 1rem;
+      color: #595959;
+      display: flex;
+      .left {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        font-size: 0.875rem;
+        flex: 1;
+      }
+      .right {
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 6.4rem;
+        margin-left: 0.75rem;
+        img {
+          height: 3.9rem;
+          width: 6.3rem;
+          border-radius: 4px;
+        }
+      }
+    }
+    .content_footer {
+      display: flex;
+      margin-bottom: 0.7rem;
+      padding-bottom: 0.7rem;
+      padding-top: 0.5rem;
+      .icon_left,
+      .icon_right {
+        flex: 1;
+      }
+    }
+  }
+}
+.content_footer .content_footer .icon_left .icon_item {
+  width: 33%;
+  line-height: 1rem;
+  display: flex;
+  align-items: center;
+}
+.icon_left {
+  display: flex;
+  justify-content: flex-start;
+  color: #b2b2b2;
+}
+.content_footer .icon_left .icon_item span {
+  padding-left: 0.3rem;
+}
+.content_footer .icon_right {
+  position: relative;
+}
+
+.content_footer .icon_right .button {
+  float: right;
+  background-color: #1e87f0;
+  border-radius: 0.2rem;
+  color: #ffffff;
+  width: 3.75rem;
+  height: 1.25rem;
   text-align: center;
-  margin-right: 0.8rem;
-  border-radius: 0.2rem;
-  /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
-  box-shadow: 0px 3px 10px 0px #cac3c3;
 }
-.wrap .studio-union .container .scroll .alive .img-wrap .img {
-  width: 8.5rem;
-  height: 9rem;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
+//提问弹窗
+.questions {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  position: fixed;
+  text-align: center;
+  font-size: 0.75rem;
+  bottom: 2rem;
+  right: 2rem;
+  color: #fff;
+  background-color: #1e87f0;
 }
-.wrap .studio-union .container .scroll .alive .text-wrap {
-  width: 8.5rem;
-  font-weight: bold;
-  padding: 0.3rem 0.2rem;
-}
-/* 联盟成果 */
-.wrap .union-achieve {
-  background-color: #fff;
+.questions .van-icon {
   margin-top: 0.5rem;
-}
-.wrap .union-achieve .head-title {
-  font-size: 1rem;
-  font-weight: bold;
-}
-.wrap .union-achieve .head-more {
-  font-size: 0.8rem;
-  color: #595959;
-}
-.wrap .union-achieve .container {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
+  margin-left: 0.5rem;
+  font-size: 2rem;
+  display: block;
 }
 /* 隐藏滚动条 */
 ::-webkit-scrollbar {
   display: none;
 }
-.wrap .union-achieve .container .scroll {
-  overflow: auto;
-  padding: 0 0 1rem 0.8rem;
-  background-color: #fff;
-  border-radius: 0.2rem;
-}
-.wrap .union-achieve .container .scroll .alive {
-  display: inline-block;
-  /* text-align: center; */
-  margin-right: 0.8rem;
-  border-radius: 0.2rem;
-  /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
-  box-shadow: 0px 3px 10px 0px #cac3c3;
-}
-.wrap .union-achieve .container .scroll .alive .img-wrap .img {
-  width: 8.5rem;
-  height: 7rem;
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-}
-.wrap .union-achieve .container .scroll .alive .text-wrap {
-  width: 8.5rem;
-  color: #8c8c8c;
-  padding: 0.3rem 0.2rem;
-}
-.wrap .union-achieve .container .scroll .alive .share-wrap {
-  padding: 0.2rem 0.5rem;
-  text-align: right;
-}
+// .wrap .studio-union .container .scroll {
+//   overflow: auto;
+//   padding: 0 0 1rem 0.8rem;
+//   background-color: #fff;
+//   border-radius: 0.5rem;
+// }
+// .wrap .studio-union .container .scroll .alive {
+//   display: inline-block;
+//   text-align: center;
+//   margin-right: 0.8rem;
+//   border-radius: 0.2rem;
+//   /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
+//   box-shadow: 0px 3px 10px 0px #cac3c3;
+// }
+// .wrap .studio-union .container .scroll .alive .img-wrap .img {
+//   width: 8.5rem;
+//   height: 9rem;
+//   border-top-left-radius: 0.2rem;
+//   border-top-right-radius: 0.2rem;
+// }
+// .wrap .studio-union .container .scroll .alive .text-wrap {
+//   width: 8.5rem;
+//   font-weight: bold;
+//   padding: 0.3rem 0.2rem;
+// }
+/* 联盟成果 */
+// .wrap .union-achieve {
+//   background-color: #fff;
+//   margin-top: 0.5rem;
+// }
+// .wrap .union-achieve .head-title {
+//   font-size: 1rem;
+//   font-weight: bold;
+// }
+// .wrap .union-achieve .head-more {
+//   font-size: 0.8rem;
+//   color: #595959;
+// }
+// .wrap .union-achieve .container {
+//   width: 100%;
+//   overflow: hidden;
+//   white-space: nowrap;
+// }
+// /* 隐藏滚动条 */
+// ::-webkit-scrollbar {
+//   display: none;
+// }
+// .wrap .union-achieve .container .scroll {
+//   overflow: auto;
+//   padding: 0 0 1rem 0.8rem;
+//   background-color: #fff;
+//   border-radius: 0.2rem;
+// }
+// .wrap .union-achieve .container .scroll .alive {
+//   display: inline-block;
+//   /* text-align: center; */
+//   margin-right: 0.8rem;
+//   border-radius: 0.2rem;
+//   /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
+//   box-shadow: 0px 3px 10px 0px #cac3c3;
+// }
+// .wrap .union-achieve .container .scroll .alive .img-wrap .img {
+//   width: 8.5rem;
+//   height: 7rem;
+//   border-top-left-radius: 0.2rem;
+//   border-top-right-radius: 0.2rem;
+// }
+// .wrap .union-achieve .container .scroll .alive .text-wrap {
+//   width: 8.5rem;
+//   color: #8c8c8c;
+//   padding: 0.3rem 0.2rem;
+// }
+// .wrap .union-achieve .container .scroll .alive .share-wrap {
+//   padding: 0.2rem 0.5rem;
+//   text-align: right;
+// }
 /* 发布、编辑按钮 */
 .publish-pop {
   position: fixed;
@@ -767,7 +1308,7 @@ export default {
 }
 /* 最新活动 */
 .wrap .new-activity {
-  margin-top: 3.5rem;
+  margin-top: 0.6rem;
 }
 .wrap .new-activity .head .head-title {
   font-weight: bold;
@@ -789,6 +1330,8 @@ export default {
 }
 .wrap .new-activity .activity-list .left .time {
   padding-top: 0.8rem;
+  color: #8c8c8c;
+  font-size: 0.75rem;
 }
 .wrap .new-activity .activity-list .right {
   position: relative;
