@@ -31,6 +31,7 @@
             </div>
           </van-grid-item>
         </van-grid>
+        <div></div>
       </van-tab>
       <van-tab :title="'星级工作室'">
         <div class="choose">
@@ -277,7 +278,7 @@ export default {
         'com.English.AJ://?extra={"type":"3","h5_url":"[https://reading.talcloud.com/app/apppages/shareclass.html?act_id=18&raz_role=teacher&razflag=hideTitle](https://reading.talcloud.com/app/apppages/shareclass.html?act_id=18&raz_role=teacher&razflag=hideTitle)"}';
     },
     onClickLeft() {
-      this.$router.push("/studioUnionHome");
+      this.$router.go(-1);
     },
     // 点击放大镜，搜索弹框出现
     showSearchPop() {
@@ -373,13 +374,13 @@ export default {
   padding: 0.2rem 0.6rem;
   border-radius: 0.2rem;
 }
-.choose{
+.choose {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .84rem 1.03rem;
-  color: #8B8B8B;
-  span{
+  padding: 0.84rem 1.03rem;
+  color: #8b8b8b;
+  span {
     color: #262626;
   }
 }

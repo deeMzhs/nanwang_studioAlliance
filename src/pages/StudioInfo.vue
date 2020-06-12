@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar
-      title="联盟详情"
+      title="胡学柳劳模创新工作室"
       fixed
       left-arrow
       @click-left="onClickLeft"

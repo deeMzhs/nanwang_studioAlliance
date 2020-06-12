@@ -12,15 +12,15 @@
               <p>{{ studioName }}</p>
             </van-col>
             <van-col span="4" class="first-sub-col">
-              <div v-if="isFollow == 1" class="action">退出</div>
-              <div v-else="isFollow == 0" class="action">关注</div>
+              <div v-if="isFollow == 1" class="action" @click="isFollow = 0">退出</div>
+              <div v-else="isFollow == 0" class="action action1" @click="isFollow = 1">关注</div>
             </van-col>
           </van-row>
           <van-row class="second-sub-row" @click="goMembers()">
             <van-col span="16" class="second-sub-col">
               <div class="join-pic">
                 <div v-for="(item, i) in achieveList">
-                  <img :src="item.img" alt="" />
+                  <img :src="item.img" alt />
                 </div>
               </div>
             </van-col>
@@ -31,13 +31,7 @@
             </van-col>
           </van-row>
         </div>
-        <van-icon
-          class="backBt"
-          name="arrow-left"
-          color="#ffffff"
-          size="24px"
-          @click="toHome"
-        />
+        <van-icon class="backBt" name="arrow-left" color="#ffffff" size="24px" @click="toHome" />
       </div>
     </div>
     <!-- 联盟工作室 -->
@@ -86,7 +80,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>-->
     <!-- 发布、编辑按钮 -->
     <!-- <div class="publish-pop" ref="container">
       <van-sticky :container="container">
@@ -97,7 +91,7 @@
           @click="showPop = true"
         ></van-button>
       </van-sticky>
-    </div> -->
+    </div>-->
     <!-- 遮罩层 -->
     <!-- <van-overlay class="cover-layer" :show="showPop" @click="showPop = false">
       <div class="wrapper">
@@ -120,13 +114,15 @@
           </div>
         </div>
       </div>
-    </van-overlay> -->
+    </van-overlay>-->
     <div class="notice" v-if="isFollow == 1">
       <div class="notice_img">
-        <img src="../assets/img/notice.png" alt="" />
+        <img src="../assets/img/notice.png" alt />
       </div>
       <div class="center">这是一条通这是一条通这是一条通知这是一条公职</div>
-      <div class="right"><van-icon name="arrow" /></div>
+      <div class="right">
+        <van-icon name="arrow" />
+      </div>
     </div>
     <!-- 最新活动 -->
     <div class="new-activity">
@@ -137,7 +133,7 @@
         </template>
         <!-- 使用 right-icon 插槽来自定义右侧图标 -->
         <template #right-icon>
-          <span class="head-more" @click="moreActivity()">更多</span>
+          <span class="head-more">更多</span>
         </template>
       </van-cell>
       <van-row class="activity-list" v-for="(item, i) in activityList" :key="i">
@@ -200,15 +196,8 @@
         </van-col>
         <van-col span="24" class="footer">
           <div class="left" @click="tagThumb(i, item.isThumb)">
-            <van-icon
-              v-bind:class="{ thumbed: item.isThumb == 1 }"
-              name="like-o"
-            />
-            <span
-              class="thumb-value"
-              v-bind:class="{ thumbed: item.isThumb == 1 }"
-              >{{ item.thumb }}</span
-            >
+            <van-icon v-bind:class="{ thumbed: item.isThumb == 1 }" name="like-o" />
+            <span class="thumb-value" v-bind:class="{ thumbed: item.isThumb == 1 }">{{ item.thumb }}</span>
             <van-icon name="share" />
             <span>{{ item.share }}</span>
           </div>
@@ -440,11 +429,11 @@ export default {
         }
       });
     },
-    // 关注更多
-    moreActivity() {
-      this.$router.push("/studioMoreHome");
-      // Toast('关注更多');
-    },
+    // // 关注更多
+    // moreActivity() {
+    //   this.$router.push("/studioMoreHome");
+    //   // Toast('关注更多');
+    // },
     // 话题广场
     topicSquare() {
       this.$router.push("/topicSquare");
@@ -481,8 +470,8 @@ export default {
       this.$router.push("/studioUnionDetail");
       // this.$router.push("/votePublish");
     },
-    toHome(){
-    this.$router.go(-1);
+    toHome() {
+      this.$router.go(-1);
     },
     vote(condition) {
       console.log(11);
@@ -586,6 +575,11 @@ export default {
   color: #8c8c8c;
   font-size: 0.75rem;
   padding: 0.2rem 0.4rem;
+  border-radius: 0.1rem;
+}
+.wrap .studio-sub .first-sub-row .first-sub-col .action1 {
+  background: rgba(30, 135, 240, 1);
+  color: #fff;
 }
 .wrap .studio-sub .second-sub-row {
   display: flex;
@@ -622,11 +616,11 @@ export default {
   .center {
     flex: 1;
     padding-left: 1.28rem;
-    font-size: .88rem;
+    font-size: 0.88rem;
     overflow: hidden;
-    line-height: 1.28rem
+    line-height: 1.28rem;
   }
-  .right{
+  .right {
     flex: 0 0 2rem;
     display: flex;
     justify-content: center;

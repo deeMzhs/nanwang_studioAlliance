@@ -16,7 +16,7 @@
       <div class="ban_title">通知 公告</div>
       <div class="ban_desc">这是一条通知这是一条通知这是一条通知 这是一条通知</div>
       <div class="ban_icon">
-        <van-icon name="arrow" />
+        <van-icon name="arrow" color="#ccc" />
       </div>
     </div>
 
@@ -35,13 +35,17 @@
 
     <div class="home_icon">
       <div class="innovation" @click="to('InnovationIndex')">
-        <van-icon size="2rem" name="friends-o" />创新成果
+        <img src="@/assets/img/创新成果@2x.png" alt />
+        <span>创新成果</span>
       </div>
-      <div @click="to('technologyHome')">
-        <van-icon size="2rem" name="friends-o" />技术门诊
+      <div class="tech" @click="to('technologyHome')">
+        <img src="@/assets/img/技术门诊@2x.png" alt />
+
+        <span>技术门诊</span>
       </div>
-      <div @click="to('Findpeople')">
-        <van-icon size="2rem" name="friends-o" />快速找人
+      <div class="find" @click="to('Findpeople')">
+        <img src="@/assets/img/快速找人@2x.png" alt />
+        <span>快速找人</span>
       </div>
     </div>
     <!--
@@ -100,14 +104,14 @@
         </template>
       </van-cell>
       <div class="mt_join_content">
-        <div class="join_list" v-for="list in 8">
+        <div class="join_list" v-for="item in 8">
           <div class="myJoin_top">
             <div class="myJoin_img">
               <img src="../assets/img/a.jpg" alt />
             </div>
             <p>输电变电工作室联盟</p>
           </div>
-          <p>进入群聊</p>
+          <p @click="studioUnion1()">进入群聊</p>
         </div>
       </div>
     </div>
@@ -144,7 +148,10 @@
                 <img src="../assets/img/join-portrait.jpg" alt />
               </div>
             </div>
-            <p class="second_right">222人已加入 ></p>
+            <p class="second_right">
+              222人已加入
+              <van-icon name="arrow" />
+            </p>
           </div>
         </van-col>
         <van-col span="24" class="footer">{{item.desc}}</van-col>
@@ -630,6 +637,16 @@ export default {
         }
       });
     },
+    studioUnion1() {
+      this.$router.push({
+        path: "/studioUnion",
+        query: {
+          id: "1",
+          isFollow: 1,
+          studioName: "输电专业工作室"
+        }
+      });
+    },
     // 全部未关注工作室联盟
     allStudioUnion() {
       this.$router.push({
@@ -697,6 +714,10 @@ export default {
 <style lang="less" scoped>
 /deep/.van-nav-bar__right {
   color: #fff;
+}
+.second_right .van-icon {
+  margin-top: -0.2rem;
+  vertical-align: middle;
 }
 
 .wrap {
@@ -988,7 +1009,7 @@ export default {
   color: #fff;
 }
 .home_icon .innovation {
-  width: 6.5rem;
+  width: 7rem;
   height: 3.59rem;
   background: linear-gradient(
     134deg,
@@ -997,7 +1018,7 @@ export default {
   );
   border-radius: 0.5rem;
 }
-.home_icon :nth-child(2) {
+.home_icon .tech {
   width: 6.5rem;
   height: 3.59rem;
   background: linear-gradient(
@@ -1007,7 +1028,7 @@ export default {
   );
   border-radius: 0.5rem;
 }
-.home_icon :nth-child(3) {
+.home_icon .find {
   width: 6.5rem;
   height: 3.59rem;
   background: linear-gradient(
@@ -1016,6 +1037,12 @@ export default {
     rgba(123, 132, 239, 1) 99%
   );
   border-radius: 0.5rem;
+}
+.home_icon img {
+  width: 2.7rem;
+  margin-top: -0.3rem;
+  margin-right: -0.3rem;
+  vertical-align: middle;
 }
 
 /* 最新活动 */
