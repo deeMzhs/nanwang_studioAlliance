@@ -9,7 +9,7 @@
       </template>
       <template #right>
         <div>
-          <img src="../../assets/img/serach.png">
+          <img src="../../assets/img/serach.png" />
         </div>
       </template>
     </van-nav-bar>
@@ -28,19 +28,19 @@
         <div class="user">我收到的</div>
         <div class="navbar bg_withe">
           <div @click="toInvitation">
-            <img src="../../assets/img/invite.png" alt="" />
+            <img src="../../assets/img/invite.png" alt />
             <p>邀请</p>
           </div>
           <div @click="toRelpy">
-            <img src="../../assets/img/like.png" alt="" />
+            <img src="../../assets/img/like.png" alt />
             <p>喜欢</p>
           </div>
           <div @click="toFollow">
-            <img src="../../assets/img/follow.png" alt="" />
+            <img src="../../assets/img/follow.png" alt />
             <p>关注</p>
           </div>
           <div @click="toForward">
-            <img src="../../assets/img/forward.png" alt="" />
+            <img src="../../assets/img/forward.png" alt />
             <p>评论与转发</p>
           </div>
         </div>
@@ -72,11 +72,7 @@
           <div class="content_title">
             <p>{{ item.title }}</p>
           </div>
-          <div
-            class="content_main"
-            @click="to('TechnologyDetail')"
-            v-if="item.imgurl"
-          >
+          <div class="content_main" @click="to('TechnologyDetail')" v-if="item.imgurl">
             <p class="left">{{ item.content }}</p>
             <div class="right">
               <img :src="item.imgurl" />
@@ -103,9 +99,7 @@
                 size="1rem"
                 @click="item.deleteButteon = !item.deleteButteon"
               />
-              <button class="bg_withe" v-if="item.deleteButteon">
-                删除
-              </button>
+              <button class="bg_withe" v-if="item.deleteButteon">删除</button>
             </div>
           </div>
         </div>
@@ -135,11 +129,7 @@
           <div class="content_title">
             <p>{{ item.title }}</p>
           </div>
-          <div
-            class="content_main"
-            @click="to('TechnologyDetail')"
-            v-if="item.imgurl"
-          >
+          <div class="content_main" @click="to('TechnologyDetail')" v-if="item.imgurl">
             <p class="left_anw left">{{ item.content }}</p>
             <div class="right">
               <img :src="item.imgurl" />
@@ -156,9 +146,7 @@
                 size="1rem"
                 @click="item.deleteButteon = !item.deleteButteon"
               />
-              <button class="bg_withe" v-if="item.deleteButteon">
-                删除
-              </button>
+              <button class="bg_withe" v-if="item.deleteButteon">删除</button>
             </div>
           </div>
         </div>
@@ -188,11 +176,7 @@
           <div class="content_title">
             <p>{{ item.title }}</p>
           </div>
-          <div
-            class="content_main"
-            @click="to('TechnologyDetail')"
-            v-if="item.imgurl"
-          >
+          <div class="content_main" @click="to('TechnologyDetail')" v-if="item.imgurl">
             <p class="left">{{ item.content }}</p>
             <div class="right">
               <img :src="item.imgurl" />
@@ -219,9 +203,7 @@
                 size="1rem"
                 @click="item.deleteButteon = !item.deleteButteon"
               />
-              <button class="bg_withe" v-if="item.deleteButteon">
-                取消关注
-              </button>
+              <button class="bg_withe" v-if="item.deleteButteon">取消关注</button>
             </div>
           </div>
         </div>
@@ -251,11 +233,7 @@
           <div class="content_title">
             <p>{{ item.title }}</p>
           </div>
-          <div
-            class="content_main"
-            @click="to('TechnologyDetail')"
-            v-if="item.imgurl"
-          >
+          <div class="content_main" @click="to('TechnologyDetail')" v-if="item.imgurl">
             <p class="left">{{ item.content }}</p>
             <div class="right">
               <img :src="item.imgurl" />
@@ -403,6 +381,9 @@ export default {
       ]
     };
   },
+  created() {
+    window.scrollTo(0, 0);
+  },
   methods: {
     //跳转方法
     toRelpy() {
@@ -452,12 +433,12 @@ export default {
 .bg_withe {
   background-color: #ffffff;
 }
-.van-nav-bar__right div{
-display: flex;
-text-align: center;
-align-items: center
+.van-nav-bar__right div {
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
-.van-nav-bar__right img{
+.van-nav-bar__right img {
   width: 21px;
   right: 21px;
 }

@@ -197,6 +197,9 @@ export default {
       ]
     };
   },
+  created() {
+    window.scrollTo(0, 0);
+  },
   methods: {
     //回到首页
     onClickLeft() {

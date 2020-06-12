@@ -113,7 +113,7 @@
             </div>
             <p>输电变电工作室联盟</p>
           </div>
-          <p @click="studioUnion1()">进入群聊</p>
+          <p @click="studioUnion1()">进入工作室</p>
         </div>
       </div>
     </div>
@@ -176,7 +176,7 @@
           </template>
         </van-cell>
         <div class="container">
-          <div class="scroll" >
+          <div class="scroll">
             <div class="alive" v-for="(item, i) in studioUnionList" :key="i">
               <div class="msg">
                 <div class="img-wrap">
@@ -206,7 +206,7 @@
           </template>
         </van-cell>
         <div class="container">
-          <div class="scroll" >
+          <div class="scroll">
             <div class="alive" v-for="(item, i) in startStudioList" :key="i">
               <div class="msg">
                 <div class="img-wrap">
@@ -236,7 +236,7 @@
           </template>
         </van-cell>
         <div class="container">
-          <div class="scroll" >
+          <div class="scroll">
             <div class="alive" v-for="(item, i) in departStudioList" :key="i">
               <div class="msg">
                 <div class="img-wrap">
@@ -1123,7 +1123,7 @@ export default {
   align-items: center;
   flex-direction: row;
   overflow: scroll;
-  padding: 0 1rem;
+  padding: 0 1.1rem;
   background: white;
 }
 .mt_join_content .join_list {

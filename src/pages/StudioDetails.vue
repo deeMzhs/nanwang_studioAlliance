@@ -11,16 +11,8 @@
               <p>{{ studioName }}</p>
             </van-col>
             <van-col span="4" class="first-sub-col">
-              <div v-if="isFollow == 1" class="action" @click="isFollow = 0">
-                退出
-              </div>
-              <div
-                v-else="isFollow == 0"
-                class="action action1"
-                @click="isFollow = 1"
-              >
-                关注
-              </div>
+              <div v-if="isFollow == 1" class="action" @click="isFollow = 0">退出</div>
+              <div v-else="isFollow == 0" class="action action1" @click="isFollow = 1">关注</div>
             </van-col>
           </van-row>
           <van-row class="second-sub-row" @click="goMembers()">
@@ -38,13 +30,7 @@
             </van-col>
           </van-row>
         </div>
-        <van-icon
-          class="backBt"
-          name="arrow-left"
-          color="#ffffff"
-          size="24px"
-          @click="toHome"
-        />
+        <van-icon class="backBt" name="arrow-left" color="#ffffff" size="24px" @click="toHome" />
       </div>
     </div>
     <!-- 工作室成果 -->
@@ -103,7 +89,7 @@
           <img src="../assets/img/join-portrait.jpg" alt />
           <img src="../assets/img/join-portrait.jpg" alt />
           <span>{{ item.man }}人已加入</span>
-        </van-col> -->
+        </van-col>-->
       </van-row>
     </div>
 
@@ -111,16 +97,14 @@
     <div class="professor">
       <div class="pro_title">
         <div>在线专家</div>
-        <span style="color:rgba(140,140,140,1);" @click="operationStatus">{{
+        <span style="color:rgba(140,140,140,1);" @click="operationStatus">
+          {{
           status
-        }}</span>
+          }}
+        </span>
       </div>
       <van-swipe @change="onChange">
-        <van-swipe-item
-          class="pro_body"
-          v-for="(item, index) in professor"
-          :key="index"
-        >
+        <van-swipe-item class="pro_body" v-for="(item, index) in professor" :key="index">
           <van-image round width="3.9rem" height="3.9rem" :src="item.imgurl" />
           <div class="pro_info">
             <div class="pro_name">
@@ -130,15 +114,13 @@
                 text-color="#36B21D"
                 v-if="item.skill != ''"
                 round
-                >{{ item.skill }}
-              </van-tag>
+              >{{ item.skill }}</van-tag>
               <van-tag
                 color="#FCDDDA"
                 text-color="#F15747"
                 v-if="item.level != ''"
                 round
-                >{{ item.level }}
-              </van-tag>
+              >{{ item.level }}</van-tag>
             </div>
             <div class="pro_name1">
               {{ item.studio }}
@@ -159,11 +141,7 @@
         <div>大家都在问</div>
         <span>我的</span>
       </div>
-      <div
-        class="content_item bg_withe"
-        v-for="(item, index) in list"
-        :key="index"
-      >
+      <div class="content_item bg_withe" v-for="(item, index) in list" :key="index">
         <div class="content_head">
           <van-image
             round
@@ -183,11 +161,7 @@
         <div class="content_title">
           <p>{{ item.title }}</p>
         </div>
-        <div
-          class="content_main"
-          @click="to('TechnologyDetail', item.id)"
-          v-if="item.imgurl"
-        >
+        <div class="content_main" @click="to('TechnologyDetail', item.id)" v-if="item.imgurl">
           <p class="left">{{ item.content }}</p>
           <div class="right">
             <img :src="item.imgurl" />
@@ -343,6 +317,7 @@ export default {
   },
   created() {
     this.studioName = this.$route.query.studioName;
+    window.scrollTo(0, 0);
   },
   methods: {
     btn_professor() {
@@ -386,6 +361,14 @@ export default {
       this.list[index].follow = true;
       console.log(this.list);
       Toast("已关注id:" + item.id);
+    },
+    to(path, id) {
+      this.$router.push({
+        name: path,
+        query: {
+          id
+        }
+      });
     }
   },
   components: {
