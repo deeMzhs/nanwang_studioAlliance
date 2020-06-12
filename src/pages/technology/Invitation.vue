@@ -43,9 +43,15 @@
           </span>
         </div>
         <div
+          v-if="!item.select"
           class="follow"
           @click.stop="$router.push({path:'TechAnswer',query:{title:item.title}})"
         >写回答</div>
+        <div
+          v-if="item.select"
+          class="follow follow1"
+          @click.stop="$router.push({path:'TechAnswer',query:{title:item.title,select:item.select}})"
+        >查看回答</div>
       </div>
     </div>
   </div>
@@ -62,12 +68,13 @@ export default {
           id: 1,
           time: "2019-01-01",
           title: "这是问题",
+          select: "我回答了。。。。。。。。。",
           desc:
             "这是内容 这是内容这是内容这是内容这是这是内容这是内容这是内容这是这是内容这是内容这是内容这是这是内容这是内容这是内容这是这是内容这是内容这是内容这是这是内容这是内容这是内容这是",
           imgurl: require("@/assets/img/mypage.png")
         },
         {
-          id: 3,
+          id: 2,
           time: "2019-01-01",
           title: "这是问题这是问题这是问题这是问题",
           desc:
@@ -75,7 +82,7 @@ export default {
           imgurl: require("@/assets/img/mypage.png")
         },
         {
-          id: 2,
+          id: 3,
           time: "2019-01-01",
           title: "这是问题这是问题这是",
           desc:
@@ -106,8 +113,8 @@ export default {
 </script>
 
 <style  scoped>
-.wrap{
-  background-color: #f8f8f8
+.wrap {
+  background-color: #f8f8f8;
 }
 .van-icon {
   vertical-align: middle;
@@ -207,12 +214,15 @@ export default {
   align-items: center;
   justify-content: space-between;
   color: #b2b2b2;
-  font-size: .75rem
+  font-size: 0.75rem;
 }
 .footer .follow {
   padding: 0.3rem 0.5rem;
   background-color: #1e87f0;
   border-radius: 0.2rem;
   color: #ffffff;
+}
+.footer .follow1 {
+  background-color: #5ca6f0;
 }
 </style>

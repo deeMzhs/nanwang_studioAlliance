@@ -52,6 +52,7 @@
         </div>
       </div>
     </div>
+    <div style="height: 46px"></div>
     <van-row class="btn1">
       <van-col span="12">
         <van-button type="default" size="large">邀请回答</van-button>
@@ -74,7 +75,14 @@ export default {
     onClickLeft() {
       this.$router.back();
     },
-    to() {}
+    to() {
+      this.$router.push({
+        path: "TechAnswer",
+        query: {
+          title: "问题" + this.$route.query.id
+        }
+      });
+    }
   }
 };
 </script>

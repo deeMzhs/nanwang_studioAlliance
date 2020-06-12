@@ -22,10 +22,14 @@
 
     <div>
       <div class="xm_img">
-        <img src="@/assets/img/snipaste20200611_085434.jpg" alt />
+        <img src="@/assets/img/学习交流区@2x.png" alt />
+        <div class="xm_title">学习交流区</div>
+        <div class="xm_title_en">StudyShare</div>
       </div>
       <div class="xm_img" @click="$router.push('/studioMoreHome')">
-        <img src="@/assets/img/snipaste20200611_085434.jpg" alt />
+        <img src="@/assets/img/工作室联盟@2x.png" alt />
+        <div class="xm_title">工作室联盟</div>
+        <div class="xm_title_en">Studio League</div>
       </div>
     </div>
 
@@ -944,15 +948,32 @@ export default {
 
 // 两个图片部分
 .xm_img {
+  position: relative;
   width: 100%;
-  box-sizing: border-box;
-  padding: 0.75rem 1rem 0;
+  // padding: 1rem 1rem;
   background-color: #fff;
 }
+.xm_title {
+  position: absolute;
+  top: 2.28rem;
+  left: 2.84rem;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: rgba(38, 38, 38, 1);
+}
+.xm_title_en {
+  position: absolute;
+  top: 4.28rem;
+  left: 2.84rem;
+  font-size: 0.87rem;
+  font-weight: 400;
+  color: rgba(89, 89, 89, 1);
+}
+
 .xm_img img {
   width: 100%;
   border-radius: 0.5rem;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0rem rgba(177, 175, 175, 0.2);
+  // box-shadow: 0.1rem 0.1rem 0.5rem 0rem rgba(177, 175, 175, 0.2);
 }
 
 // 三个按钮
