@@ -150,7 +150,7 @@
           class="studio_item"
           v-for="(item, index) in studioList"
           :key="index"
-          @click="btn_professor(item.id)"
+          @click="studioUnion1(item.name)"
         >
           <div class="studio_img">
             <img :src="item.img" alt="ss" />
@@ -171,7 +171,7 @@
           class="achieve_item"
           v-for="(item, index) in achieveList"
           :key="index"
-          @click="btn_professor(item.id)"
+          @click="toFood()"
         >
           <div class="achieve_img">
             <img :src="item.img" alt="ss" />
@@ -407,7 +407,7 @@ export default {
       },
       // 联盟工作室
       studioList: [
-        {
+        { 
           name: "给他爱协会",
           img: require("../assets/img/iron-man.jpg")
         },
@@ -718,7 +718,9 @@ export default {
       this.currentStudio = index;
     },
     //联盟成果转发按钮
-    transmit(index) {}, // 跳转详情
+    transmit(index) {
+
+    }, // 跳转详情
     to(path, id) {
       this.$router.push({
         name: path,
@@ -747,10 +749,25 @@ export default {
     share(id) {
       Toast(id);
     },
-    // 点击专家
+    // 点击工作室联盟
+    studioUnion1(name) {
+      this.$router.push({
+        path: "/studioDetails",
+        query:{
+          id:'1',
+          isFollow:1,
+          studioName:name
+        }
+      });
+    },
+    toFood(){
+      this.$router.push('/InnovationDetail')
+    },
+
     btn_professor(id) {
       Toast("点击专家" + id);
     }
+
   }
 };
 </script>
