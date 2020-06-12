@@ -174,7 +174,7 @@
           </template>
         </van-cell>
         <div class="container">
-          <div class="scroll" scrollY="true">
+          <div class="scroll" >
             <div class="alive" v-for="(item, i) in studioUnionList" :key="i">
               <div class="msg">
                 <div class="img-wrap">
@@ -204,7 +204,7 @@
           </template>
         </van-cell>
         <div class="container">
-          <div class="scroll" scrollY="true">
+          <div class="scroll" >
             <div class="alive" v-for="(item, i) in startStudioList" :key="i">
               <div class="msg">
                 <div class="img-wrap">
@@ -234,7 +234,7 @@
           </template>
         </van-cell>
         <div class="container">
-          <div class="scroll" scrollY="true">
+          <div class="scroll" >
             <div class="alive" v-for="(item, i) in departStudioList" :key="i">
               <div class="msg">
                 <div class="img-wrap">

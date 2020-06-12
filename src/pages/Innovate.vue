@@ -4,7 +4,6 @@
     <div class="innovate">
       <div class="title">
         <div>创新培训</div>
-        <span>更多</span>
       </div>
       <div
         class="innovate_item"

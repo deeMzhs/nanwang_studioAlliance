@@ -12,8 +12,16 @@
               <p>{{ studioName }}</p>
             </van-col>
             <van-col span="4" class="first-sub-col">
-              <div v-if="isFollow == 1" class="action" @click="isFollow = 0">退出</div>
-              <div v-else="isFollow == 0" class="action action1" @click="isFollow = 1">关注</div>
+              <div v-if="isFollow == 1" class="action" @click="isFollow = 0">
+                退出
+              </div>
+              <div
+                v-else="isFollow == 0"
+                class="action action1"
+                @click="isFollow = 1"
+              >
+                关注
+              </div>
             </van-col>
           </van-row>
           <van-row class="second-sub-row" @click="goMembers()">
@@ -31,7 +39,13 @@
             </van-col>
           </van-row>
         </div>
-        <van-icon class="backBt" name="arrow-left" color="#ffffff" size="24px" @click="toHome" />
+        <van-icon
+          class="backBt"
+          name="arrow-left"
+          color="#ffffff"
+          size="24px"
+          @click="toHome"
+        />
       </div>
     </div>
     <!-- 联盟工作室 -->
@@ -249,6 +263,10 @@
 
     <!-- <问题环节> -->
     <div class="content">
+      <div class="content_nav bg_withe">
+        <div>大家都在问</div>
+        <span>我的</span>
+      </div>
       <div
         class="content_item bg_withe"
         v-for="(item, index) in list"
@@ -298,8 +316,9 @@
               <span>3</span>
             </span>
           </div>
-          <div class="icon_right" @click="headclick(item.id)">
-            <div class="button">回答问题</div>
+          <div class="icon_right" @click="headclick(item, index)">
+            <div v-if="item.follow == false" class="button">关注问题</div>
+            <div v-else class="button">取消关注</div>
           </div>
         </div>
       </div>
@@ -709,9 +728,12 @@ export default {
       });
       Toast(id);
     },
-    // 关注
+    // 关注和取消关注
     headclick(item, index) {
-      if (item.follow) return;
+      if (item.follow) {
+        this.list[index].follow = false;
+        return;
+      }
       this.list[index].follow = true;
       console.log(this.list);
 
@@ -1005,8 +1027,8 @@ export default {
   }
 }
 //创新培训
-.transmit{
-  margin-top: .6rem
+.transmit {
+  margin-top: 0.6rem;
 }
 //在线专家
 .professor {
@@ -1058,6 +1080,23 @@ export default {
 }
 //问题item
 .content {
+  margin-top: .6rem;
+  .content_nav{
+    padding-top: 1.13rem;
+    margin: 0 1.03rem;
+    color: #262626;
+    font-weight: 600;
+    font-size: 1.06rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #262626
+    }
+  }
   position: relative;
   .content_item {
     padding: 0 1rem;
@@ -1189,6 +1228,9 @@ export default {
 /* 隐藏滚动条 */
 ::-webkit-scrollbar {
   display: none;
+}
+.bg_withe {
+  background-color: #ffffff;
 }
 // .wrap .studio-union .container .scroll {
 //   overflow: auto;
