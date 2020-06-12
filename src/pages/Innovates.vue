@@ -1,11 +1,8 @@
 <template>
   <div class="wrap">
-    <!-- <van-nav-bar title="Triz创新培训" fixed left-arrow @click-left="onClickLeft"></van-nav-bar> -->
+    <van-nav-bar title="Triz创新培训" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
+    <div style="height: 46px"></div>
     <div class="innovate">
-      <div class="title">
-        <div>创新培训</div>
-        <span @click="to">更多</span>
-      </div>
       <div
         class="innovate_item"
         v-for="(item, index) in list"
@@ -48,17 +45,52 @@ export default {
           title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
           imgUrl: require("@/assets/img/photo.jpg"),
           name: "xxx工作室"
+        },
+        {
+          id: 1,
+          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
+          imgUrl: require("@/assets/img/photo.jpg"),
+          name: "xxx工作室"
+        },
+        {
+          id: 2,
+          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
+          imgUrl: require("@/assets/img/photo.jpg"),
+          name: "xxx工作室"
+        },
+        {
+          id: 3,
+          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
+          imgUrl: require("@/assets/img/photo.jpg"),
+          name: "xxx工作室"
+        },
+        {
+          id: 1,
+          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
+          imgUrl: require("@/assets/img/photo.jpg"),
+          name: "xxx工作室"
+        },
+        {
+          id: 2,
+          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
+          imgUrl: require("@/assets/img/photo.jpg"),
+          name: "xxx工作室"
+        },
+        {
+          id: 3,
+          title: "创新与TRIZ启蒙-创新方法（TRIZ） 理论及应用",
+          imgUrl: require("@/assets/img/photo.jpg"),
+          name: "xxx工作室"
         }
       ]
     };
   },
-
+  created() {
+    window.scrollTo(0, 0);
+  },
   methods: {
-    to() {
-      this.$router.push("Innovate");
-    },
     onClickLeft() {
-      return this.$router.push("/");
+      return this.$router.go(-1);
     },
     innovate(id) {
       Toast("id:" + id);
