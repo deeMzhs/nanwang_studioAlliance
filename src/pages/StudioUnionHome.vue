@@ -13,7 +13,9 @@
     <div style="height: 46px"></div>
 
     <div class="banner">
-      <div class="ban_title">通知 公告</div>
+      <div class="ban_title">
+        <img src="@/assets/img/notice.png" alt />
+      </div>
       <div class="ban_desc">这是一条通知这是一条通知这是一条通知 这是一条通知</div>
       <div class="ban_icon">
         <van-icon name="arrow" color="#ccc" />

@@ -140,7 +140,7 @@ export default {
 }
 .innovate {
   background-color: #fff;
-  .title{
+  .title {
     color: #262626;
     font-weight: 600;
     font-size: 1.06rem;
@@ -148,8 +148,8 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin:0rem 1rem .8rem 1rem;
-    padding-top:1rem;
+    margin: 0rem 1rem 0.8rem 1rem;
+    padding-top: 1rem;
     span {
       font-size: 0.88rem;
       font-weight: 400;
@@ -172,7 +172,7 @@ export default {
   border-radius: 0.2rem;
   overflow: hidden;
 }
-.innovate_item_left img{
+.innovate_item_left img {
   width: 100%;
   height: 100%;
 }
