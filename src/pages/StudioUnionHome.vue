@@ -2,6 +2,9 @@
   <div class="wrap">
     <van-nav-bar title="职创e联" fixed left-arrow @click-left="onClickLeft">
       <template #right>
+        <span style="margin-right: .7rem;" @click="$router.push('/AdminPage')">
+          <van-icon name="manager" />
+        </span>
         <span @click="toPersonal">
           <van-icon name="fire-o" />67
         </span>
@@ -13,28 +16,36 @@
       <div class="ban_title">通知 公告</div>
       <div class="ban_desc">这是一条通知这是一条通知这是一条通知 这是一条通知</div>
       <div class="ban_icon">
-        <van-icon name="arrow" />
+        <van-icon name="arrow" color="#ccc" />
       </div>
     </div>
 
     <div>
       <div class="xm_img">
-        <img src="@/assets/img/snipaste20200611_085434.jpg" alt />
+        <img src="@/assets/img/学习交流区@2x.png" alt />
+        <div class="xm_title">学习交流区</div>
+        <div class="xm_title_en">StudyShare</div>
       </div>
       <div class="xm_img" @click="$router.push('/studioMoreHome')">
-        <img src="@/assets/img/snipaste20200611_085434.jpg" alt />
+        <img src="@/assets/img/工作室联盟@2x.png" alt />
+        <div class="xm_title">工作室联盟</div>
+        <div class="xm_title_en">Studio League</div>
       </div>
     </div>
 
     <div class="home_icon">
       <div class="innovation" @click="to('InnovationIndex')">
-        <van-icon size="2rem" name="friends-o" />创新成果
+        <img src="@/assets/img/创新成果@2x.png" alt />
+        <span>创新成果</span>
       </div>
-      <div @click="to('technologyHome')">
-        <van-icon size="2rem" name="friends-o" />技术门诊
+      <div class="tech" @click="to('technologyHome')">
+        <img src="@/assets/img/技术门诊@2x.png" alt />
+
+        <span>技术门诊</span>
       </div>
-      <div @click="to('Findpeople')">
-        <van-icon size="2rem" name="friends-o" />快速找人
+      <div class="find" @click="to('Findpeople')">
+        <img src="@/assets/img/快速找人@2x.png" alt />
+        <span>快速找人</span>
       </div>
     </div>
     <!--
@@ -68,12 +79,8 @@
           <span class="head-more" @click="moreActivity()">更多</span>
         </template>
       </van-cell>
-      <van-row
-        class="activity-list"
-        v-for="(item, i) in activityList"
-        :key="i"
-        @click="$router.push('DynamicDetail')"
-      >
+      <van-row class="activity-list" v-for="(item, i) in activityList" :key="i">
+        <!-- @click="$router.push('AtiveDetail')" -->
         <van-col span="16" class="left">
           <!-- vant内置样式，超出用...表示：van-ellipsis -->
           <div class="van-multi-ellipsis--l2 content">{{item.name}}</div>
@@ -97,14 +104,14 @@
         </template>
       </van-cell>
       <div class="mt_join_content">
-        <div class="join_list" v-for="list in 8">
+        <div class="join_list" v-for="item in 8">
           <div class="myJoin_top">
             <div class="myJoin_img">
-              <img src="../assets/img/a.jpg" alt="">
+              <img src="../assets/img/a.jpg" alt />
             </div>
             <p>输电变电工作室联盟</p>
           </div>
-          <p>进入群聊</p>
+          <p @click="studioUnion1()">进入群聊</p>
         </div>
       </div>
     </div>
@@ -141,7 +148,10 @@
                 <img src="../assets/img/join-portrait.jpg" alt />
               </div>
             </div>
-            <p class="second_right">222人已加入 ></p>
+            <p class="second_right">
+              222人已加入
+              <van-icon name="arrow" />
+            </p>
           </div>
         </van-col>
         <van-col span="24" class="footer">{{item.desc}}</van-col>
@@ -255,56 +265,131 @@ export default {
   // components:{
   //   oneLoad
   // },
-  data () {
-  return {
-    isDot: true,
-    userInfo: {
-      id: 0,
-      name: '总监'
-    },
-    followList: [
-      {id: 1, name: '输电专业工作室联盟1', footer: '张三发不了动态', img: require('../assets/img/a.jpg')},
-      {id: 2,name: '输电专业工作室联盟2', footer: '李四分享了照片“中山湖公园”', img: require('../assets/img/a.jpg')},
-      {id: 3,name: '输电专业工作室联盟3', topfooteric: '李四分享了照片“中山湖公园”', img: require('../assets/img/a.jpg')},
-    ],
-    studioUnionList: [
-      {name: 'A协会、C协会反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: 'B协会、C协会', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: 'A协会、B协会', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: 'A协会、C协会', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: 'B协会、C协会', isFollow: 0, img: require('../assets/img/photo.png')}
-    ],
-    startStudioList: [
-      {name: '星级工作室反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '星级工作室2', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '星级工作室3', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '星级工作室4', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '星级工作室5', isFollow: 0, img: require('../assets/img/photo.png')}
-    ],
-    departStudioList: [
-      {name: '所在单位工作室1反光杯风骨霸刀服不服', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室2', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室3', isFollow: 0, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室4', isFollow: 1, img: require('../assets/img/photo.png')},
-      {name: '所在单位工作室5', isFollow: 0, img: require('../assets/img/photo.png')}
-    ],
-    activityList: [
-      {
-        name:
-          "输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
-        time: "2020/04/09",
-        isJoin: 1,
-        man: "876",
-        img: require("../assets/img/photo.jpg")
+  data() {
+    return {
+      isDot: true,
+      userInfo: {
+        id: 0,
+        name: "总监"
       },
-      {
-        name:
-          "输电专业工作室联盟2输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
-        time: "2020/04/09",
-        isJoin: 0,
-        man: "333",
-        img: require("../assets/img/joined-studio-union.jpeg")
-      }
+      followList: [
+        {
+          id: 1,
+          name: "输电专业工作室联盟1",
+          footer: "张三发不了动态",
+          img: require("../assets/img/a.jpg")
+        },
+        {
+          id: 2,
+          name: "输电专业工作室联盟2",
+          footer: "李四分享了照片“中山湖公园”",
+          img: require("../assets/img/a.jpg")
+        },
+        {
+          id: 3,
+          name: "输电专业工作室联盟3",
+          topfooteric: "李四分享了照片“中山湖公园”",
+          img: require("../assets/img/a.jpg")
+        }
+      ],
+      studioUnionList: [
+        {
+          name: "A协会、C协会反光杯风骨霸刀服不服",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "B协会、C协会",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "A协会、B协会",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "A协会、C协会",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "B协会、C协会",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        }
+      ],
+      startStudioList: [
+        {
+          name: "星级工作室反光杯风骨霸刀服不服",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室2",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室3",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室4",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "星级工作室5",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        }
+      ],
+      departStudioList: [
+        {
+          name: "所在单位工作室1反光杯风骨霸刀服不服",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室2",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室3",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室4",
+          isFollow: 1,
+          img: require("../assets/img/photo.png")
+        },
+        {
+          name: "所在单位工作室5",
+          isFollow: 0,
+          img: require("../assets/img/photo.png")
+        }
+      ],
+      activityList: [
+        {
+          name:
+            "输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+          time: "2020/04/09",
+          isJoin: 1,
+          man: "876",
+          img: require("../assets/img/photo.jpg")
+        },
+        {
+          name:
+            "输电专业工作室联盟2输电专业工作室联盟1水电费个地方更舒服的感受到发让他忽然他和特红儿童和认同和投入和认同",
+          time: "2020/04/09",
+          isJoin: 0,
+          man: "333",
+          img: require("../assets/img/joined-studio-union.jpeg")
+        }
       ],
       followList: [
         {
@@ -552,6 +637,16 @@ export default {
         }
       });
     },
+    studioUnion1() {
+      this.$router.push({
+        path: "/studioUnion",
+        query: {
+          id: "1",
+          isFollow: 1,
+          studioName: "输电专业工作室"
+        }
+      });
+    },
     // 全部未关注工作室联盟
     allStudioUnion() {
       this.$router.push({
@@ -620,6 +715,10 @@ export default {
 /deep/.van-nav-bar__right {
   color: #fff;
 }
+.second_right .van-icon {
+  margin-top: -0.2rem;
+  vertical-align: middle;
+}
 
 .wrap {
   background-color: #f9f9f9;
@@ -653,9 +752,9 @@ export default {
   font-weight: bold;
 }
 .wrap .follow-content .head .head-more {
-  font-size:0.87rem;
-  font-weight:400;
-  color:rgba(139,139,139,1);
+  font-size: 0.87rem;
+  font-weight: 400;
+  color: rgba(139, 139, 139, 1);
 }
 .wrap .follow-content .follow-list {
   padding: 0.8rem 0.8rem;
@@ -870,15 +969,32 @@ export default {
 
 // 两个图片部分
 .xm_img {
+  position: relative;
   width: 100%;
-  box-sizing: border-box;
-  padding: 0.75rem 1rem 0;
+  // padding: 1rem 1rem;
   background-color: #fff;
 }
+.xm_title {
+  position: absolute;
+  top: 2.28rem;
+  left: 2.84rem;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: rgba(38, 38, 38, 1);
+}
+.xm_title_en {
+  position: absolute;
+  top: 4.28rem;
+  left: 2.84rem;
+  font-size: 0.87rem;
+  font-weight: 400;
+  color: rgba(89, 89, 89, 1);
+}
+
 .xm_img img {
   width: 100%;
   border-radius: 0.5rem;
-  box-shadow: 0.1rem 0.1rem 0.5rem 0rem rgba(177, 175, 175, 0.2);
+  // box-shadow: 0.1rem 0.1rem 0.5rem 0rem rgba(177, 175, 175, 0.2);
 }
 
 // 三个按钮
@@ -893,7 +1009,7 @@ export default {
   color: #fff;
 }
 .home_icon .innovation {
-  width: 6.5rem;
+  width: 7rem;
   height: 3.59rem;
   background: linear-gradient(
     134deg,
@@ -902,7 +1018,7 @@ export default {
   );
   border-radius: 0.5rem;
 }
-.home_icon :nth-child(2) {
+.home_icon .tech {
   width: 6.5rem;
   height: 3.59rem;
   background: linear-gradient(
@@ -912,7 +1028,7 @@ export default {
   );
   border-radius: 0.5rem;
 }
-.home_icon :nth-child(3) {
+.home_icon .find {
   width: 6.5rem;
   height: 3.59rem;
   background: linear-gradient(
@@ -921,6 +1037,12 @@ export default {
     rgba(123, 132, 239, 1) 99%
   );
   border-radius: 0.5rem;
+}
+.home_icon img {
+  width: 2.7rem;
+  margin-top: -0.3rem;
+  margin-right: -0.3rem;
+  vertical-align: middle;
 }
 
 /* 最新活动 */
@@ -994,7 +1116,7 @@ export default {
   border-bottom: 0.05rem solid rgba(229, 229, 229, 1);
 }
 
-.mt_join_content{
+.mt_join_content {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -1002,49 +1124,49 @@ export default {
   padding: 0 1rem;
   background: white;
 }
-.mt_join_content .join_list{
+.mt_join_content .join_list {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin-right: 1.09rem;
 }
-.mt_join_content .join_list .myJoin_top{
+.mt_join_content .join_list .myJoin_top {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background:rgba(255,255,255,1);
-  box-shadow:0rem 0rem 0rem 0rem rgba(89,89,89,0.3);
-  margin-bottom: .96rem;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rem 0rem 0rem 0rem rgba(89, 89, 89, 0.3);
+  margin-bottom: 0.96rem;
 }
-.mt_join_content .join_list .myJoin_top p{
-  font-size:0.75rem;
-  font-weight:400;
-  color:rgba(38,38,38,1);
-  width:3.68rem;
-  height:1.9rem;
+.mt_join_content .join_list .myJoin_top p {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 1);
+  width: 3.68rem;
+  height: 1.9rem;
   overflow: hidden;
-  text-overflow:ellipsis;
-  margin: .53rem .31rem .59rem .5rem;
+  text-overflow: ellipsis;
+  margin: 0.53rem 0.31rem 0.59rem 0.5rem;
 }
 .myJoin_img {
-  width:4.5rem;
-  height:3.65rem;
+  width: 4.5rem;
+  height: 3.65rem;
 }
 .myJoin_img img {
   width: 100%;
   height: 100%;
 }
-.mt_join_content .join_list >p{
-  font-size:0.75rem;
-  font-weight:400;
-  color:rgba(255,255,255,1);
+.mt_join_content .join_list > p {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
   margin-bottom: 1.34rem;
-  width:4.5rem;
-  height:1.5rem;
-  background:rgba(30,135,239,1);
-  border-radius:0rem;
+  width: 4.5rem;
+  height: 1.5rem;
+  background: rgba(30, 135, 239, 1);
+  border-radius: 0rem;
   display: flex;
   align-items: center;
   justify-content: center;

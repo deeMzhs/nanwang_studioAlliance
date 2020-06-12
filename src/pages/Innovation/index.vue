@@ -17,11 +17,11 @@
       <div class="body">
         <div class="bd-item" v-for="(item, index) in list" :key="index" @click="to(item.id)">
           <img :src="item.imgurl" alt srcset />
-          <div>{{ item.desc }}</div>
+          <p>{{ item.desc }}</p>
           <h5>
             <span>{{ item.title }}</span>
             <i>
-              <van-icon name="share" @click.stop="share_popup(item.id)" />
+              <img src="@/assets/img/转发@2x.png" alt @click.stop="share_popup(item.id)" />
             </i>
           </h5>
         </div>
@@ -120,27 +120,27 @@ export default {
         {
           id: 1,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
-            "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
+            "小型发电车改造，节省了人 力抬搬环节，小型发电车改造，节省了人 力抬搬环节，小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 2,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 3,
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           title: "世项劳模创新工作室世项劳模创新工作室",
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 4,
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           title: "世项劳模创新工作室世项劳模创新工作室",
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
@@ -148,21 +148,21 @@ export default {
         {
           id: 5,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 6,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         },
         {
           id: 7,
           title: "世项劳模创新工作室世项劳模创新工作室",
-          imgurl: require("@/assets/img/photo.png"),
+          imgurl: require("@/assets/img/a.jpg"),
           desc:
             "小型发电车改造，节省了人 力抬搬环节，改造改造改小型发电车改造，节省了人 力抬搬环节，改造改造改"
         }
@@ -279,13 +279,14 @@ export default {
   border: 0px solid rgba(229, 229, 229, 1);
   background-color: #f8f8f8;
   color: rgb(190, 186, 186);
+  font-size: 0.88rem;
 }
 .screening .span {
   float: right;
   color: #262626;
 }
 .title {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #262626;
   margin: 0.6rem;
   font-weight: 600;
@@ -303,32 +304,35 @@ export default {
   border-radius: 0.2rem;
   overflow: hidden;
 }
-
-.bd-item img {
-  width: 100%;
-}
-.bd-item div {
+.bd-item > p {
   padding: 0.5rem;
-  height: 2.5rem;
+  height: 2.8rem;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(140, 140, 140, 1);
+  line-height: 1.19rem;
   display: -webkit-box;
-
+  font-size: 0.65rem;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  color: #8c8c8c;
 }
+.bd-item img {
+  width: 100%;
+}
+
 .bd-item h5 {
   margin-top: 0.2rem;
   height: 2rem;
   line-height: 2rem;
   font-weight: bold;
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   padding: 0 0.5rem;
   color: #262626;
 }
 .bd-item h5 span {
   display: inline-block;
-  width: 85%;
+  width: 87%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -336,6 +340,8 @@ export default {
 .bd-item h5 i {
   float: right;
   margin-top: 0.3rem;
+  width: 1rem;
+  height: 1rem;
   vertical-align: middle;
   color: #8c8c8c;
 }

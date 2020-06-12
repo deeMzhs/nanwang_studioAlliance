@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="职创e联" fixed left-arrow @click-left="onClickLeft">
+    <van-nav-bar title="快速找人" fixed left-arrow @click-left="onClickLeft">
       <template #right>
         <van-icon name="search" size="1rem" color @click="toPersonal" />
       </template>
@@ -114,7 +114,7 @@ export default {
         },
         {
           id: 1,
-          name: "广东电网有限公司",
+          name: "珠海电网有限公司",
           childlist: [
             {
               id: 13,
@@ -172,7 +172,7 @@ export default {
         },
         {
           id: 1,
-          name: "广东电网有限公司",
+          name: "深圳电网有限公司",
           childlist: [
             {
               id: 15,
