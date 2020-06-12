@@ -25,7 +25,11 @@ export default {
   },
   created() {
     this.title = this.$route.query.title;
-    console.log(this.$route.query.title);
+    // console.log(this.$route.query.title);
+    console.log(this.$route.query.select);
+    if (this.$route.query.select) {
+      this.message = this.$route.query.select;
+    }
   },
   // watch: {
   //   "$route.title": {

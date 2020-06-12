@@ -80,13 +80,14 @@
               <span>3</span>
             </span>
           </div>
-          <div class="icon_right" @click="headclick(item.id)">
-            <div class="button">回答问题</div>
+          <div class="icon_right" @click="headclick(item,index)">
+            <div class="button" v-if="!item.follow">关注问题</div>
+            <div class="button1" v-if="item.follow">已关注</div>
           </div>
         </div>
       </div>
 
-      <div class="questions" @click="to('TechnologyQuestions')">
+      <div class="questions" @click="to('TechnologyQuestions','前往提问页面')">
         <van-icon name="records" />
         <span>我要提问</span>
       </div>
@@ -115,6 +116,7 @@ export default {
           id: 2,
           name: "张张红",
           time: "2019-01-01",
+          follow: false,
           title: "这是问题这是问题这是问题这是问题这是问题这 是问题这是问题",
           studio: "南方电网工作室",
           content:
@@ -173,9 +175,7 @@ export default {
     headclick(item, index) {
       if (item.follow) return;
       this.list[index].follow = true;
-      console.log(this.list);
-
-      Toast("已关注id:" + item.id);
+      Toast("已关注");
     },
     // 回复
     msg(id) {
@@ -358,6 +358,16 @@ content {
 .content_footer .icon_right .button {
   float: right;
   background-color: #1e87f0;
+  border-radius: 0.2rem;
+  color: #ffffff;
+  width: 3.75rem;
+  height: 1.25rem;
+  text-align: center;
+}
+.content_footer .icon_right .button1 {
+  float: right;
+  background-color: #1e87ef;
+  opacity: 0.8;
   border-radius: 0.2rem;
   color: #ffffff;
   width: 3.75rem;
