@@ -1,8 +1,11 @@
 <template>
   <div class="wrap">
-    <van-nav-bar title="Triz创新培训" fixed left-arrow @click-left="onClickLeft"></van-nav-bar>
-    <div style="height: 46px"></div>
+    <!-- <van-nav-bar title="Triz创新培训" fixed left-arrow @click-left="onClickLeft"></van-nav-bar> -->
     <div class="innovate">
+      <div class="title">
+        <div>创新培训</div>
+        <span>更多</span>
+      </div>
       <div
         class="innovate_item"
         v-for="(item, index) in list"
@@ -10,7 +13,7 @@
         @click="innovate(item.id)"
       >
         <div class="innovate_item_right">
-          <div class="title">{{item.title}}</div>
+          <div class="item_title">{{item.title}}</div>
           <div class="source">{{item.name}}</div>
         </div>
         <div class="innovate_item_left">
@@ -131,13 +134,29 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .wrap {
   background-color: #f8f8f8;
-  height: 100vh;
 }
 .innovate {
   background-color: #fff;
+  .title{
+    color: #262626;
+    font-weight: 600;
+    font-size: 1.06rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0rem 1rem .8rem 1rem;
+    padding-top:1rem;
+    span {
+      font-size: 0.88rem;
+      font-weight: 400;
+      padding-left: 1.44rem;
+      color: rgba(89, 89, 89, 1);
+    }
+  }
 }
 .innovate_item {
   box-sizing: border-box;
@@ -147,15 +166,20 @@ export default {
   border-bottom: 0.05rem solid rgb(238, 236, 236);
 }
 .innovate_item_left {
-  width: 30%;
+  width: 7.1rem;
+  height: 4.5rem;
   position: relative;
   border-radius: 0.2rem;
   overflow: hidden;
 }
+.innovate_item_left img{
+  width: 100%;
+  height: 100%;
+}
 .innovate_item_left .Classroom {
   position: absolute;
   right: 0;
-  bottom: 0.2rem;
+  bottom: 0.05rem;
   width: 4rem;
   height: 1.5rem;
   line-height: 1.5rem;
@@ -173,7 +197,7 @@ export default {
   justify-content: space-between;
   padding-left: 0.5rem;
 }
-.innovate_item_right .title {
+.innovate_item_right .item_title {
   font-weight: 400;
   font-size: 1rem;
 }
