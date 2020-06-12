@@ -15,7 +15,7 @@
             <van-icon name="arrow-down" />
           </span>
         </div>
-        <van-grid class="grid-wrap" :gutter="10">
+        <!-- <van-grid class="grid-wrap" :gutter="10">
           <van-grid-item
             class="grid-item"
             v-for="(item, i) in studioUnionList"
@@ -30,8 +30,28 @@
               <span v-else class="followed">已关注</span>
             </div>
           </van-grid-item>
-        </van-grid>
-        <div></div>
+        </van-grid>-->
+        <div class="bd">
+          <div class="bd_item" v-for="(item, index) in studioUnionList" :key="index">
+            <div class="bd_detail">
+              <div>
+                <img src="../assets/img/photo.jpg" alt />
+              </div>
+              <p>{{item.name}}</p>
+            </div>
+            <div
+              v-if="item.isFollow == 0"
+              @click="studioUnionList[index].isFollow=1"
+              class="bd_btn"
+            >
+              <span>关注</span>
+            </div>
+            <div v-else class="bd_btn bd_btn1" @click="follow(item,index)">
+              <van-icon name="success" />
+              <span>已关注</span>
+            </div>
+          </div>
+        </div>
       </van-tab>
       <van-tab :title="'星级工作室'">
         <div class="choose">
@@ -97,6 +117,7 @@
 </template>
 
 <script>
+import { Dialog } from "vant";
 import { Toast } from "vant";
 import { joinedActivityList } from "@/request/api"; // 导入api接口
 import storage from "../storage/storage"; // 导入storage
@@ -121,7 +142,7 @@ export default {
         },
         {
           name: "B协会联盟",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -131,7 +152,7 @@ export default {
         },
         {
           name: "A协会联盟",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -146,7 +167,7 @@ export default {
         },
         {
           name: "B协会联盟",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -156,7 +177,7 @@ export default {
         },
         {
           name: "A协会联盟",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -173,7 +194,7 @@ export default {
         },
         {
           name: "星级工作室2",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -183,7 +204,7 @@ export default {
         },
         {
           name: "星级工作室4",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -200,7 +221,7 @@ export default {
         },
         {
           name: "所在单位工作室2",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -210,7 +231,7 @@ export default {
         },
         {
           name: "所在单位工作室4",
-          isFollow: 1,
+          isFollow: 0,
           img: require("../assets/img/photo.jpg")
         },
         {
@@ -331,6 +352,19 @@ export default {
       i.checked = newIndexs.find(el => this.result.indexOf(el) === -1)
         ? false
         : true;
+    },
+    //取消关注
+    follow(item, index) {
+      Dialog.confirm({
+        message: "确认取消关注" + item.name
+      })
+        .then(() => {
+          Toast("取消关注成功");
+          this.studioUnionList[index].isFollow = 0;
+        })
+        .catch(() => {
+          // Toast("已取消操作");
+        });
     }
   }
 };
@@ -344,7 +378,7 @@ export default {
   vertical-align: middle;
 }
 .wrap {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 .wrap .grid-wrap {
   background-color: #fff;
@@ -374,12 +408,61 @@ export default {
   padding: 0.2rem 0.6rem;
   border-radius: 0.2rem;
 }
+
+.bd {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.bd_item {
+  width: 20%;
+  margin-left: 4%;
+  margin-top: 0.5rem;
+}
+.bd_detail {
+  border-radius: 0.3rem;
+  overflow: hidden;
+  background-color: #fff;
+  padding-bottom: 0.7rem;
+  box-shadow: 0rem 0rem 1rem 0rem rgba(89, 89, 89, 0.3);
+}
+.bd_detail div img {
+  width: 100%;
+}
+.bd_detail > p {
+  padding: 0.7rem 0.4rem;
+  display: -webkit-box;
+  font-size: 0.75rem;
+  color: rgba(38, 38, 38, 1);
+  -webkit-box-orient: vertical;
+  height: 2.6rem;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.bd_btn {
+  width: 80%;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  color: #fff;
+  margin: 0.5rem 0;
+  background: rgba(30, 135, 240, 1);
+  border-radius: 0.2rem;
+  margin-left: 10%;
+}
+.bd_btn1 {
+  background: rgb(193, 236, 93);
+}
+
 .choose {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.84rem 1.03rem;
+  background-color: #f5f5f5;
+  margin-bottom: 0.5rem;
   color: #8b8b8b;
+  border-bottom: 1px solid rgba(229, 229, 229, 1);
   span {
     color: #262626;
   }
