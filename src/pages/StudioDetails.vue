@@ -7,7 +7,7 @@
             <van-col span="5" class="first-sub-col">
               <img :src="studioInfo.img" alt />
             </van-col>
-            <van-col span="15" class="first-sub-col" @click="goDetail">
+            <van-col span="15" class="first-sub-col" @click="goDetail()">
               <p>{{ studioName }}</p>
             </van-col>
             <van-col span="4" class="first-sub-col">
@@ -223,7 +223,7 @@
 </template>
 
 <script>
-import Innovate from "@/pages/Innovate";
+import Innovate from "@/components/Innovate";
 import { Toast } from "vant";
 export default {
   name: "studio-details",
@@ -351,8 +351,12 @@ export default {
     toHome() {
       this.$router.go(-1);
     },
+    //跳转工作室详情页
     goDetail() {
-      this.$router.push("/studioInfo");
+      this.$router.push({
+        path: "/studioInfo",
+        query: { id: 1, studioName: this.studioInfo.name }
+      });
     },
     // 工作室轮播
     onChange(index) {
@@ -847,43 +851,36 @@ export default {
       margin-bottom: 0.7rem;
       padding-bottom: 0.7rem;
       padding-top: 0.5rem;
-      .icon_left,
+      .icon_left {
+        display: flex;
+        justify-content: flex-start;
+        color: #b2b2b2;
+        flex: 1;
+        .icon_item {
+          width: 33%;
+          line-height: 1rem;
+          display: flex;
+          align-items: center;
+          span {
+            padding-left: 0.3rem;
+          }
+        }
+      }
       .icon_right {
         flex: 1;
+        position: relative;
+        .button {
+          float: right;
+          background-color: #1e87f0;
+          border-radius: 0.2rem;
+          color: #ffffff;
+          width: 3.75rem;
+          height: 1.25rem;
+          text-align: center;
+        }
       }
     }
   }
-}
-
-.content_footer .content_footer .icon_left .icon_item {
-  width: 33%;
-  line-height: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.icon_left {
-  display: flex;
-  justify-content: flex-start;
-  color: #b2b2b2;
-}
-
-.content_footer .icon_left .icon_item span {
-  padding-left: 0.3rem;
-}
-
-.content_footer .icon_right {
-  position: relative;
-}
-
-.content_footer .icon_right .button {
-  float: right;
-  background-color: #1e87f0;
-  border-radius: 0.2rem;
-  color: #ffffff;
-  width: 3.75rem;
-  height: 1.25rem;
-  text-align: center;
 }
 
 //提问弹窗

@@ -12,7 +12,7 @@
     </div>
     <div class="box">
       <div class="title">
-        <h3>胡学柳劳模创新工作室
+        <h3>{{studioInfo.name}}
           <van-tag round type="success">二星级</van-tag>
         </h3>
         <p>广西电网有限责任公司/桂林供电局</p>
@@ -88,6 +88,10 @@
     name: 'StudioInfo',
     data() {
       return {
+        studioInfo:{
+          id: this.$route.query.id,
+          name: this.$route.query.studioName,
+        },
         top: 0,
         active: 0,
         currentIndex: 0,
