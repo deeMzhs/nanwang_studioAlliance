@@ -384,7 +384,7 @@
 
 <script>
 import { Toast } from "vant";
-import Innovate from "@/pages/Innovate";
+import Innovate from "@/components/Innovate";
 import { joinedActivityList, recruitTest } from "@/request/api"; // 导入api接口
 import storage from "../storage/storage"; // 导入storage
 export default {
@@ -407,7 +407,7 @@ export default {
       },
       // 联盟工作室
       studioList: [
-        { 
+        {
           name: "给他爱协会",
           img: require("../assets/img/iron-man.jpg")
         },
@@ -710,6 +710,7 @@ export default {
         this.$router.push({ name: "VoteGraphic" });
       }
     },
+    //退出关注
     exit() {
       this.isFollow = !this.isFollow;
     },
@@ -718,9 +719,8 @@ export default {
       this.currentStudio = index;
     },
     //联盟成果转发按钮
-    transmit(index) {
-
-    }, // 跳转详情
+    transmit(index) {}, 
+    // 跳转详情
     to(path, id) {
       this.$router.push({
         name: path,
@@ -753,21 +753,20 @@ export default {
     studioUnion1(name) {
       this.$router.push({
         path: "/studioDetails",
-        query:{
-          id:'1',
-          isFollow:1,
-          studioName:name
+        query: {
+          id: "1",
+          isFollow: 1,
+          studioName: name
         }
       });
     },
-    toFood(){
-      this.$router.push('/InnovationDetail')
+    toFood() {
+      this.$router.push("/InnovationDetail");
     },
 
     btn_professor(id) {
       Toast("点击专家" + id);
     }
-
   }
 };
 </script>
@@ -775,6 +774,9 @@ export default {
 <style lang="less" scoped>
 .wrap {
   background-color: #f9f9f9;
+}
+.bg_withe {
+  background-color: #ffffff;
 }
 .border {
   width: 100%;
@@ -1097,8 +1099,8 @@ export default {
 }
 //问题item
 .content {
-  margin-top: .6rem;
-  .content_nav{
+  margin-top: 0.6rem;
+  .content_nav {
     padding-top: 1.13rem;
     margin: 0 1.03rem;
     color: #262626;
@@ -1111,7 +1113,7 @@ export default {
     span {
       font-size: 1rem;
       font-weight: 400;
-      color: #262626
+      color: #262626;
     }
   }
   position: relative;
@@ -1189,40 +1191,38 @@ export default {
       margin-bottom: 0.7rem;
       padding-bottom: 0.7rem;
       padding-top: 0.5rem;
-      .icon_left,
+      .icon_left {
+        display: flex;
+        justify-content: flex-start;
+        color: #b2b2b2;
+        flex: 1;
+        .icon_item {
+          width: 33%;
+          line-height: 1rem;
+          display: flex;
+          align-items: center;
+          span {
+            padding-left: 0.3rem;
+          }
+        }
+      }
       .icon_right {
         flex: 1;
+        position: relative;
+        .button {
+          float: right;
+          background-color: #1e87f0;
+          border-radius: 0.2rem;
+          color: #ffffff;
+          width: 3.75rem;
+          height: 1.25rem;
+          text-align: center;
+        }
       }
     }
   }
 }
-.content_footer .content_footer .icon_left .icon_item {
-  width: 33%;
-  line-height: 1rem;
-  display: flex;
-  align-items: center;
-}
-.icon_left {
-  display: flex;
-  justify-content: flex-start;
-  color: #b2b2b2;
-}
-.content_footer .icon_left .icon_item span {
-  padding-left: 0.3rem;
-}
-.content_footer .icon_right {
-  position: relative;
-}
 
-.content_footer .icon_right .button {
-  float: right;
-  background-color: #1e87f0;
-  border-radius: 0.2rem;
-  color: #ffffff;
-  width: 3.75rem;
-  height: 1.25rem;
-  text-align: center;
-}
 //提问弹窗
 .questions {
   width: 4rem;
@@ -1242,89 +1242,9 @@ export default {
   font-size: 2rem;
   display: block;
 }
-/* 隐藏滚动条 */
-::-webkit-scrollbar {
-  display: none;
-}
-.bg_withe {
-  background-color: #ffffff;
-}
-// .wrap .studio-union .container .scroll {
-//   overflow: auto;
-//   padding: 0 0 1rem 0.8rem;
-//   background-color: #fff;
-//   border-radius: 0.5rem;
-// }
-// .wrap .studio-union .container .scroll .alive {
-//   display: inline-block;
-//   text-align: center;
-//   margin-right: 0.8rem;
-//   border-radius: 0.2rem;
-//   /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
-//   box-shadow: 0px 3px 10px 0px #cac3c3;
-// }
-// .wrap .studio-union .container .scroll .alive .img-wrap .img {
-//   width: 8.5rem;
-//   height: 9rem;
-//   border-top-left-radius: 0.2rem;
-//   border-top-right-radius: 0.2rem;
-// }
-// .wrap .studio-union .container .scroll .alive .text-wrap {
-//   width: 8.5rem;
-//   font-weight: bold;
-//   padding: 0.3rem 0.2rem;
-// }
-/* 联盟成果 */
-// .wrap .union-achieve {
-//   background-color: #fff;
-//   margin-top: 0.5rem;
-// }
-// .wrap .union-achieve .head-title {
-//   font-size: 1rem;
-//   font-weight: bold;
-// }
-// .wrap .union-achieve .head-more {
-//   font-size: 0.8rem;
-//   color: #595959;
-// }
-// .wrap .union-achieve .container {
-//   width: 100%;
-//   overflow: hidden;
-//   white-space: nowrap;
-// }
-// /* 隐藏滚动条 */
-// ::-webkit-scrollbar {
-//   display: none;
-// }
-// .wrap .union-achieve .container .scroll {
-//   overflow: auto;
-//   padding: 0 0 1rem 0.8rem;
-//   background-color: #fff;
-//   border-radius: 0.2rem;
-// }
-// .wrap .union-achieve .container .scroll .alive {
-//   display: inline-block;
-//   /* text-align: center; */
-//   margin-right: 0.8rem;
-//   border-radius: 0.2rem;
-//   /*这6个值分别是：left值 、top值、透明度、阴影外延宽度、颜色、向里凹陷（选填，默认为外延）*/
-//   box-shadow: 0px 3px 10px 0px #cac3c3;
-// }
-// .wrap .union-achieve .container .scroll .alive .img-wrap .img {
-//   width: 8.5rem;
-//   height: 7rem;
-//   border-top-left-radius: 0.2rem;
-//   border-top-right-radius: 0.2rem;
-// }
-// .wrap .union-achieve .container .scroll .alive .text-wrap {
-//   width: 8.5rem;
-//   color: #8c8c8c;
-//   padding: 0.3rem 0.2rem;
-// }
-// .wrap .union-achieve .container .scroll .alive .share-wrap {
-//   padding: 0.2rem 0.5rem;
-//   text-align: right;
-// }
+
+
+
 /* 发布、编辑按钮 */
 .publish-pop {
   position: fixed;
